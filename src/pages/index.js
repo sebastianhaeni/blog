@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Tags from "../components/tags"
 import { rhythm } from "../utils/typography"
 
 const BlogIndex = ({ data, location }) => {
@@ -29,6 +30,8 @@ const BlogIndex = ({ data, location }) => {
                 </Link>
               </h3>
               <small>{node.frontmatter.date}</small>
+              {' | '}
+              <Tags tags={node.frontmatter.tags} />
             </header>
             <section>
               <p
@@ -64,6 +67,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            tags
           }
         }
       }
