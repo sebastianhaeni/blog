@@ -6,6 +6,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Tags from "../components/tags"
 import { rhythm } from "../utils/typography"
+import { CommentCount } from "gatsby-plugin-disqus"
+import config from "../../gatsby-config"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -32,6 +34,12 @@ const BlogIndex = ({ data, location }) => {
               <small>{node.frontmatter.date}</small>
               {' | '}
               <Tags tags={node.frontmatter.tags} />
+              {" | "}
+              <CommentCount config={{
+                identifier: node.id,
+                url: `${config.siteMetadata.siteUrl}${node.fields.slug}`,
+                title: node.title,
+              }} placeholder={"..."} />
             </header>
             <section>
               <p

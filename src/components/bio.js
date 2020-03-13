@@ -27,15 +27,12 @@ const Bio = () => {
             name
             summary
           }
-          social {
-            twitter
-          }
         }
       }
     }
   `)
 
-  const { author, social } = data.site.siteMetadata
+  const { author } = data.site.siteMetadata
   return (
     <div
       style={{
@@ -59,7 +56,7 @@ const Bio = () => {
       <p>
         Written by <strong>{author.name}</strong> {author.summary}
         {` `}
-        <a href="https://sebastianhaeni.ch" rel="noopener" target="_blank">
+        <a href="https://sebastianhaeni.ch" rel="noopener noreferrer" target="_blank">
           You can find his social links on his personal website.
         </a>
       </p>

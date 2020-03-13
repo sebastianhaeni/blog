@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Tags from "../components/tags"
 import { rhythm, scale } from "../utils/typography"
-import { Disqus } from "gatsby-plugin-disqus"
+import { CommentCount, Disqus } from "gatsby-plugin-disqus"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -43,8 +43,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             }}
           >
             {post.frontmatter.date}
-            {' | '}
+            {" | "}
             <Tags tags={post.frontmatter.tags} />
+            {" | "}
+            <CommentCount config={disqusConfig} placeholder={"..."} />
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
