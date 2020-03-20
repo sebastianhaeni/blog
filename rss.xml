@@ -1,9 +1,81 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com/blog</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 13 Mar 2020 10:06:19 GMT</lastBuildDate><item><title><![CDATA[AI Seminar Intro]]></title><description><![CDATA[As mentioned in my first blog post New Beginnings, I’m inscribed to a course
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com/blog</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 20 Mar 2020 23:09:56 GMT</lastBuildDate><item><title><![CDATA[Facebook's Prophet and the paper]]></title><description><![CDATA[For the AI seminar, I am attending, I selected the following paper:  Forecasting at Scale, by Sean J. Taylor & Benjamin Letham. Abstract In…]]></description><link>https://sebastianhaeni.github.com/blog/0003-facebook-prophet-paper/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/blog/0003-facebook-prophet-paper/</guid><pubDate>Fri, 20 Mar 2020 22:00:00 GMT</pubDate><content:encoded>&lt;p&gt;For the AI seminar, I am attending, I selected the following paper:&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Forecasting at Scale, by Sean J. Taylor &amp;#x26; Benjamin Letham&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Abstract&lt;/h2&gt;
+&lt;p&gt;In the coming weeks, I want to evaluate the method described in the paper and see what can be accomplished with it in an
+environment relevant to me. The relevant environment for me is time series, mostly business time series, but can be of
+different sorts as well.&lt;/p&gt;
+&lt;h2&gt;Content&lt;/h2&gt;
+&lt;p&gt;The paper “Forecasting at scale” describes the method that Facebook uses to do forecasting on time series data based
+on an additive model where non-linear trends are fit with yearly, weekly and daily seasonality, plus holiday effects.
+The procedure is robust to missing data and shifts in the trend, and typically handles outliers well.&lt;/p&gt;
+&lt;h2&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;I’m explaining my motivation behind selecting the paper:&lt;/p&gt;
+&lt;h3&gt;Why have I chosen this paper?&lt;/h3&gt;
+&lt;p&gt;Last year I got a task when doing volunteering service for the country, to work on a time series data set. I built a
+proof of concept system that could process the gigabytes of CSV files and aggregate the time series to different sample
+durations. The time series were also transformed using different methods such as &lt;a href=&quot;https://en.wikipedia.org/wiki/CUSUM&quot;&gt;CUSUM&lt;/a&gt;
+and &lt;a href=&quot;https://en.wikipedia.org/wiki/EWMA_chart&quot;&gt;EWMA&lt;/a&gt; to make them easier to interpret.
+I visualized them with &lt;a href=&quot;https://grafana.com/&quot;&gt;Grafana&lt;/a&gt; that I connected to a self-written Python backend using &lt;a href=&quot;https://palletsprojects.com/p/flask/&quot;&gt;Flask&lt;/a&gt;.
+The processing of the data was limited to my dev machine and I was restricted from using any other infrastructure. Because
+it became clear that single-thread processing would not finish the processing within days, I had to parallelize it with
+&lt;a href=&quot;https://dask.org/&quot;&gt;Dask&lt;/a&gt;, which shortened the processing time dramatically.&lt;/p&gt;
+&lt;p&gt;After visualizing the immense amount of data it became clear that we will find some seasonality and trend in subsets
+of the time series. Thus I had the idea to decompose the filtered subsets into seasonality and trend. This gave the
+opportunity to then create a prediction interval that can be used to find anomalies in the data.&lt;/p&gt;
+&lt;p&gt;After a quick and dirty implementation, it became clear that producing nice graphs could turn out to be tricky. A
+colleague stumbled upon the &lt;a href=&quot;https://cran.r-project.org/web/packages/anomalize/index.html&quot;&gt;anomalize&lt;/a&gt; package in R.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 450px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/7bad9e4efed277e9b67a873875c8eef7/fc2a6/anomalize.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 53.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAACDUlEQVQoz3VSa08aURDl/3/vQwu4gYKhIKC2vFRqhfRD/UBcFmhjiWDKsqvysLz2dfd05i5QadKbTDJ3HueeO3NCwvfhuh48T6zN+48FOZd9x4FwXQgfEELAJ38xm2NlWQhZtg2fQHcMf8/LOPwg41OP/fgIdz6HRzGj30dbVWETsdBiucS/hxlYFGc2zGAbp9jzZAKt3cbn8yq0RgPtVguFUgWVi0t4VBviQptenFChYQzR6/Wg3tzg+ts1mpqGn7e30PUBTNOA2mzitFBCJpvH4YcjJMhymSze7oVRq9cDQGYxHA5Rp0Dl7Bz5k4/I5k+QTGUQS6ZkY7FUxlWthtzxKcIHcUSVONLpDJTYe8QTSeTzx+h0OvSjNcPO9x94tRfB6/0oWQT7EUUWR5SYbObcm3cHUOIJZHM5+fBV/SuqF1WcEeOG2sR4MoVNo5KAqqohHFVwRF/5VCiizA21OqqXX1AolpEjxqk0M63QtzX8GuiYPk/xYJrQaSE8b9+xwQsOsWxMXUeL5ta/v8dgMMDo6Qnj8Xg9VwN3NNdutwuDcktqFiJYljSSik8mRiNYzNCXOnQxm81gUYL9rfZEoD1eWgAkdqS0IyvypQ5t28FsvtgKe75YYrWyJJBD4L9JsCx8rBs2d85zLZsUPNXKGTIgN25eWxKYEMHrzNBhTRJDbuQ6vm+OZdkS7OX5A/UzKK+UCXdrAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;anomalize graph&quot;
+        title=&quot;anomalize graph&quot;
+        src=&quot;/blog/static/7bad9e4efed277e9b67a873875c8eef7/fc2a6/anomalize.png&quot;
+        srcset=&quot;/blog/static/7bad9e4efed277e9b67a873875c8eef7/12f09/anomalize.png 148w,
+/blog/static/7bad9e4efed277e9b67a873875c8eef7/e4a3f/anomalize.png 295w,
+/blog/static/7bad9e4efed277e9b67a873875c8eef7/fc2a6/anomalize.png 450w&quot;
+        sizes=&quot;(max-width: 450px) 100vw, 450px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;We tried it out but concluded that special holidays, weekends and so on still were a problem for anomalize which uses
+STL (Seasonality and Trend decomposition using LOESS, &lt;a href=&quot;https://www.scb.se/contentassets/ca21efb41fee47d293bbee5bf7be7fb3/stl-a-seasonal-trend-decomposition-procedure-based-on-loess.pdf&quot;&gt;Paper&lt;/a&gt;)
+and methods from Twitter’s &lt;a href=&quot;https://github.com/twitter/AnomalyDetection&quot;&gt;AnomalyDetection&lt;/a&gt; library.&lt;/p&gt;
+&lt;p&gt;So our research continues and we found the library &lt;a href=&quot;https://facebook.github.io/prophet/&quot;&gt;Prophet&lt;/a&gt; which looked promising,
+as it’s method promises that it can not only cope with holiday effects but also work at scale, has automatic changepoint
+detection and allows for Analyst-in-the-Loop Modeling.&lt;/p&gt;
+&lt;p&gt;But unfortunately the time we had run out and I had no chance to look at this method in depth. This AI seminar now gives
+me the chance to catch up.&lt;/p&gt;
+&lt;h3&gt;Why is it relevant and interesting?&lt;/h3&gt;
+&lt;p&gt;Facebook has developed the Prophet library in house and is sharing it as open source with the community. At my day job,
+we’re operating applications at scale and thus are confronted with the same problems that Facebook has tried to solve.&lt;/p&gt;
+&lt;p&gt;I think it can be interesting for larger companies trying to achieve application operating models that can do self-healing,
+scale automatically using predictions, anticipate surges and find anomalies so an operator can have a closer look and
+feed the result back into the model. Until 2025 we want to have AIOps established in the company. And we’re certainly
+not the only company trying to do this.&lt;/p&gt;
+&lt;h2&gt;Expectations &amp;#x26; Goals&lt;/h2&gt;
+&lt;p&gt;My goal of working through this paper and the accompanying library is to deepen my knowledge of how time series analysis
+can be approached beside the methods I already know like STL. Also, I would like to be able to tell our business owners
+and fellow coworkers if this method could be a useful tool.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[AI Seminar Intro]]></title><description><![CDATA[As mentioned in my first blog post New Beginnings, I’m inscribed to a course
 named “AI Seminar”. In this course, each student is expected to…]]></description><link>https://sebastianhaeni.github.com/blog/0002-ai-seminar-intro/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/blog/0002-ai-seminar-intro/</guid><pubDate>Sun, 08 Mar 2020 12:30:00 GMT</pubDate><content:encoded>&lt;p&gt;As mentioned in my first blog post &lt;a href=&quot;/blog/0001-new-beginnings&quot;&gt;New Beginnings&lt;/a&gt;, I’m inscribed to a course
 named “AI Seminar”. In this course, each student is expected to read a paper of their choice.
 We will go through understanding writing style, understanding content, reviewing and criticizing
 a paper, evaluating yourself oneself and have a final presentation.&lt;/p&gt;
-&lt;p&gt;My selection of the paper is &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Forecasting at Scale, by Sean J. Taylor &amp;#x26; Benjamin Letham&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;h2&gt;Why I have chosen this seminar&lt;/h2&gt;
 &lt;p&gt;I have not touched on that many results of scientific work. This course is ideal to fix that for me.
 We will discuss in person and work through a paper in depth. I feel like this is something that will
