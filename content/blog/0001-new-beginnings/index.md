@@ -2,7 +2,7 @@
 title: New Beginnings
 date: "2020-03-01T22:40:00.000Z"
 description:
-  Why am I starting my own blog? This post is the first ever post in a personal blog. 
+  Why am I starting my own blog? This post is the first ever post in a personal blog.
   I try to explain why having a personal blog is a good idea IMHO.
 tags: ["opinion"]
 ---
@@ -73,7 +73,7 @@ Also my mother tongue is not English, so this blog allows me to refine my Englis
 
 ## Motivation #4: Trying Gatsby.js
 
-I'm reading a lot of people are using [Gatsby.js](https://www.gatsbyjs.org/). It sounds like a promising 
+I'm reading a lot of people are using [Gatsby.js](https://www.gatsbyjs.org/). It sounds like a promising
 technology and I am eager to get my hands on it. It has some cool concepts. So, I'm building this
 blog with Gatsby.js.
 

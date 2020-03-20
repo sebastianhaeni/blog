@@ -6,7 +6,9 @@ import { Link } from "gatsby"
 const Tags = ({ tags }) => {
   return tags.map((tag, i) => [
     i > 0 && ", ",
-    <Link key={kebabCase(tag)} to={`/tags/${kebabCase(tag)}`}>{tag}</Link>,
+    <Link key={kebabCase(tag)} to={`/tags/${kebabCase(tag)}`}>
+      {tag}
+    </Link>,
   ])
 }
 

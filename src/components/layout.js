@@ -60,11 +60,13 @@ const Layout = ({ location, title, children }) => {
     >
       <header>{header}</header>
       <main>{children}</main>
-      <footer style={{
-        marginTop: rhythm(3),
-        textAlign: 'center',
-        fontSize: rhythm(.5),
-      }}>
+      <footer
+        style={{
+          marginTop: rhythm(3),
+          textAlign: "center",
+          fontSize: rhythm(0.5),
+        }}
+      >
         © {new Date().getFullYear()} Sebastian Häni
       </footer>
     </div>

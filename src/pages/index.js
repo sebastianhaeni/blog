@@ -32,14 +32,17 @@ const BlogIndex = ({ data, location }) => {
                 </Link>
               </h3>
               <small>{node.frontmatter.date}</small>
-              {' | '}
+              {" | "}
               <Tags tags={node.frontmatter.tags} />
               {" | "}
-              <CommentCount config={{
-                identifier: node.id,
-                url: `${config.siteMetadata.siteUrl}${node.fields.slug}`,
-                title: node.title,
-              }} placeholder={"..."} />
+              <CommentCount
+                config={{
+                  identifier: node.id,
+                  url: `${config.siteMetadata.siteUrl}${node.fields.slug}`,
+                  title: node.title,
+                }}
+                placeholder={"..."}
+              />
             </header>
             <section>
               <p

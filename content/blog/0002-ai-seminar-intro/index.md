@@ -9,8 +9,6 @@ named "AI Seminar". In this course, each student is expected to read a paper of 
 We will go through understanding writing style, understanding content, reviewing and criticizing
 a paper, evaluating yourself oneself and have a final presentation.
 
-My selection of the paper is *[Forecasting at Scale, by Sean J. Taylor & Benjamin Letham](https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080)*.
-
 ## Why I have chosen this seminar
 
 I have not touched on that many results of scientific work. This course is ideal to fix that for me.
@@ -28,7 +26,7 @@ My learning goals pretty much align with the course description. So I want to le
 writing, what a good paper is about and get familiar with a topic of my interest.
 
 1. I want to _know_ in detail how the process of writing scientific papers is like and hear from an
-  expert that has experience in this.
+   expert that has experience in this.
 1. I want to _try_ criticizing a paper and get feedback.
 1. I want to _refine_ my writing skills.
 1. I want to _get to know_ the method explained in my chosen paper in detail.
