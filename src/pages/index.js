@@ -38,8 +38,8 @@ const BlogIndex = ({ data, location }) => {
               <CommentCount
                 config={{
                   identifier: node.id,
-                  url: `${config.siteMetadata.siteUrl}${node.fields.slug}`,
-                  title: node.title,
+                  url: `${config.siteMetadata.siteUrl}${config.pathPrefix}${node.fields.slug}`,
+                  title: node.frontmatter.title,
                 }}
                 placeholder={"..."}
               />
@@ -71,6 +71,7 @@ export const pageQuery = graphql`
       edges {
         node {
           excerpt
+          id
           fields {
             slug
           }

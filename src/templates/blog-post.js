@@ -14,9 +14,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
   const disqusConfig = {
-    url: `${config.siteMetadata.siteUrl}${post.fields.slug}`,
+    url: `${config.siteMetadata.siteUrl}${config.pathPrefix}${post.fields.slug}`,
     identifier: post.id,
-    title: post.title,
+    title: post.frontmatter.title,
   }
 
   return (

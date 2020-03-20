@@ -7,7 +7,7 @@ module.exports = {
       summary: `who lives, studies and works Zurich building useful things.`,
     },
     description: `A personal blog about things I am interested in.`,
-    siteUrl: `https://sebastianhaeni.github.com/blog/`,
+    siteUrl: `https://sebastianhaeni.github.com`,
     social: {
       twitter: `sebastianhaeni`,
     },
