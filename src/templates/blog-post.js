@@ -14,7 +14,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
   const disqusConfig = {
-    url: `${config.siteMetadata.siteUrl}${location.pathname}`,
+    url: `${config.siteMetadata.siteUrl}${post.fields.slug}`,
     identifier: post.id,
     title: post.title,
   }
@@ -105,6 +105,9 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
