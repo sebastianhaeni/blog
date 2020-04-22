@@ -6,7 +6,7 @@ tags: ["MSc", "AI Seminar", "ML", "Prophet"]
 
 For the AI seminar, I am attending, I selected the following paper:
 
-<span style="font-size: 1.2em"> _[Forecasting at Scale, by Sean J. Taylor & Benjamin Letham](https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080)_.</span>
+<span style="font-size: 1.2em"> _[Sean J. Taylor & Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician](https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080)_.</span>
 
 ## Abstract
 
