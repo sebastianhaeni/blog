@@ -1,5 +1,163 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 20 Mar 2020 23:37:34 GMT</lastBuildDate><item><title><![CDATA[Facebook's Prophet and the paper]]></title><description><![CDATA[For the AI seminar, I am attending, I selected the following paper:  Forecasting at Scale, by Sean J. Taylor & Benjamin Letham. Abstract In…]]></description><link>https://sebastianhaeni.github.com/0003-facebook-prophet-paper/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0003-facebook-prophet-paper/</guid><pubDate>Fri, 20 Mar 2020 22:00:00 GMT</pubDate><content:encoded>&lt;p&gt;For the AI seminar, I am attending, I selected the following paper:&lt;/p&gt;
-&lt;p&gt;&lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Forecasting at Scale, by Sean J. Taylor &amp;#x26; Benjamin Letham&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 22 Apr 2020 23:39:24 GMT</lastBuildDate><item><title><![CDATA[Dissecting a paper's writing style]]></title><description><![CDATA[In this post I want to dissect a paper’s style and try to criticize it irregardless of it’s content.
+The paper is the one mentioned in the…]]></description><link>https://sebastianhaeni.github.com/0004-dissecting-paper-style/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0004-dissecting-paper-style/</guid><pubDate>Thu, 23 Apr 2020 20:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In this post I want to dissect a paper’s style and try to criticize it irregardless of it’s content.
+The paper is the one mentioned in the previous post:&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Sean J. Taylor &amp;#x26; Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Standard Structure&lt;/h2&gt;
+&lt;p&gt;Let’s go over the standard structure of a paper and describe what to look for, and then giving the verdict of how the
+paper did.&lt;/p&gt;
+&lt;h3&gt;0. Title&lt;/h3&gt;
+&lt;p&gt;A good title for a paper should honestly reflect the content, give the reader hints what topics it will touch,
+and reveals the category of the paper (argumentative, analytical, definition, compare and contrast, cause and effect, report.
+interpretive, etc.).&lt;/p&gt;
+&lt;p&gt;Sometimes people working for big names put catchy titles on their papers such as “Attention Is
+All You Need” or “One Model To Learn Them All”. This yields that if that paper really is groundbreaking, people will
+remember it for the catchy name, and it’s easy to talk about it in colloquials. For the authors is a kind of branding
+for them as they can afford to add a title like this. A researcher with their feet on the ground probably has to resort
+to more bland titles that are humble and serve their purpose in the journal or conference.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Verdict&lt;/strong&gt;: The title of the paper “Forecasting at Scale” is pretty short and does not summarize the techniques or methods
+described in the paper and rather focuses on the fact that the paper is practical experiences made since the word “Scale”
+is mentioned. So in my opinion it’s a bit catchy but that’s maybe in the nature of the authors since they work for Facebook
+and can afford to have a title like that. It’s clear the content will not be about biomedical topics or physics.
+It could also be about weather forecasting if it weren’t published in a journal named “The American Statistician”.&lt;/p&gt;
+&lt;h3&gt;1. Abstract&lt;/h3&gt;
+&lt;p&gt;The abstract is the first thing a paper, and the part most often read. It should stand for itself and not require the
+reader to read any other part of the paper to understand it.&lt;/p&gt;
+&lt;p&gt;The structure of an abstract is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Problem: what is it and why it is interesting&lt;/li&gt;
+&lt;li&gt;Method: what and how is it accomplished&lt;/li&gt;
+&lt;li&gt;Result: what is the new achievement&lt;/li&gt;
+&lt;li&gt;Importance: what follows after the result&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The abstract is for people that &lt;ins&gt;want&lt;/ins&gt; to read the paper. It is not to be confused by the conclusion which is for
+people that &lt;ins&gt;have read&lt;/ins&gt; the paper.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Verdict&lt;/strong&gt;: The abstract gives a nice introduction to the field of forecasting time series in the first sentence. It makes me
+feel guided into the topic. The second sentence starts explaining the problem as it should mention according to our list
+above. From then on the abstract still follows the structure but tends to say “we will describe in this paper” and not
+actually giving the reader the result right there in the abstract. It’s nicely rounded off by explaining where these
+methods are now productively in place.&lt;/p&gt;
+&lt;h3&gt;2. Introduction and Related Work&lt;/h3&gt;
+&lt;p&gt;The introduction explains the problem in depth and why it’s interesting and important. It also explains why naive approaches
+usually fail and why other people have not solved it before and thus makes the problem hard. It should also introduce
+the proposed approach.&lt;/p&gt;
+&lt;p&gt;This section should also include related work with a brief overview of the current state of the art with explanations
+what is new with respect to previous work. It should be come clear what’s the improvement.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Verdict&lt;/strong&gt;: The introduction is in itself structured logically, and the reader can easily follow. It explains what they
+mean by “scale”.&lt;/p&gt;
+&lt;p&gt;In my opinion the paper’s introduction and the main body diverge a little as the introduction explains scaling problems,
+and the main body describes solutions to forecasting problems for the good first part.&lt;/p&gt;
+&lt;p&gt;They don’t talk about why these problems have been solved by others though. They also don’t mention
+related work. I could imagine the reason being the other few companies that could encounter scales like Facebook don’t
+publish their results as white papers. Though I could also imagine the authors didn’t care much about related research work,
+since they were building a practical implementation that matches their company environment.&lt;/p&gt;
+&lt;h3&gt;3. Main Body&lt;/h3&gt;
+&lt;p&gt;This part should talk about formulation, implementation, results, experiments, etc.&lt;/p&gt;
+&lt;p&gt;The main body is a longer piece of content which should be grouped into sections. Ideally the text doesn’t introduce
+more than one idea per sentence or paragraph. A topic should be in its own section.&lt;/p&gt;
+&lt;p&gt;General good practice:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;use short words&lt;/li&gt;
+&lt;li&gt;use short sentences with simple structure&lt;/li&gt;
+&lt;li&gt;keep paragraphs short&lt;/li&gt;
+&lt;li&gt;avoid buzzwords, clichés and slang&lt;/li&gt;
+&lt;li&gt;avoid excess, in length or style&lt;/li&gt;
+&lt;li&gt;omit unnecessary material&lt;/li&gt;
+&lt;li&gt;be specific, not vague or abstract&lt;/li&gt;
+&lt;li&gt;break these rules if there is a good reason to do so&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Verdict&lt;/strong&gt;: The main body is well-structured, sections are not too long, paragraphs have a reasonable length and contains
+a good amount of visualizations. Details as to why they have chosen a certain method over another are often left out
+as one can read the reasons in the respective paper, which I guess follows the principle of omitting unnecessary material.&lt;/p&gt;
+&lt;h3&gt;4. Conclusions&lt;/h3&gt;
+&lt;p&gt;The conclusion is a brief summary of the main findings and includes a discussion, perspective and future work etc.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Verdict&lt;/strong&gt;: The conclusion doesn’t go into any details anymore, which is good as it should be brief. What I’m missing from it is
+some sort of critical questioning of the results. What the authors describe is only positive and that they are happy.
+That’s maybe what truly are. There’s no mention of future work of possible improvements.&lt;/p&gt;
+&lt;h3&gt;5. Acknowledgements&lt;/h3&gt;
+&lt;p&gt;As the name says, in this part the authors acknowledge people that helped the creation of the paper.&lt;/p&gt;
+&lt;h3&gt;6. References&lt;/h3&gt;
+&lt;p&gt;References should be complete and relevant and correctly cited.&lt;/p&gt;
+&lt;h3&gt;7. Appendices&lt;/h3&gt;
+&lt;p&gt;This part is optional and sometimes used to append large figures, tables or code.&lt;/p&gt;
+&lt;h2&gt;Style Review&lt;/h2&gt;
+&lt;h3&gt;Graphs, Figures and Tables&lt;/h3&gt;
+&lt;p&gt;If you haven’t heard about Edward Tufte, go read about his work now. He has produced some great literature about
+statistics visualizations. He talks about information design (e.g. data-ink ratio), criticizes PowerPoint, encourages
+small multiples (produce many small visualizations instead of one superimposed graph) and other techniques.&lt;/p&gt;
+&lt;p&gt;Other than that it should be clear that figures and tables should be easy to read and understand, show relevant data
+and have a caption explaining them.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Verdict&lt;/strong&gt;: The paper has some very good graphs, and some which are not that good. It seems they have been produced
+in different styles. Generally I would like the visualizations to have a common style.&lt;/p&gt;
+&lt;p&gt;I take two examples:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Good:&lt;/strong&gt; I like the color coding and the display of the seasonal effects of the weekdays. The main thing here to criticize
+is the color choice for Saturday as it’s barely readable. They could also reduce the grey background lines and increase
+the data to ink ratio.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 548px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/9367b79a1c98861d1c41451c843df5c1/a58fe/good-fig.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 37.16216216216216%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsSAAALEgHS3X78AAABaklEQVQoz32Ra0/bMBiF8///y4TEPjCJi1il0ValKSwbFFogK5c2xGkuTpPUuTx7HcRXjnxs2T4+r33slGVJnu+4W6x48N9YvQQoFROqhFwXwh11ZdhXe4wwS3OmfxfM/RV+GJIXJXGUEGwCLBz1HrKJFD+uJwy8K86F30ZjTqYup9MZZzOPo8mMoXfLxe9bDmRv4F2yjtZs4jfSnaYqDUmSil2HE0VbtonifjFm+XAto8vh8ID5/RTvZiJmxxxdnuDOXX79GfF9fMjT0qXIIzFSQk1eVQThO13b4oShkien1HuFTjdk8SvP/oBk+0ys/vH4NOTFHxGulwSvN/iPPynLlA90NLWhNAWZzuwUp2kaSqlQ1y1109IIjcn7UZoUyug62W+MrO2pKile16IxPSubrdEUhf7I0HZFUfRs5cpWrHXei21JG0ko4VsYU5NlutdYrf1Qe+4TXScZ2u4rGGNvVX2psR6fPv8BGBIRiDt2SAgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Good figure showing time series&quot;
+        title=&quot;Good figure showing time series&quot;
+        src=&quot;/blog/static/9367b79a1c98861d1c41451c843df5c1/a58fe/good-fig.png&quot;
+        srcset=&quot;/blog/static/9367b79a1c98861d1c41451c843df5c1/12f09/good-fig.png 148w,
+/blog/static/9367b79a1c98861d1c41451c843df5c1/e4a3f/good-fig.png 295w,
+/blog/static/9367b79a1c98861d1c41451c843df5c1/a58fe/good-fig.png 548w&quot;
+        sizes=&quot;(max-width: 548px) 100vw, 548px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Bad:&lt;/strong&gt; This figure looks less optimal. On the first chart I don’t know what the dotted line is or why the other one is blue.
+It is also dangerous to put three charts together implying they could be compared even they have different timelines
+and should not be compared. Also, isn’t weekly also a trend (referring to the y-axis descriptions).
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 531px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/4985d3207d952e455d5da594f59ce9d3/d4713/bad-fig.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 77.70270270270271%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsSAAALEgHS3X78AAABpklEQVQ4y61Uy47iMBD0/38Rd05IHDjMaoYE0A5kIS9DniR24tS6e5KI56CRxlKpK93ldttxW+CXh1itVlgul3BdF8Qdx2EQJx/FiA+6Z3yYL6IohO/7iKIIUkoEQYgwDPmbQDHyx3HMnGIDJytjOfpJJ4xpH5bedd1D/yu9UFqhaRq0bdvji+tGj/wyppS60hFovtaaudA2YdvcTiSRvvPxQlo99A9FiSHzM8GPE95v+fsK1dOE/ZaNPYvOGHvY5rqSVxXan2MYZqyQuEiKM/JzzQk6+oOdYXSmGTmDYhZtozjRkGQAHR1Z4QYp/sY5ZFEjtvBOJT5lwT7iQVbhVCpklWakdvFK28rurlV/bepzCVVXyIsCpzTDMckgkxTRMUEgE+zCI9b7GM6/COuDxNIL4Vr74UV4t/izDRhvnz5bQS2z3+9RFDnKsmCcR1uisgvWPeIwwGa9QmA7I8tzpFmOJMuQ2EKoGLKccLPZ8IG+Go7V7nY7HA7+88fhsnW+A43ZbIbpdIrJZALP8/pWNFc6cTvptocvY9vtFovFAvP5nB+DR/r/S3/XocnlP1IAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Bad figure showing component of forecast&quot;
+        title=&quot;Bad figure showing component of forecast&quot;
+        src=&quot;/blog/static/4985d3207d952e455d5da594f59ce9d3/d4713/bad-fig.png&quot;
+        srcset=&quot;/blog/static/4985d3207d952e455d5da594f59ce9d3/12f09/bad-fig.png 148w,
+/blog/static/4985d3207d952e455d5da594f59ce9d3/e4a3f/bad-fig.png 295w,
+/blog/static/4985d3207d952e455d5da594f59ce9d3/d4713/bad-fig.png 531w&quot;
+        sizes=&quot;(max-width: 531px) 100vw, 531px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Justin Zobel (2014) Writing for Computer Science, Third Edition, New York: Springer.&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Facebook's Prophet and the paper]]></title><description><![CDATA[For the AI seminar, I am attending, I selected the following paper:  Sean J. Taylor & Benjamin Letham (2018) “Forecasting at Scale”, The…]]></description><link>https://sebastianhaeni.github.com/0003-facebook-prophet-paper/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0003-facebook-prophet-paper/</guid><pubDate>Fri, 20 Mar 2020 22:00:00 GMT</pubDate><content:encoded>&lt;p&gt;For the AI seminar, I am attending, I selected the following paper:&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Sean J. Taylor &amp;#x26; Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
 &lt;h2&gt;Abstract&lt;/h2&gt;
 &lt;p&gt;In the coming weeks, I want to evaluate the method described in the paper and see what can be accomplished with it in an
 environment relevant to me. The relevant environment for me is time series, mostly business time series, but can be of
@@ -37,7 +195,7 @@ colleague stumbled upon the &lt;a href=&quot;https://cran.r-project.org/web/pack
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 53.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAACDUlEQVQoz3VSa08aURDl/3/vQwu4gYKhIKC2vFRqhfRD/UBcFmhjiWDKsqvysLz2dfd05i5QadKbTDJ3HueeO3NCwvfhuh48T6zN+48FOZd9x4FwXQgfEELAJ38xm2NlWQhZtg2fQHcMf8/LOPwg41OP/fgIdz6HRzGj30dbVWETsdBiucS/hxlYFGc2zGAbp9jzZAKt3cbn8yq0RgPtVguFUgWVi0t4VBviQptenFChYQzR6/Wg3tzg+ts1mpqGn7e30PUBTNOA2mzitFBCJpvH4YcjJMhymSze7oVRq9cDQGYxHA5Rp0Dl7Bz5k4/I5k+QTGUQS6ZkY7FUxlWthtzxKcIHcUSVONLpDJTYe8QTSeTzx+h0OvSjNcPO9x94tRfB6/0oWQT7EUUWR5SYbObcm3cHUOIJZHM5+fBV/SuqF1WcEeOG2sR4MoVNo5KAqqohHFVwRF/5VCiizA21OqqXX1AolpEjxqk0M63QtzX8GuiYPk/xYJrQaSE8b9+xwQsOsWxMXUeL5ta/v8dgMMDo6Qnj8Xg9VwN3NNdutwuDcktqFiJYljSSik8mRiNYzNCXOnQxm81gUYL9rfZEoD1eWgAkdqS0IyvypQ5t28FsvtgKe75YYrWyJJBD4L9JsCx8rBs2d85zLZsUPNXKGTIgN25eWxKYEMHrzNBhTRJDbuQ6vm+OZdkS7OX5A/UzKK+UCXdrAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 53.37837837837838%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAACDUlEQVQoz3VSa08aURDl/3/vQwu4gYKhIKC2vFRqhfRD/UBcFmhjiWDKsqvysLz2dfd05i5QadKbTDJ3HueeO3NCwvfhuh48T6zN+48FOZd9x4FwXQgfEELAJ38xm2NlWQhZtg2fQHcMf8/LOPwg41OP/fgIdz6HRzGj30dbVWETsdBiucS/hxlYFGc2zGAbp9jzZAKt3cbn8yq0RgPtVguFUgWVi0t4VBviQptenFChYQzR6/Wg3tzg+ts1mpqGn7e30PUBTNOA2mzitFBCJpvH4YcjJMhymSze7oVRq9cDQGYxHA5Rp0Dl7Bz5k4/I5k+QTGUQS6ZkY7FUxlWthtzxKcIHcUSVONLpDJTYe8QTSeTzx+h0OvSjNcPO9x94tRfB6/0oWQT7EUUWR5SYbObcm3cHUOIJZHM5+fBV/SuqF1WcEeOG2sR4MoVNo5KAqqohHFVwRF/5VCiizA21OqqXX1AolpEjxqk0M63QtzX8GuiYPk/xYJrQaSE8b9+xwQsOsWxMXUeL5ta/v8dgMMDo6Qnj8Xg9VwN3NNdutwuDcktqFiJYljSSik8mRiNYzNCXOnQxm81gUYL9rfZEoD1eWgAkdqS0IyvypQ5t28FsvtgKe75YYrWyJJBD4L9JsCx8rBs2d85zLZsUPNXKGTIgN25eWxKYEMHrzNBhTRJDbuQ6vm+OZdkS7OX5A/UzKK+UCXdrAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
