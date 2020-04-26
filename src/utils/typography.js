@@ -6,6 +6,9 @@ LincolnTheme.overrideThemeStyles = () => {
     "a.gatsby-resp-image-link": {
       boxShadow: `none`,
     },
+    '.gatsby-highlight': {
+      fontSize: "0.7em",
+    },
   }
 }
 
