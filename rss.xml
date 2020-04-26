@@ -1,4 +1,252 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 22 Apr 2020 23:39:24 GMT</lastBuildDate><item><title><![CDATA[Dissecting a paper's writing style]]></title><description><![CDATA[In this post I want to dissect a paper’s style and try to criticize it irregardless of it’s content.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 26 Apr 2020 22:12:22 GMT</lastBuildDate><item><title><![CDATA[Automatically keep your dependencies up to date in closed source projects for free]]></title><description><![CDATA[We tackle the question of why it’s important to keep your dependencies up to date, compare a few proprietary
+solutions and then talk about…]]></description><link>https://sebastianhaeni.github.com/0005-keep-your-dependencies-up-to-date/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0005-keep-your-dependencies-up-to-date/</guid><pubDate>Sun, 26 Apr 2020 20:00:00 GMT</pubDate><content:encoded>&lt;p&gt;We tackle the question of why it’s important to keep your dependencies up to date, compare a few proprietary
+solutions and then talk about how to do it with NPM, Gradle and Jenkins yourself.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 487px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.21621621621621%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsSAAALEgHS3X78AAADq0lEQVQ4yw2R+U/TBwDFvz/tT1iW/bJkS7a5H7aMJRtbJJtLHDiJmImK6BgUxiWHFJBDkHK1XG3FthQKlFKrFCyUcsxyFRhBYSKwcMkQKgzQKXKFG8xn/eHl/fje5z1BejMQm1nO7KSD6bFuulqrWF6a5eBwm929dQ721tjdesHR4SprzsdYjRKSUgOwamUw0sTrdj3lxVKyJam4u32GoC0Ko9dhZmPNycRIF/0OC/PzUxy93WZ/f5X9vRX2t5eZHu6gv6WSmmoZmWnhGJTpWDXpNLqkV+UizYhHdOknBJkkiNamCpbmR/j7cRv9PU04mg2sr8y4mk6wtbHAUK8Vbawv8mh/6o3FiMMukiEOwFyahjY/BlVuFHnJQVwLO4eQnRVJTnY8eo2EyfEBmspzGatRUFcYy8JML5sr0zRWK2hI/o1H0gjqy2TkJl6m3lDA3JCVu9octCU5KOUp/Hj8S4TMjFBCI/wwlkkZHeqmIs6PZ8ZCVKKfaa9VcbS7RGeLBVtJHlUurHu2PsqKs+izm1jsv09uyFn8PN2wt1Rw8by3CzkrmstXzlClk9NoLkMVeIqpkgwMET6Upl+lr7EWS2UJDQYd+cUmJGo7BaU2hkcH6dSmU5d4gQvffoAx8QxnT51AsGhSSbjqT6chj4KkYDw/fZdBSQAi94/45btjDJk0jDo6UeYpKNebafqjixBxMS32bhKunEQV6c1IsxZlih9lt28gDNjN9Jg1OF2HaMUhhHp8iKNARGXSJSLdj/F64glvXi7Q1PyAsJibVNV1c6PQglqto+ZWAuVZUQxY9aj6zUxMmRHatBmYdEWM1VazddKHpRM+zAWHsxoVzY6HJ5saJbDLg/aHfH9aRPLvwa7DpCRcl9HdWkvdXSMmo5H6DhvSHAnCXzYdpco0OlKD2Pj8a8bDk2grMTBYcJvFr35gThbF251XmOraOe4ViO6aH5VZ6URHJHNHp6ZNLkZ5q4g/H42iUesRdvY30RfFoZGI6VKoscnyaS5WYa+p4aFOT1dtFS+f/4NUXsG5XxO5kxJKTOR1svIrmOpppCUvGqmxnqczM4yNTyL8u+ikwWriXkowjk+8ePqeN873T+P82JexL3x5oohjbKCX0Hg5qRlqNOJQRLFFlFVaXYHpaPQGLMOzLC49Z/3NC4SDwx1WXy3Qq4hhwM2LeeEblgUPnC4ffMeNZ6VxWGruc16UQlRwJOVJsQSJlRTIVGSKY/GPV1PVMcx/6xuurQ/5HxiK2wZsgCzvAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Meme&quot;
+        title=&quot;Meme&quot;
+        src=&quot;/blog/static/e9ec0e7fdf0ca1bbf14ceb7abb387803/7b439/meme.png&quot;
+        srcset=&quot;/blog/static/e9ec0e7fdf0ca1bbf14ceb7abb387803/12f09/meme.png 148w,
+/blog/static/e9ec0e7fdf0ca1bbf14ceb7abb387803/e4a3f/meme.png 295w,
+/blog/static/e9ec0e7fdf0ca1bbf14ceb7abb387803/7b439/meme.png 487w&quot;
+        sizes=&quot;(max-width: 487px) 100vw, 487px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Why it is important to keep your dependencies up to date&lt;/h2&gt;
+&lt;p&gt;There are several reasons why you should keep the dependencies you use in your project up to date:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Keep the burden of migrating small in case of incompatibilities:&lt;/strong&gt; If you do not regularly upgrade your dependencies
+you will eventually have to and face a big list of breaking changes which do not take minutes to fix but hours, days or
+weeks. By keeping your dependency versions close to the latest versions, you can upgrade in small steps, and the change
+you need to do to your code base to make it compatible, is small each time. So, I prefer small incremental migrations that are easy
+to be covered by a maintenance task in your backlog rather than big migrations that take up the whole Scrum sprint.
+Because big migrations are harder to sell to your business owners than unnoticeable migrations.
+If you wait too long with upgrades you might even stick with what you got. This is the first step to doom the code base,
+as it’s eventually going to be rewritten by fresh developers not accepting to work on a legacy code base.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Profit from the latest features and performance improvements:&lt;/strong&gt; Keeping up to date comes with the benefit that you
+can always rely on using the latest features the dependency provides and generate customer value in a modern, possibly
+easier or more reliable and faster way. It keeps the developers working on the project happy to work with the newest
+versions and allows them to brag to colleagues from the field that they are up to date.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ease of updating in case vulnerabilities get found:&lt;/strong&gt; Imagine a vulnerability gets found in one of the dependencies
+you rely on to run your application. And the good thing is, the library owners have fixed the dependencies in the
+latest version. But then you find yourself to be back 3 major versions which did not receive a patch to fix this
+vulnerability. So, what are your options? You can upgrade the library and spend all the migration effort right there and
+then and put everything else on hold, or just accept the risk. Neither are easy to sell to your business owner. If
+you are using the latest versions of your dependencies, the upgrades cost you almost zero time.&lt;/p&gt;
+&lt;h3&gt;How recent should you keep dependencies&lt;/h3&gt;
+&lt;p&gt;Generally, I would say that keeping your dependencies at the absolute latest version, including major, minor and patch is
+the preferred way. Don’t use betas, release candidates or other non stable versions.
+Although using the absolute latest doesn’t always make sense depending on several factors. If you’re using libraries or
+platforms that have a huge user base, it’s likely the authors have different release channels for different users.&lt;/p&gt;
+&lt;p&gt;One release channel often is the Long-Term Support (LTS) channel offered. If the authors provide such a channel, it
+generally is a good idea to stick to the LTS versions of the dependency you are using until the authors switch LTS to
+a newer version. Examples for platforms or libraries offering LTS is: Java, Node.js, Angular, whereas for example Angular
+has LTS for the two most recent major versions to allow you to upgrade within half a year to stay within LTS versions:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 574px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 39.189189189189186%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsSAAALEgHS3X78AAAA8UlEQVQoz02RiQ6DMAxD+/+/iQRIIG5KuZrxwjwNKWrtHDZNWJbFpmmyfd8tpWTzPNu2bY65k4M/jsPWdXUMD4YHw4Ov+7bQNI0VReEkw+u6tmEYfCj3siw9R3PXdVZVlQd5ePJt27qB8zwtoHZdl/HRRBEfiuTAnPejjqBcgvVHBPecs4UYo0/XQBWjRiFDqIEjB5YALsdxdA4DcAFwPoBPtuUQN4QGchL05Hx7vZ7q5xDw75DQQN5Sjy6HWhTNckgg5AMhGQKR0rvp+OUQUmjz4t/65D3sAEEfyJZRxI3UUeTOKV5u+773AHOyeT0TAz9xBGx6xzRaUwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Angular&amp;#39;s support policy and schedule&quot;
+        title=&quot;Angular&amp;#39;s support policy and schedule&quot;
+        src=&quot;/blog/static/0c9f6d294937ee1f1cbb7340410c25ae/86389/angular-versions.png&quot;
+        srcset=&quot;/blog/static/0c9f6d294937ee1f1cbb7340410c25ae/12f09/angular-versions.png 148w,
+/blog/static/0c9f6d294937ee1f1cbb7340410c25ae/e4a3f/angular-versions.png 295w,
+/blog/static/0c9f6d294937ee1f1cbb7340410c25ae/86389/angular-versions.png 574w&quot;
+        sizes=&quot;(max-width: 574px) 100vw, 574px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;text-align: center&quot;&gt;
+&lt;a href=&quot;https://angular.io/guide/releases#support-policy-and-schedule&quot;&gt;Angular&apos;s support policy and schedule&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;Once you upgrade your versions you should always verify your system works as before, doesn’t have negative impacts and
+maybe even measure if it profits from performance improvements mentioned in changelogs of the upgraded dependencies.
+You should also have a look at what has been deprecated and will eventually be removed in a future version, which gives
+you the benefit that you are aware of bigger migrations and lets you plan them ahead of time.&lt;/p&gt;
+&lt;p&gt;To verify compatibility a good test suite, ideally including unit and integration tests, comes into play. If you don’t
+have any or sufficient tests, you don’t have enough confidence to update dependencies regularly. That’s obviously a
+problem, and you should look into increasing the coverage of your tests.&lt;/p&gt;
+&lt;p&gt;In any case, automated tests probably won’t find 100% of problems, so I would say it’s a good idea to upgrade major
+versions just after your latest major rollout to production. If you use a branching strategy like &lt;a href=&quot;https://nvie.com/posts/a-successful-git-branching-model/&quot;&gt;Git Flow&lt;/a&gt;
+that would mean you update on the &lt;code class=&quot;language-text&quot;&gt;develop&lt;/code&gt; branch. This allows for all testers and developers working on the
+new version to experience the new major version of your dependencies during development. They can find incompatibilities
+before you ship to customers.&lt;/p&gt;
+&lt;h2&gt;Dependency Update Automation Bots&lt;/h2&gt;
+&lt;p&gt;There are several products offered on the Internet to automate dependency updates for you. Here’s a list of a few of
+them:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://dependabot.com&quot;&gt;Dependabot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://renovate.whitesourcesoftware.com&quot;&gt;Renovate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://snyk.io&quot;&gt;Snyk&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;They work great, and work in the way, that they have a scheduled job to update your dependencies, create a pull request
+and let you decide if you want the update or not. The problem with them is, that they are usually free for Open Source
+projects on GitHub or other hosting platforms, but as soon as you want to automate updates for your closed source
+project you have to pay, and sometimes these are considerable amounts. Sometimes they don’t even support your existing
+CI systems.&lt;/p&gt;
+&lt;p&gt;Luckily, there is no need to pay for these services, you can just build it yourself with all the control you want. The
+following sections describe how I built dependency bots for our team.&lt;/p&gt;
+&lt;h2&gt;How to automate updates with your automation system such as Jenkins&lt;/h2&gt;
+&lt;p&gt;The basic principle is that you have an automatically scheduled job run by your automation system, such as Jenkins,
+that looks at your dependencies, does a diff with the package registry or repository and updates your files specifying
+the new versions, then creates a commit on a new Git branch and pushes that to the Git repository. With the new branch
+it will create a new pull request, at which point your CI system picks up the pull request and runs your tests against
+it to see if they still pass. If you’re happy with the updates, you merge the pull request and there you go. You can
+now update your dependencies with a single click while having confidence they didn’t break anything.&lt;/p&gt;
+&lt;p&gt;So, the question is, do you want exactly one job updating all of your outdated dependencies at once, or do you want to
+introduce update groups. In my project, I decided to introduce 4 update groups:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;NPM packages: scheduled nightly against &lt;code class=&quot;language-text&quot;&gt;develop&lt;/code&gt; branch&lt;/li&gt;
+&lt;li&gt;Major, Minor, Patch updates for Open Source Gradle dependencies: scheduled nightly against &lt;code class=&quot;language-text&quot;&gt;develop&lt;/code&gt; branch&lt;/li&gt;
+&lt;li&gt;Minor, Patch updates for Open Source Gradle dependencies: manually triggered if needed against &lt;code class=&quot;language-text&quot;&gt;master&lt;/code&gt; branch&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Internal Gradle dependencies: scheduled every 6 hours against &lt;code class=&quot;language-text&quot;&gt;develop&lt;/code&gt; branch&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In our project, we use software libraries from other teams of the company in our code that are updated multiple
+times per day, and we want to integrate with these changes just a few hours after they have been released.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The extreme choice would be to create update groups for every single dependency that you have. But I didn’t do that,
+because:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Firstly, in NPM, several dependencies, such as Angular’s, must be updated in accordance to be compatible&lt;/li&gt;
+&lt;li&gt;Secondly, to spare our build infrastructure and not overload it with tests to execute, I decided to update dependencies
+that come from public sources every night and group those together in one group.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The drawback is, that if two dependencies are updated within one day and one of them breaks your build, you cannot
+merge the pull request for the one dependency that works.&lt;/p&gt;
+&lt;p&gt;A script automating this could look like this for NPM:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token shebang important&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# create new branch and checkout&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b feature/npm-update
+
+&lt;span class=&quot;token comment&quot;&gt;# do an install so we know what versions we have present&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;EXITCODE&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$?&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$EXITCODE&lt;/span&gt; -eq &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;npm install failed!&quot;&lt;/span&gt;
+    &lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# list outdated packages&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; outdated
+
+&lt;span class=&quot;token comment&quot;&gt;# do the update&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;EXITCODE&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$?&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$EXITCODE&lt;/span&gt; -eq &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;npm install failed!&quot;&lt;/span&gt;
+    &lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# run npm install again to ensure package-lock.json is stable&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;EXITCODE&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$?&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$EXITCODE&lt;/span&gt; -eq &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;npm install failed!&quot;&lt;/span&gt;
+    &lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# stop if there are no changes&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; status &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; -q &lt;span class=&quot;token string&quot;&gt;&quot;working tree clean&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;No updates available! That&apos;s good :)&quot;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; -A
+    &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; commit -m &lt;span class=&quot;token string&quot;&gt;&quot;(deps) update npm dependencies&quot;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then add these two steps as post actions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Either add a &lt;code class=&quot;language-text&quot;&gt;git push&lt;/code&gt; command, or in case of Jenkins run the &lt;a href=&quot;https://plugins.jenkins.io/git/#git-publisher&quot;&gt;Git Publisher plugin&lt;/a&gt; to publish the branch.&lt;/li&gt;
+&lt;li&gt;Add code that automatically creates a Pull Request in your Git repository.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;How to automatically update NPM dependencies&lt;/h2&gt;
+&lt;p&gt;If you want to automatically update your NPM dependencies, you already have the tools from NPM itself, no need for other
+plugins. You can run &lt;code class=&quot;language-text&quot;&gt;npm update&lt;/code&gt; to update the versions in your &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; file according to the version selector
+you have defined.&lt;/p&gt;
+&lt;p&gt;If you don’t know about NPM’s version selectors syntax like &lt;code class=&quot;language-text&quot;&gt;^&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;~&lt;/code&gt; and others, I encourage you to try out the
+&lt;a href=&quot;https://semver.npmjs.com&quot;&gt;playground&lt;/a&gt; to learn about it. If you want a default save prefix for new packages installed,
+you can create a &lt;code class=&quot;language-text&quot;&gt;.npmrc&lt;/code&gt; file in your project directory with the line &lt;code class=&quot;language-text&quot;&gt;save-prefix=&amp;quot;~&amp;quot;&lt;/code&gt; added to it. This changes
+the default &lt;code class=&quot;language-text&quot;&gt;^&lt;/code&gt;, that allows updates to new minor versions to &lt;code class=&quot;language-text&quot;&gt;~&lt;/code&gt;, which only allows updates to new patch versions.
+That’s not something I would recommend doing, as that would restrict your updates more. If you use &lt;code class=&quot;language-text&quot;&gt;save-prefix=&amp;quot;&amp;gt;=&amp;quot;&lt;/code&gt;,
+every time &lt;code class=&quot;language-text&quot;&gt;npm update&lt;/code&gt; is run, you get the newest production ready version (don’t worry, you won’t get betas,
+release-candidates and so on).&lt;/p&gt;
+&lt;p&gt;Another thing to note is that NPM only updates direct dependencies that you specified in your
+&lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; file. Transitive dependencies (dependencies of your dependencies) will not be updated. You can include
+transitive dependencies with &lt;code class=&quot;language-text&quot;&gt;npm update --depth 9999&lt;/code&gt;. I would actually not recommend doing this on a nightly basis,
+because the amount of updates you will receive is going to be immense. So, I would resort to only let your direct
+dependencies specify their minimal versions of transitive dependencies and not update them yourself. The exception might
+be when one of the transitive dependencies have vulnerabilities, and you want to fix them in your application before the
+direct dependency is updated.&lt;/p&gt;
+&lt;p&gt;By the way, the recommended depth 9999 by the &lt;a href=&quot;https://docs.npmjs.com/cli-commands/update.html&quot;&gt;NPM documentation&lt;/a&gt; failed
+in my project because NPM ran out of memory. So, you might want to scale it back to a safe depth like 10.&lt;/p&gt;
+&lt;p&gt;So, all you need is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;npm outdated&lt;/code&gt; to print outdated versions&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;npm update&lt;/code&gt; to automatically update them&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;How to automatically update Gradle dependencies&lt;/h2&gt;
+&lt;p&gt;If you’re using Gradle to manage your dependencies for Java, Kotlin or Groovy projects (or others?), then there’s no
+built-in way to update your dependencies, but there are great plugins to do so.&lt;/p&gt;
+&lt;p&gt;I’m actually using two plugins; one depends on the other.&lt;/p&gt;
+&lt;p&gt;The plugin &lt;a href=&quot;https://github.com/ben-manes/gradle-versions-plugin&quot;&gt;gradle-versions-plugin&lt;/a&gt; is able to compare your versions
+to the versions available in the specified artifact repositories. It adds the task &lt;code class=&quot;language-text&quot;&gt;dependencyUpdates&lt;/code&gt; to your
+configuration which outputs the versions that can be updated in various formats.&lt;/p&gt;
+&lt;p&gt;The second plugin &lt;a href=&quot;gradle-use-latest-versions-plugin&quot;&gt;https://github.com/patrikerdes/gradle-use-latest-versions-plugin&lt;/a&gt;
+is then able to take the output of gradle-versions-plugin and find these versions in your &lt;code class=&quot;language-text&quot;&gt;build.gradle&lt;/code&gt; file(s) and
+replace it with the new version.&lt;/p&gt;
+&lt;p&gt;Additionally, you can configure exactly what updates you want, and what you don’t want through configuration in the
+Gradle files or through command line arguments.&lt;/p&gt;
+&lt;p&gt;In our &lt;code class=&quot;language-text&quot;&gt;build.gradle&lt;/code&gt; file I added the following snippet to keep non stable versions and allow them to update to newer
+non-stable versions but keep dependencies that are using stable versions today remain on stable versions.&lt;/p&gt;
+&lt;p&gt;Also, I added in an optional property &lt;code class=&quot;language-text&quot;&gt;onlyMinorPatchUpdates&lt;/code&gt; for minor updates. I run the update job with this property
+against branches that contain code already shipped to production, since I don’t want to introduce new major versions
+there.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;groovy&quot;&gt;&lt;pre class=&quot;language-groovy&quot;&gt;&lt;code class=&quot;language-groovy&quot;&gt;tasks &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    dependencyUpdates &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;// consider BOM version definitions and do not complain about transitive constrained out-of-date versions&lt;/span&gt;
+        checkConstraints &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; isNonStable &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; String version &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; stableKeyword &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string gstring&quot;&gt;&quot;RELEASE&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string gstring&quot;&gt;&quot;FINAL&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string gstring&quot;&gt;&quot;GA&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;any &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; word &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; version&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toUpperCase&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;word&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; regex &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string regex&quot;&gt;/^[0-9,.v-]+(-r)?$/&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;stableKeyword &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;version &lt;span class=&quot;token operator&quot;&gt;==~&lt;/span&gt; regex&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; getMajorVersion &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; String version &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; version&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; version&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; isMajorUpdate &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; String versionA&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; String versionB &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getMajorVersion&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;versionA&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getMajorVersion&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;versionB&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+        rejectVersionIf &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; component &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;project&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;properties&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string gstring&quot;&gt;&quot;onlyMinorPatchUpdates&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string gstring&quot;&gt;&quot;true&quot;&lt;/span&gt;
+                &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;isMajorUpdate&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;component&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;candidate&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;version&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; component&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;currentVersion&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;isNonStable&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;component&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;candidate&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;version&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;isNonStable&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;component&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;currentVersion&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;I hope this article was useful to you. If you have any remarks, questions or recommendations, feel free to leave
+a comment.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Dissecting a paper's writing style]]></title><description><![CDATA[In this post I want to dissect a paper’s style and try to criticize it irregardless of it’s content.
 The paper is the one mentioned in the…]]></description><link>https://sebastianhaeni.github.com/0004-dissecting-paper-style/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0004-dissecting-paper-style/</guid><pubDate>Thu, 23 Apr 2020 20:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In this post I want to dissect a paper’s style and try to criticize it irregardless of it’s content.
 The paper is the one mentioned in the previous post:&lt;/p&gt;
 &lt;p&gt;&lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Sean J. Taylor &amp;#x26; Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
@@ -137,7 +385,7 @@ and should not be compared. Also, isn’t weekly also a trend (referring to the 
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 77.70270270270271%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsSAAALEgHS3X78AAABpklEQVQ4y61Uy47iMBD0/38Rd05IHDjMaoYE0A5kIS9DniR24tS6e5KI56CRxlKpK93ldttxW+CXh1itVlgul3BdF8Qdx2EQJx/FiA+6Z3yYL6IohO/7iKIIUkoEQYgwDPmbQDHyx3HMnGIDJytjOfpJJ4xpH5bedd1D/yu9UFqhaRq0bdvji+tGj/wyppS60hFovtaaudA2YdvcTiSRvvPxQlo99A9FiSHzM8GPE95v+fsK1dOE/ZaNPYvOGHvY5rqSVxXan2MYZqyQuEiKM/JzzQk6+oOdYXSmGTmDYhZtozjRkGQAHR1Z4QYp/sY5ZFEjtvBOJT5lwT7iQVbhVCpklWakdvFK28rurlV/bepzCVVXyIsCpzTDMckgkxTRMUEgE+zCI9b7GM6/COuDxNIL4Vr74UV4t/izDRhvnz5bQS2z3+9RFDnKsmCcR1uisgvWPeIwwGa9QmA7I8tzpFmOJMuQ2EKoGLKccLPZ8IG+Go7V7nY7HA7+88fhsnW+A43ZbIbpdIrJZALP8/pWNFc6cTvptocvY9vtFovFAvP5nB+DR/r/S3/XocnlP1IAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 77.70270270270271%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsSAAALEgHS3X78AAACLklEQVQ4y3VUyZKrMAzk/78vpxzeTM2FCYTF2HjBgF63bJJcJlWNbNnW0pLSrOsqxhiZ51mmaXrJC5/7v84oaec8T2n6vhfnrGwpSQhBYoxvGd/7S/d5nhJQpfdejuOQpm1bKBI2p5xQ0MtLnofgAxwVWEvR83Hcsri4KYoNGByGQcyyyOyCjMuqeBorsy1rSuejYlm9YlxcOXNe1hotU1aDtDyOo6ax77vCgJOAFLjO+yH/vn+k7XoJiGhFNMM4Vc4Y6a41YMr8NfzknGUD1ACkRTQhIY1tUx15nkE+0z3otN7PH+A9LcqCdOmNygQjA1K0PiC1IJP1MiEtAwcEU3Q42+AoV2wVzFBTfjweykGGh3mN6vkqBtPh+oSkPuVdXEiyABbgG6kFInX7Xovi/aqXEziikYtLBS4TRwU7gHpSYhCA9cUQg6K+0UOE+wRPNMxGpRPquq5TwpkFeSzrTs+maQRVTobJSPv7q/2oHLIo9MyqkhOGHtHQ5DSEqAa+v77kfr/L8/nUh8oZJe7yDQNhYFplHrDkNkSt7oximFoQ9iaLQkkjrC45HNCD1F+gc6asReEc0qjBRQM+4rbrBJCXMi2n7hfPQpSpeHEJcB/Bf95S4ZBNzFZIMHCNVZGnPiz9VSSL9h6/U9cs5pqypk4HDdPlpFhr68CjLbQ3na4Ll6G0RV2zOK/7QNuPMs2mpMwPL9DIUf8UuL5GiRW/3W4KGuE5O+Fa66ia+bX/D6mP3DNLNUFzAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
