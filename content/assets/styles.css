@@ -1,0 +1,9 @@
+code[class*="language-"],
+pre[class*="language-"] {
+  font-size: initial;
+}
+
+.gatsby-highlight code[class*="language-"],
+.gatsby-highlight pre[class*="language-"] {
+  font-size: 0.8em;
+}
