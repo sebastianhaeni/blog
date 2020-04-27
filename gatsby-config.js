@@ -11,6 +11,7 @@ module.exports = {
     social: {
       twitter: `sebastianhaeni`,
     },
+    googleSiteVerification: `8zORk751Im3yhCfNGm4aWV2E_DcmAWj_OdYKbXYrNsw`,
   },
   plugins: [
     {
