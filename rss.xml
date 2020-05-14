@@ -1,9 +1,238 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Your Site's RSS Feed]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 26 Apr 2020 23:52:17 GMT</lastBuildDate><item><title><![CDATA[Automatically keep your dependencies up to date in closed source projects for free]]></title><description><![CDATA[We tackle the question of why it’s important to keep your dependencies up to date, compare a few proprietary
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Your Site's RSS Feed]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 14 May 2020 20:02:58 GMT</lastBuildDate><item><title><![CDATA[How to Forecast at Scale]]></title><description><![CDATA[This is my third blog post about the paper 
+ Sean J. Taylor & Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician. I’m…]]></description><link>https://sebastianhaeni.github.com/0006-forecasting-at-scale-content/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0006-forecasting-at-scale-content/</guid><pubDate>Tue, 12 May 2020 23:30:00 GMT</pubDate><content:encoded>&lt;p&gt;This is my third blog post about the paper
+&lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Sean J. Taylor &amp;#x26; Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;I’m going to focus on its contents and try to place it in the field of forecasting and business time series.&lt;/p&gt;
+&lt;h2&gt;Business Time Series&lt;/h2&gt;
+&lt;p&gt;Most large corporations process a lot of interesting data in the form of Business Time Series. These can be customer
+related such as purchases, interactions through consultations, support, incident reports, usage of the service and so
+on. They can also be about internal processes that cannot be attributed to a single customer, such as infrastructure
+providing services to multiple customers.&lt;/p&gt;
+&lt;p&gt;These time series can provide insights on how the company performed in the past but also provide the foundation to
+create forecasts. The paper “Forecasting at Scale” provides the reader with practices proofed in
+the real world because they have been applied at Facebook. If the proposed methods work outside of Facebook and are
+applicable to other organizations has to be found out. &lt;/p&gt;
+&lt;h2&gt;Preliminary reading&lt;/h2&gt;
+&lt;p&gt;I’m going to list a few topics that you should be familiar with in case you decide to read the paper.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linear Regression, Advanced Regression Methods, Exponential Smoothing Methods, Bayesian Statistics, Fourier Series,
+&lt;a href=&quot;http://bit.ly/stl1990&quot;&gt;STL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you want to reproduce the results of the paper, I recommend you are familiar with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.jstatsoft.org/article/view/v076i01&quot;&gt;Stan&lt;/a&gt;, &lt;a href=&quot;https://www.r-project.org/&quot;&gt;R&lt;/a&gt;, &lt;a href=&quot;https://shiny.rstudio.com/&quot;&gt;Shiny&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Assembly of Ideas&lt;/h2&gt;
+&lt;p&gt;The paper has the main idea to assemble several methods into a scalable forecasting system. So what are the ideas
+that the authors have assembled to build this system of scale?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A forecasting model&lt;/li&gt;
+&lt;li&gt;Automatic evaluation of forecasts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;The &lt;a href=&quot;https://facebook.github.io/prophet/&quot;&gt;Prophet&lt;/a&gt; Forecasting Model&lt;/h2&gt;
+&lt;p&gt;As we know from the STL paper (Seasonal and Trend Decomposition using Loess), one can try to decompose a time series
+into trend and seasonality components using Loess regression. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Trend&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The mathematical expression to compute the nonlinear, saturating growth trend in its most basic form is &lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 231px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/d029996fabeb08c81a77b61057e13934/6e622/standard-trend.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 27.027027027027025%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsSAAALEgHS3X78AAAAnklEQVQY051PywrEIBDr/39cD6IUTz0IRezDg/ZFbbNkoD0sy8LuwDCPZGKs8EN0XYdpmr5yquM4oJSCMQZ938M5h3VdkVJCzhnLsmDbNqnjOCLGiHmeBWeSSx7reZ6oSG7b9gFLKY8wHVlrUde1PDoMg/RaaxGnW+45ExOHn2zfjvZ9F2LTNCJ+XZfMIQTp+Tvvvex4I4IE3vPf4O0L0S2CES/zpZ4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;standard trend formula&quot;
+        title=&quot;standard trend formula&quot;
+        src=&quot;/blog/static/d029996fabeb08c81a77b61057e13934/6e622/standard-trend.png&quot;
+        srcset=&quot;/blog/static/d029996fabeb08c81a77b61057e13934/12f09/standard-trend.png 148w,
+/blog/static/d029996fabeb08c81a77b61057e13934/6e622/standard-trend.png 231w&quot;
+        sizes=&quot;(max-width: 231px) 100vw, 231px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;with C the carrying capacity, k the growth rate, and m an offset parameter.&lt;/p&gt;
+&lt;p&gt;This gives us a formula that supports a static carrying capacity and static growth rate. In the real world capacity and
+growth rate are often not static and need to be dynamic. We can replace the carrying
+capacity with an analyst-specified dynamic capacity function based on time. The growth rate can be replaced with a vector that contains the
+manually specified change points with the respective growth rate of that time interval. This gives us the new formula&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 394px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/641cd764309092ad650cba14986ab45d/cc097/prophet-trend.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 14.864864864864865%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsSAAALEgHS3X78AAAAfklEQVQI132OQQrFIAxEvf/9XIqCFmqrWBVFqHX+T6DbBkIy8DIZgX89z4O1Fr6KmBgjxhifnKi1whiD67pQSkFKCed58jH1u2/bBikl9n1n7jgOZr33CCHwJC3mnLjvm91ba8g5QykF5xyDZEhmpK21rHvvrCkEhaEnWmvmf2C75XhYP5Z1AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;prophet trend formula&quot;
+        title=&quot;prophet trend formula&quot;
+        src=&quot;/blog/static/641cd764309092ad650cba14986ab45d/cc097/prophet-trend.png&quot;
+        srcset=&quot;/blog/static/641cd764309092ad650cba14986ab45d/12f09/prophet-trend.png 148w,
+/blog/static/641cd764309092ad650cba14986ab45d/e4a3f/prophet-trend.png 295w,
+/blog/static/641cd764309092ad650cba14986ab45d/cc097/prophet-trend.png 394w&quot;
+        sizes=&quot;(max-width: 394px) 100vw, 394px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Sometimes we only need a piecewise linear model. This formula can be reused when simplified. It will give us a linear trend
+with change points by removing the carrying capacity, and a constant growth replaced by rate adjustments.&lt;/p&gt;
+&lt;p&gt;The uncertainty of this model is computed by using it generatively, after having inferred the model parameters, to
+forecast the future, while assuming the rate of change points is going to have a similar average cadence. We can repeat
+the generation while sampling the model parameters from a Laplace distribution and create an uncertainty region.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Seasonality&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Since seasonality in the real world is mostly a composition and does not have a fixed window in which it repeats, it
+can be flexibly modeled using Fourier series. If we have different components for different periodic effects, such as
+yearly, holiday or weekday components, we can create an additive model based on that.&lt;/p&gt;
+&lt;p&gt;A standard Fourier series can approximate arbitrary smooth seasonal effects with:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 547px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/ac5c908c168ba5ef997f01b18523d9c3/977f7/fourier-series.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 20.27027027027027%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsSAAALEgHS3X78AAAAj0lEQVQY021PQQrEIAz0/w/04MUqWkWtoHiwWJolWSxd2UAMM5k4CYMlaq1w3/cPd54n5cq/e9d1EWb4xBih9w7HccC2beCco49LKbDvOwghQClFPHKYqLXWkl5K+fQZunrvobVGlXNOAjQJIdAQ1olzzpBSomGt9YNRZ4z5bjgD10bBGANWHo3/nTx78+QPzeoztPZylIoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;fourier series&quot;
+        title=&quot;fourier series&quot;
+        src=&quot;/blog/static/ac5c908c168ba5ef997f01b18523d9c3/977f7/fourier-series.png&quot;
+        srcset=&quot;/blog/static/ac5c908c168ba5ef997f01b18523d9c3/12f09/fourier-series.png 148w,
+/blog/static/ac5c908c168ba5ef997f01b18523d9c3/e4a3f/fourier-series.png 295w,
+/blog/static/ac5c908c168ba5ef997f01b18523d9c3/977f7/fourier-series.png 547w&quot;
+        sizes=&quot;(max-width: 547px) 100vw, 547px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fitting&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The complete model can be fitted in Stan:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/9d3e6c354770300c8a2f03d1616d29d2/5d030/model-stan.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.67567567567568%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsSAAALEgHS3X78AAAB4UlEQVQ4y4VUCXKDMBDj/09sZ5qk3JcNGJsb1doUpk0yLTMbH8FaSbsm0Frj9nlDrWq4ccC2bxJ89n0/41j/9wT7tsOMFqXVKJySGJbxCeAV+KsEAX/6vsc4jiDbKI6QpimappE9jtu2/Tr0E/wxiQC2bQvrLKqqQhiGAkhwJlJKYV1XOfAI/JjkZEig6/UqQMYYAYrjGFF0Z1uWpTDlexynaZIkwzBgnudnhkVR4HK5yMuDLwxZck2wxAeTfVw+kGWZMGbQjrquhcDB/AQkI600tnXDNE4yb7QHdwOWaYbrfdGKUg7/JfeUPO8LzOJQDhpq6tCtDuM+o/Jr7hWDgp7Nn/4dcWfoetjBIdMl4iJBWuZQrZZ2Ukaj6tR97qVaa+Gcw7IsIpvx1DY0uPOVztMMaZKKZOttcNaJDZTfdR2SJJHq00v6yjXtYmGYiMUKDv2938jzHJEviP2ex0kM5Y1XtTqrySCrA4BkWBQy5lwYOn8z1OgZmAKfbYraNbjpBGHjmegYYZv56/j/tTslW++J3BTfNmmeSb91pvOse5ieYc4+pGQyYw/yDEf+dygISJdBj4wP+vP+9i7+8CD9Y7scjU6p6Xdv8gxBKPesMjMQ8PDymD9+BH7u8R369erj8AXJnYx+IXqurwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;model-stan&quot;
+        title=&quot;model-stan&quot;
+        src=&quot;/blog/static/9d3e6c354770300c8a2f03d1616d29d2/fcda8/model-stan.png&quot;
+        srcset=&quot;/blog/static/9d3e6c354770300c8a2f03d1616d29d2/12f09/model-stan.png 148w,
+/blog/static/9d3e6c354770300c8a2f03d1616d29d2/e4a3f/model-stan.png 295w,
+/blog/static/9d3e6c354770300c8a2f03d1616d29d2/fcda8/model-stan.png 590w,
+/blog/static/9d3e6c354770300c8a2f03d1616d29d2/5d030/model-stan.png 771w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The analyst creating a fit has to tweak the model parameters to reach the right compromise between loss and
+overfitting. An analyst has settings to adjust capacities (C), change points (X), holidays and seasonality (A, gamma) and
+smoothing parameters (tau, sigma). Often times this requires a broad experience in the business field to come up with
+good model parameters. This can for example be because the analyst has to have a feeling for the impact of an upcoming
+holiday in terms of trend or seasonality change.&lt;/p&gt;
+&lt;p&gt;The analyst is supported by visualization that show the effects of the latest changes to their model:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/0f9620ade15b6088a67b4c8c8b251c6f/eb2af/fit-viz.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 36.486486486486484%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsSAAALEgHS3X78AAABVElEQVQoz1VRXW+DMAzk//+X/YM9bS97mLZKndDU7xZ1pSEBlgSSEOBmp6q2IVnxJfjubGegbxiGfzHGCMwzpjH+3v3JOcIQ4LxDpH9718Nay1TIOOm6Dm3bomkadIQr2eD5bYWyaqg4IIQAozvEIaacCatKojOWhEZ6sygvJaZpQlaWJfS3Rl3XRCTR1g22lzMeXp+QH3eQVCiVwkv+icX6ACkVWhLOdwe8r08wvYP3A4SQqYtMEokxBlrr5FBrg+Jrh+XyEcVpA0VC4nrFep9jsfmAqCooEjid98iLFWxvEahtoSQGcp8JIVL/bNfTTPreE1ZwXUHt14T7JNZZgeq6TeKGWvWuhWmPNAYHFz1Uq9I8M54BFzHgnG2HMBCeEccp3d2Wwm8+5c65hKfpvkQ2onmPyHgzvBQmvRWNyQW7Zdf8xnO+C/LJjvmMcUwxE9M9fgB00hm+z2lemwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;fit visualization&quot;
+        title=&quot;fit visualization&quot;
+        src=&quot;/blog/static/0f9620ade15b6088a67b4c8c8b251c6f/fcda8/fit-viz.png&quot;
+        srcset=&quot;/blog/static/0f9620ade15b6088a67b4c8c8b251c6f/12f09/fit-viz.png 148w,
+/blog/static/0f9620ade15b6088a67b4c8c8b251c6f/e4a3f/fit-viz.png 295w,
+/blog/static/0f9620ade15b6088a67b4c8c8b251c6f/fcda8/fit-viz.png 590w,
+/blog/static/0f9620ade15b6088a67b4c8c8b251c6f/efc66/fit-viz.png 885w,
+/blog/static/0f9620ade15b6088a67b4c8c8b251c6f/eb2af/fit-viz.png 954w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Automatic Evaluation of Forecasts&lt;/h2&gt;
+&lt;p&gt;The analyst can optimize a model given time. If there are too many forecasts that have to be produced that can be
+handled by humans, the automatic evaluation of forecasts comes into play.&lt;/p&gt;
+&lt;p&gt;The metric used to compare models is the mean absolute percentage error (MAPE) over a number of forecasts produced with
+different prediction horizons.&lt;/p&gt;
+&lt;p&gt;Time series data points are inherently dependent on previous points. This is making it hard to use traditional methods
+such as cross-validation. The method proposed is Simulated Historical Forecasts (SHFs), that produce K forecasts at
+various cutoff points in the history. The generally used amount of points is a forecast every H/2 periods. This allows
+the model to produce an error term using MAPE which can be compared to baseline models. &lt;/p&gt;
+&lt;p&gt;Time series data usually encompasses a lot of data points and running SHFs with the maximum amount of periods would not
+be feasible as the model needs to be retrained each time. With SHFs, the simulation count is significantly reduced and
+the computation can be run independent on separate machines.&lt;/p&gt;
+&lt;h2&gt;Paper Context&lt;/h2&gt;
+&lt;p&gt;The paper “Forecasting at Scale”, picks up common knowledge that the field of business time series has been using for
+quite some time but mix it with other techniques to solve new challenges while making it scalable and allowing the
+analyst to be in the loop.&lt;/p&gt;
+&lt;p&gt;In my opinion the value the paper creates in the field is not the paper, but the companioning library &lt;a href=&quot;https://facebook.github.io/prophet/&quot;&gt;Prophet&lt;/a&gt; which
+makes all those techniques readily usable for a broader audience. The paper is worth a read if you’re going to use the
+library. If you’re not planning that have a go with it, I can still recommend it as there might be some smallish novel
+ideas introduced that you might find interesting. If you are already well versed in the time series field, I would say
+that this paper is not going to contain much new for you. &lt;/p&gt;
+&lt;h2&gt;Paper Follow ups&lt;/h2&gt;
+&lt;p&gt;The library &lt;a href=&quot;https://facebook.github.io/prophet/&quot;&gt;Prophet&lt;/a&gt; is under active development for over a year now. The open source community contributes to future
+improvements to the code. The basic methods mentioned in the paper implemented haven’t been changed though. So I’m
+guessing that they are a good fit for the real world.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Automatically keep your dependencies up to date in closed source projects for free]]></title><description><![CDATA[We tackle the question of why it’s important to keep your dependencies up to date, compare a few proprietary
 solutions and then talk about…]]></description><link>https://sebastianhaeni.github.com/0005-keep-your-dependencies-up-to-date/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0005-keep-your-dependencies-up-to-date/</guid><pubDate>Sun, 26 Apr 2020 20:00:00 GMT</pubDate><content:encoded>&lt;p&gt;We tackle the question of why it’s important to keep your dependencies up to date, compare a few proprietary
 solutions and then talk about how to do it with NPM, Gradle and Jenkins yourself.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 487px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 487px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -53,7 +282,7 @@ a newer version. Examples for platforms or libraries offering LTS is: Java, Node
 has LTS for the two most recent major versions to allow you to upgrade within half a year to stay within LTS versions:&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 574px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 574px; &quot;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
@@ -342,7 +571,7 @@ is the color choice for Saturday as it’s barely readable. They could also redu
 the data to ink ratio.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 548px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 548px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -374,7 +603,7 @@ It is also dangerous to put three charts together implying they could be compare
 and should not be compared. Also, isn’t weekly also a trend (referring to the y-axis descriptions).
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 531px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 531px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -432,7 +661,7 @@ opportunity to then create a prediction interval that can be used to find anomal
 colleague stumbled upon the &lt;a href=&quot;https://cran.r-project.org/web/packages/anomalize/index.html&quot;&gt;anomalize&lt;/a&gt; package in R.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 450px;&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 450px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
