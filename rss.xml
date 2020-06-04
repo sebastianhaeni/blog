@@ -1,4 +1,173 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Your Site's RSS Feed]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 14 May 2020 20:02:58 GMT</lastBuildDate><item><title><![CDATA[How to Forecast at Scale]]></title><description><![CDATA[This is my third blog post about the paper 
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Your Site's RSS Feed]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 04 Jun 2020 00:06:56 GMT</lastBuildDate><item><title><![CDATA[A Review of Forecast at Scale]]></title><description><![CDATA[This is my final review of the paper
+ Sean J. Taylor & Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician. I’m going…]]></description><link>https://sebastianhaeni.github.com/0007-forecasting-at-scale-review/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0007-forecasting-at-scale-review/</guid><pubDate>Tue, 02 Jun 2020 22:00:00 GMT</pubDate><content:encoded>&lt;p&gt;This is my final review of the paper
+&lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Sean J. Taylor &amp;#x26; Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;I’m going to follow a common peer review template that is in place at some conferences such as
+&lt;a href=&quot;https://www.ijcai.org/&quot;&gt;IJCAI&lt;/a&gt; while also explaining the score category so you and future
+me know what questions should be asked oneself when giving a review further down this article.&lt;/p&gt;
+&lt;p&gt;A peer review always has to be in a context. This can for example be a certain conference or journal.
+So, I’m going to pretend I’m reviewing this for an AI conference similar to IJCAI (which might not make sense to ever
+submit this paper there, but I’m getting there 😄).&lt;/p&gt;
+&lt;h3&gt;My Scores&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Relevance: 5 / 10 ⭐&lt;/li&gt;
+&lt;li&gt;Significance: 5 / 10 ⭐&lt;/li&gt;
+&lt;li&gt;Originality: 1 / 10 ⭐&lt;/li&gt;
+&lt;li&gt;Technical Quality: 3 / 10 ⭐&lt;/li&gt;
+&lt;li&gt;Clarity and quality of writing: 8 / 10 ⭐&lt;/li&gt;
+&lt;li&gt;Scholarship, i.e. scientific context: 7 / 10 ⭐&lt;/li&gt;
+&lt;li&gt;Overall Score: 4 / 10 ⭐&lt;/li&gt;
+&lt;li&gt;Confidence on my assessment: 5 / 10 ⭐&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;My Comments About The Paper:&lt;/h3&gt;
+&lt;h4&gt;Summary&lt;/h4&gt;
+&lt;p&gt;The paper “Forecasting at Scale” is a well laid out paper giving an insight into methods and techniques used to process
+business time series at scale, do forecasts with the analyst in the loop and automatically select models. The trend
+model incorporates dynamic growth rates and change points. The seasonality model is based on Fourier series. The
+authors propose to use a method called Simulated Historical Forecasts (SHF) to automatically evaluate forecasts. The main
+findings are a set of techniques to apply in a large corporation with analysts that might have their hands full of
+work to optimize their workflow to produce accurate forecasts with only little intervention.&lt;/p&gt;
+&lt;p&gt;The authors assembled their techniques from several previous work, and I think one that gives a great overview is
+&lt;a href=&quot;https://www.sciencedirect.com/science/article/pii/S0169207006000021?casa_token=1C2peihwTC4AAAAA:PvXUJamS81Jwy2zOLvC8-EZROor8Um7yyRumc8OD4mxKPGGsMYvMHeVn6ghObfztwOFY93Uu&quot;&gt;“25 Years of Time Series Forecasting”&lt;/a&gt;
+which is also referenced by the paper. I regard the significance and novelty as rather low and think the authors
+produced a good confirmatory paper showcasing how these techniques work at scale.&lt;/p&gt;
+&lt;p&gt;The authors explained their chosen methods well, they make sense and offer what is promised. A reader gains a good feel
+to build a forecasting system that can work at scale.&lt;/p&gt;
+&lt;p&gt;What I’m missing in the paper are verification results of the chosen methods and how they would fare against other or
+even similar methods. Sometimes the authors also don’t explain their choices.&lt;/p&gt;
+&lt;p&gt;I greatly appreciate the accompanying Python and R forecasting library &lt;a href=&quot;https://facebook.github.io/prophet/&quot;&gt;Prophet&lt;/a&gt;
+that has all mentioned methods implemented and is super fun to use. The paper is a good introduction for users of the
+library.&lt;/p&gt;
+&lt;h4&gt;Major Issues&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;As mentioned in the summary, comprehensible verification of the chosen trend and seasonality methods is largely missing.&lt;/li&gt;
+&lt;li&gt;This paper is confirmatory of previous work and thus belongs into a journal rather than to a conference.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Minor Issues&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Table 1 is superfluous. The description of holidays and their format is enough.&lt;/li&gt;
+&lt;li&gt;The style of figures should be consistent throughout the paper.&lt;/li&gt;
+&lt;li&gt;The remark that the authors are storing SHF in Hive or MySQL can be helpful but feels out of place. Either it should
+just be more of a focus to describe implementation details or leave them away completely.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Review Template&lt;/h2&gt;
+&lt;p&gt;The score categories I used above are explained here. The explanations are taken from the slide deck we received at my
+university ZHAW.&lt;/p&gt;
+&lt;h3&gt;Relevance&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Is the paper fully within the scope of the conference?&lt;/li&gt;
+&lt;li&gt;Will the questions and results of the paper be of interest to researchers in the field?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Significance&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Is this a significant advance in the state of the art?&lt;/li&gt;
+&lt;li&gt;Is this a paper that people are likely to read and cite?&lt;/li&gt;
+&lt;li&gt;Does the paper address an important problem?&lt;/li&gt;
+&lt;li&gt;Does it open new research directions?&lt;/li&gt;
+&lt;li&gt;Is it a paper that is likely to have a lasting impact?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Originality&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Reviewers should recognise and reward papers that propose genuinely new ideas.&lt;/li&gt;
+&lt;li&gt;As a reviewer you should try to assess whether the ideas are truly new.&lt;/li&gt;
+&lt;li&gt;Novel combinations, adaptations or extensions of existing ideas are also valuable.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Technical Quality&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Are the results technically sound?&lt;/li&gt;
+&lt;li&gt;Are there obvious flaws in the conceptual approach?&lt;/li&gt;
+&lt;li&gt;Are claims well-supported by theoretical analysis or experimental results?&lt;/li&gt;
+&lt;li&gt;Are the experiments well thought out and convincing?&lt;/li&gt;
+&lt;li&gt;Will it be possible for other researchers to replicate these results?&lt;/li&gt;
+&lt;li&gt;Is the evaluation appropriate?&lt;/li&gt;
+&lt;li&gt;Did the authors clearly assess both the strengths and weaknesses of their approach?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Clarity and quality of writing&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Is the paper clearly written?&lt;/li&gt;
+&lt;li&gt;Is there a good use of examples and figures?&lt;/li&gt;
+&lt;li&gt;Is it well organized?&lt;/li&gt;
+&lt;li&gt;Are there problems with style and grammar?&lt;/li&gt;
+&lt;li&gt;Are there issues with typos, formatting, references, etc.?&lt;/li&gt;
+&lt;li&gt;It may be better to advise the authors to revise a paper and submit to a later conference, than to accept and publish
+a poorly-written version. However, if the paper is likely to be accepted, please make suggestions to improve the
+clarity of the paper, and provide details of typos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Scholarship, i.e. scientific context&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Does the paper situate the work with respect to the state of the art?&lt;/li&gt;
+&lt;li&gt;Are relevant papers cited, discussed, and compared to the presented work?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Overall Score&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;(10) This is best-paper material&lt;/li&gt;
+&lt;li&gt;(9) An excellent paper, a very strong accept&lt;/li&gt;
+&lt;li&gt;(8) A very good paper, a strong accept&lt;/li&gt;
+&lt;li&gt;(7) A good paper, accept.&lt;/li&gt;
+&lt;li&gt;(6) A good paper overall. I vote for acceptance, although would not be upset if it were rejected because of the low acceptance rate&lt;/li&gt;
+&lt;li&gt;(5) Decent paper, but may be below the IJCAI threshold. I tend to vote for rejecting it, although would not be upset if it were accepted&lt;/li&gt;
+&lt;li&gt;(4) I vote for rejecting it, but could be persuaded otherwise–3-A weak paper, just not good enough.&lt;/li&gt;
+&lt;li&gt;(3) A clear rejection. I vote and argue for rejection. Clearly below the standards of the conference&lt;/li&gt;
+&lt;li&gt;(2) A very strong rejection. I will actively fight for rejection.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Confidence on your assessment&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;(10) My own current research is on the topic of the paper&lt;/li&gt;
+&lt;li&gt;(9) I have undertaken research on the topic of the paper&lt;/li&gt;
+&lt;li&gt;(8) I am an expert in this area&lt;/li&gt;
+&lt;li&gt;(7) I have up-to-date knowledge in the area&lt;/li&gt;
+&lt;li&gt;(6) I don’t have complete knowledge of the area, but can assess the value of the work&lt;/li&gt;
+&lt;li&gt;(5) I have a general understanding of the area&lt;/li&gt;
+&lt;li&gt;(4) My assessment is an informed guess&lt;/li&gt;
+&lt;li&gt;(3) My knowledge in the area is limited&lt;/li&gt;
+&lt;li&gt;(2) My knowledge in the area is very limited&lt;/li&gt;
+&lt;li&gt;(1) My assessment can be wrong&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Comments to Authors (free text):&lt;/h3&gt;
+&lt;p&gt;General points:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Make sure you substantiate all the scores for the different criteria above.&lt;/li&gt;
+&lt;li&gt;Give informative content.&lt;/li&gt;
+&lt;li&gt;Be constructive.&lt;/li&gt;
+&lt;li&gt;Write your comments in the same way you would like to receive comments on your own papers.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The comment section can be laid out like this, taken from &lt;a href=&quot;https://authorservices.wiley.com/Reviewers/journal-reviewers/how-to-perform-a-peer-review/step-by-step-guide-to-reviewing-a-manuscript.html&quot;&gt;wiley.com - How to perform a peer review&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Summary&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Give positive feedback first. Authors are more likely to read your review if you do so. But don’t overdo it if you will be recommending rejection&lt;/li&gt;
+&lt;li&gt;Briefly summarize what the paper is about and what the findings are&lt;/li&gt;
+&lt;li&gt;Try to put the findings of the paper into the context of the existing literature and current knowledge&lt;/li&gt;
+&lt;li&gt;Indicate the significance of the work and if it is novel or mainly confirmatory&lt;/li&gt;
+&lt;li&gt;Indicate the work’s strengths, its quality and completeness&lt;/li&gt;
+&lt;li&gt;State any major flaws or weaknesses and note any special considerations. For example, if previously held theories are being overlooked&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Major Issues&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Are there any major flaws? State what they are and what the severity of their impact is on the paper&lt;/li&gt;
+&lt;li&gt;Has similar work already been published without the authors acknowledging this?&lt;/li&gt;
+&lt;li&gt;Are the authors presenting findings that challenge current thinking? Is the evidence they present strong enough to prove their case? Have they cited all the relevant work that would contradict their thinking and addressed it appropriately?&lt;/li&gt;
+&lt;li&gt;If major revisions are required, try to indicate clearly what they are&lt;/li&gt;
+&lt;li&gt;Are there any major presentational problems? Are figures &amp;#x26; tables, language and manuscript structure all clear enough for you to accurately assess the work?&lt;/li&gt;
+&lt;li&gt;Are there any ethical issues? If you are unsure it may be better to disclose these in the confidential comments section&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Minor Issues&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Are there places where meaning is ambiguous? How can this be corrected?&lt;/li&gt;
+&lt;li&gt;Are the correct references cited? If not, which should be cited instead/also? Are citations excessive, limited, or biased?&lt;/li&gt;
+&lt;li&gt;Are there any factual, numerical or unit errors? If so, what are they?&lt;/li&gt;
+&lt;li&gt;Are all tables and figures appropriate, sufficient, and correctly labelled? If not, say which are not&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[How to Forecast at Scale]]></title><description><![CDATA[This is my third blog post about the paper 
  Sean J. Taylor & Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician. I’m…]]></description><link>https://sebastianhaeni.github.com/0006-forecasting-at-scale-content/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0006-forecasting-at-scale-content/</guid><pubDate>Tue, 12 May 2020 23:30:00 GMT</pubDate><content:encoded>&lt;p&gt;This is my third blog post about the paper
 &lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Sean J. Taylor &amp;#x26; Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;I’m going to focus on its contents and try to place it in the field of forecasting and business time series.&lt;/p&gt;
