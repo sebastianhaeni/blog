@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Your Site's RSS Feed]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 04 Jun 2020 00:08:58 GMT</lastBuildDate><item><title><![CDATA[A Review of Forecast at Scale]]></title><description><![CDATA[This is my final review of the paper
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Your Site's RSS Feed]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 05 Jun 2020 07:11:55 GMT</lastBuildDate><item><title><![CDATA[A Review of Forecast at Scale]]></title><description><![CDATA[This is my final review of the paper
  Sean J. Taylor & Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician. I’m going…]]></description><link>https://sebastianhaeni.github.com/0007-forecasting-at-scale-review/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0007-forecasting-at-scale-review/</guid><pubDate>Tue, 02 Jun 2020 22:00:00 GMT</pubDate><content:encoded>&lt;p&gt;This is my final review of the paper
 &lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Sean J. Taylor &amp;#x26; Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;I’m going to follow a common peer review template that is in place at some conferences such as
@@ -167,7 +167,7 @@ clarity of the paper, and provide details of typos.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[How to Forecast at Scale]]></title><description><![CDATA[This is my third blog post about the paper 
+&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[How to Forecast at Scale]]></title><description><![CDATA[This is my third blog post about the paper
  Sean J. Taylor & Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician. I’m…]]></description><link>https://sebastianhaeni.github.com/0006-forecasting-at-scale-content/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0006-forecasting-at-scale-content/</guid><pubDate>Tue, 12 May 2020 23:30:00 GMT</pubDate><content:encoded>&lt;p&gt;This is my third blog post about the paper
 &lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Sean J. Taylor &amp;#x26; Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;I’m going to focus on its contents and try to place it in the field of forecasting and business time series.&lt;/p&gt;
@@ -179,7 +179,7 @@ providing services to multiple customers.&lt;/p&gt;
 &lt;p&gt;These time series can provide insights on how the company performed in the past but also provide the foundation to
 create forecasts. The paper “Forecasting at Scale” provides the reader with practices proofed in
 the real world because they have been applied at Facebook. If the proposed methods work outside of Facebook and are
-applicable to other organizations has to be found out. &lt;/p&gt;
+applicable to other organizations has to be found out.&lt;/p&gt;
 &lt;h2&gt;Preliminary reading&lt;/h2&gt;
 &lt;p&gt;I’m going to list a few topics that you should be familiar with in case you decide to read the paper.&lt;/p&gt;
 &lt;ul&gt;
@@ -199,9 +199,9 @@ that the authors have assembled to build this system of scale?&lt;/p&gt;
 &lt;/ul&gt;
 &lt;h2&gt;The &lt;a href=&quot;https://facebook.github.io/prophet/&quot;&gt;Prophet&lt;/a&gt; Forecasting Model&lt;/h2&gt;
 &lt;p&gt;As we know from the STL paper (Seasonal and Trend Decomposition using Loess), one can try to decompose a time series
-into trend and seasonality components using Loess regression. &lt;/p&gt;
+into trend and seasonality components using Loess regression.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Trend&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The mathematical expression to compute the nonlinear, saturating growth trend in its most basic form is &lt;/p&gt;
+&lt;p&gt;The mathematical expression to compute the nonlinear, saturating growth trend in its most basic form is&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 231px; &quot;
@@ -380,7 +380,7 @@ different prediction horizons.&lt;/p&gt;
 &lt;p&gt;Time series data points are inherently dependent on previous points. This is making it hard to use traditional methods
 such as cross-validation. The method proposed is Simulated Historical Forecasts (SHFs), that produce K forecasts at
 various cutoff points in the history. The generally used amount of points is a forecast every H/2 periods. This allows
-the model to produce an error term using MAPE which can be compared to baseline models. &lt;/p&gt;
+the model to produce an error term using MAPE which can be compared to baseline models.&lt;/p&gt;
 &lt;p&gt;Time series data usually encompasses a lot of data points and running SHFs with the maximum amount of periods would not
 be feasible as the model needs to be retrained each time. With SHFs, the simulation count is significantly reduced and
 the computation can be run independent on separate machines.&lt;/p&gt;
@@ -392,7 +392,7 @@ analyst to be in the loop.&lt;/p&gt;
 makes all those techniques readily usable for a broader audience. The paper is worth a read if you’re going to use the
 library. If you’re not planning that have a go with it, I can still recommend it as there might be some smallish novel
 ideas introduced that you might find interesting. If you are already well versed in the time series field, I would say
-that this paper is not going to contain much new for you. &lt;/p&gt;
+that this paper is not going to contain much new for you.&lt;/p&gt;
 &lt;h2&gt;Paper Follow ups&lt;/h2&gt;
 &lt;p&gt;The library &lt;a href=&quot;https://facebook.github.io/prophet/&quot;&gt;Prophet&lt;/a&gt; is under active development for over a year now. The open source community contributes to future
 improvements to the code. The basic methods mentioned in the paper implemented haven’t been changed though. So I’m
