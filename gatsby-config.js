@@ -4,7 +4,7 @@ module.exports = {
     title: `Blog of Sebastian Häni`,
     author: {
       name: `Sebastian Häni`,
-      summary: `who lives, studies and works Zurich building useful things.`,
+      summary: `who lives, studies and works in Zurich building useful things.`,
     },
     description: `A personal blog about things I am interested in.`,
     siteUrl: `https://sebastianhaeni.github.com`,
