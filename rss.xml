@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Your Site's RSS Feed]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 05 Jun 2020 07:35:37 GMT</lastBuildDate><item><title><![CDATA[A Review of Forecast at Scale]]></title><description><![CDATA[This is my final review of the paper
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Your Site's RSS Feed]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 05 Jun 2020 07:40:44 GMT</lastBuildDate><item><title><![CDATA[A Review of Forecast at Scale]]></title><description><![CDATA[This is my final review of the paper
  Sean J. Taylor & Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician. I’m going…]]></description><link>https://sebastianhaeni.github.com/0007-forecasting-at-scale-review/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0007-forecasting-at-scale-review/</guid><pubDate>Tue, 02 Jun 2020 22:00:00 GMT</pubDate><content:encoded>&lt;p&gt;This is my final review of the paper
 &lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Sean J. Taylor &amp;#x26; Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;I’m going to follow a common peer review template that is in place at some conferences such as
@@ -50,7 +50,7 @@ library.&lt;/p&gt;
 just be more of a focus to describe implementation details or leave them away completely.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4&gt;Confidential Notes to Editor&lt;/h4&gt;
-&lt;p&gt;Since this is not a real review and there’s no reviewer I will not write any notes here, but still include it so it’s
+&lt;p&gt;Since this is not a real review and there’s no editor I will not write any notes here, but still include it so it’s
 clear a review usually includes this section.&lt;/p&gt;
 &lt;p&gt;One could mention that paper could be suspect to plagiarism or comments that the authors maybe didn’t know enough about
 previous work. If you are making a borderline decision you can also add some comments to make the score distinguishable
