@@ -64,6 +64,18 @@ library.
 - The remark that the authors are storing SHF in Hive or MySQL can be helpful but feels out of place. Either it should
   just be more of a focus to describe implementation details or leave them away completely.
 
+#### Confidential Notes to Editor
+
+Since this is not a real review and there's no editor I will not write any notes here, but still include it so it's
+clear a review usually includes this section.
+
+One could mention that paper could be suspect to plagiarism or comments that the authors maybe didn't know enough about
+previous work. If you are making a borderline decision you can also add some comments to make the score distinguishable
+to the editor. And, if you have confidential information that you would not like the authors to know, you can add it.
+This can for example be collected data that only your or your organization have and so on.
+
+If you have a conflict of interest you should not even start the review and make it clear beforehand.
+
 <br><br><br>
 
 ---
