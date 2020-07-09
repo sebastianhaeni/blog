@@ -1,5 +1,5 @@
 ---
-title: A Review of Forecast at Scale
+title: A Review of Forecasting at Scale
 date: "2020-06-02T22:00:00.000Z"
 tags: ["MSc", "AI Seminar"]
 ---
