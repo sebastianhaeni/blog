@@ -1,4 +1,119 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Your Site's RSS Feed]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 05 Jun 2020 07:40:44 GMT</lastBuildDate><item><title><![CDATA[A Review of Forecast at Scale]]></title><description><![CDATA[This is my final review of the paper
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Your Site's RSS Feed]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 09 Jul 2020 16:14:15 GMT</lastBuildDate><item><title><![CDATA[Seminar Assessment on Oneself]]></title><description><![CDATA[In my first blog post related to the AI seminar that I took, I laid out my
+learning goals. Now the seminar is coming to an end, and I will…]]></description><link>https://sebastianhaeni.github.com/0008-seminar-self-assessment/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0008-seminar-self-assessment/</guid><pubDate>Tue, 07 Jul 2020 17:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In &lt;a href=&quot;../0002-ai-seminar-intro&quot;&gt;my first blog post related to the AI seminar&lt;/a&gt; that I took, I laid out my
+learning goals. Now the seminar is coming to an end, and I will try to assess my own performance and review
+if the goals have been met.&lt;/p&gt;
+&lt;h2&gt;Goal Verification&lt;/h2&gt;
+&lt;p&gt;Here are the goals once again. So, let’s go through it.&lt;/p&gt;
+&lt;h3&gt;1. I want to &lt;em&gt;know&lt;/em&gt; in detail how the process of writing scientific papers is like and hear from an expert that has experience in this.&lt;/h3&gt;
+&lt;p&gt;Thanks to our lecturer who is a journal editor himself, I learned a lot of the process that scientific papers go
+through, and I’m grateful for those insights. And by practicing certain aspects of the process myself, such as reviewing
+a paper, I got to understand the details of it as well.&lt;/p&gt;
+&lt;p&gt;💯 goal fulfilled&lt;/p&gt;
+&lt;h3&gt;2. I want to &lt;em&gt;try&lt;/em&gt; criticizing a paper and get feedback.&lt;/h3&gt;
+&lt;p&gt;In my last blog post I &lt;a href=&quot;../0007-forecasting-at-scale-review&quot;&gt;reviewed&lt;/a&gt; the paper I was reading. During this activity
+I had to research the actual structure of a review, and I think I captured it well. And I also learned about how others
+approach this activity.&lt;/p&gt;
+&lt;p&gt;During our session we talked about the reviews, and I got a bit convoluted with what I could actually improve. My note
+taking was sub-par at that point which is why I’m now unsure how I faired.&lt;/p&gt;
+&lt;p&gt;🔳 goal fulfillment unsure&lt;/p&gt;
+&lt;h3&gt;3. I want to &lt;em&gt;refine&lt;/em&gt; my writing skills.&lt;/h3&gt;
+&lt;p&gt;Writing blog posts for a broader audience definitely helped to refine my writing skills.
+Each time I dedicated a lot of thinking time into the structure of the post. My process was as follows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Lay out the structure of the post. The question I asked myself was, how should the reading journey be like? How do we
+start and how do we end? What does the audience expect? I also did some research how similar posts are structured and
+if I can improve on that.&lt;/li&gt;
+&lt;li&gt;Fill in the created sections with bullet points of what I want to write about. This helped me to understand at an
+early stage if the flow of the post will make sense in the end. So here I also reviewed the structure again and made
+some readjustments.&lt;/li&gt;
+&lt;li&gt;On a different day, the next step would be to fill in the sections with prose text, images and references. While
+writing, I often did research and looked for interesting graphics or references.&lt;/li&gt;
+&lt;li&gt;My last step is proof-reading and ensuring the post forms a whole and sentences or paragraphs are not dangling.&lt;/li&gt;
+&lt;li&gt;Publish&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I learned that reading the sentence that I wrote again on a different day usually gives me ideas on how to improve it to
+support the reading flow of the reader. I’m still having trouble to stay away from passive sentences though.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;../0004-dissecting-paper-style&quot;&gt;Looking at the writing style&lt;/a&gt; of the paper I read was also helpful, as I think
+it’s style was quite good, and I identified the parts that were not so good.&lt;/p&gt;
+&lt;p&gt;💯 goal fulfilled&lt;/p&gt;
+&lt;h3&gt;4. I want to &lt;em&gt;get to know&lt;/em&gt; the method explained in my chosen paper in detail.&lt;/h3&gt;
+&lt;p&gt;I think now I understand the contents of the paper “Forecasting at Scale”, because I not only did a skimming read, a
+thorough read and reading of surrounding literature, I also summarized it in a &lt;a href=&quot;../0006-forecasting-at-scale-content&quot;&gt;blog post&lt;/a&gt;
+and held a short presentation.&lt;/p&gt;
+&lt;p&gt;One could look at this process of summarizing like an autoencoder. A summary should be shorter than what
+you are trying to summarize, otherwise it’s not a summary. So somehow you have to make it shorter, and you do this by
+compressing information down. The person reading the summary should still be able to grasp the content of the original
+paper with some slight imprecision when filling in the gaps in their own mind. That’s exactly what an autoencoder
+architecture would accomplish as well. So the summarizing process is figuring out what parts have to be encoded into the
+summary for a possible decoding to be successful.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 74.32432432432432%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsSAAALEgHS3X78AAABxUlEQVQoz6VT227aQBDlt/sHzVN/oGpfIlVC6lMfKlVKCCiATczF3tT2OnFkfIUGfMNYYHzpgbUSJ02fsg+ruZwzMzsz26recVpNpSzLV0JTPRwOWZa9QWZuwzD6gwGzALo5HQjMMhNnhBAGzvMcd4spjGzb9lgQtkksiiKl9E6jd1RFRI7no8iXZUKpBlhRFK7rgl9nzk8HZOGGD/2FKJGyyH71pK/tLryKSld/bCJNERFpdrsdyAhxJC+XS5QH65EsjNYLYzi4TvPqofNF+vYBgKurS8/SbsmMasfMYRgCWZcNKYoiCBbKHo/WruE5Np7x+LPtfD47ooPAX5hEnGgnchzHoNSZPc/zff8UxREEfuXOueF1VhVc++LHx3PYe72uZ+q30lRVVahJkpimWZPRz/1+XxS57ThjYRSuF/f3yi6rAvf748OnosQU9GDt/iYzlhng5zc/NdyyrMn4Jt36/X43CGLAqmqbZYdO5yIMV7IsKYrKuvtMfhrVfD6fTngIm00C38lVzxw3pUSWFYZn3hdLgswcNwyCoLldzIsOS5Kk63pz/16sJ+KlaYpm/rvGaBLGiYL/u9vv+hjN979pf+X6C7TVUbcEAyaOAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;autoencoder&quot;
+        title=&quot;autoencoder&quot;
+        src=&quot;/blog/static/3f3761c6fd7d8a8683b8d75b8c0610b8/fcda8/autoencoder.png&quot;
+        srcset=&quot;/blog/static/3f3761c6fd7d8a8683b8d75b8c0610b8/12f09/autoencoder.png 148w,
+/blog/static/3f3761c6fd7d8a8683b8d75b8c0610b8/e4a3f/autoencoder.png 295w,
+/blog/static/3f3761c6fd7d8a8683b8d75b8c0610b8/fcda8/autoencoder.png 590w,
+/blog/static/3f3761c6fd7d8a8683b8d75b8c0610b8/efc66/autoencoder.png 885w,
+/blog/static/3f3761c6fd7d8a8683b8d75b8c0610b8/00d43/autoencoder.png 1000w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+Image Source: &lt;a href=&quot;https://mc.ai/variational-autoencoders-an-intuitive-explanation-some-keras-code-2/&quot;&gt;mc.ai&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In turn I discovered the key points of the paper and internalized it for myself.&lt;/p&gt;
+&lt;p&gt;💯 goal fulfilled&lt;/p&gt;
+&lt;h3&gt;5. I want to &lt;em&gt;establish&lt;/em&gt; a regular blogging habit beyond this seminar.&lt;/h3&gt;
+&lt;p&gt;I can’t judge this goal just yet. I have written one post that is not related to the seminar as yet and I have
+more topics in my queue. I sure hope I will find the motivation to keep this going. I clearly see the benefit of doing
+so.&lt;/p&gt;
+&lt;p&gt;🔳 goal fulfillment not possible yet&lt;/p&gt;
+&lt;h3&gt;6. I want to &lt;em&gt;share&lt;/em&gt; my learning process and gain insights how others do the same.&lt;/h3&gt;
+&lt;p&gt;Through this blog and colloquial sessions with my peers and lecturer I was able to share my learning process. This blog
+post itself is the culmination of it.&lt;/p&gt;
+&lt;p&gt;💯 goal fulfilled&lt;/p&gt;
+&lt;h2&gt;Comparing myself to others&lt;/h2&gt;
+&lt;p&gt;I was not the only one participating in this seminar, and we were specifically asked to compare our performance to
+others.&lt;/p&gt;
+&lt;p&gt;Here I will split my comparison into the different parts that we participated in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Blog Posts&lt;/strong&gt;: I tried to make my posts as enjoyable to read as possible with a reasonable time amount spent writing
+them. As I plan to continue using this blog as my personal blog for the foreseeable future, I always had in mind
+writing for a broader audience that is not exclusively limited to participants of the seminar. I was always impressed
+by what the others created and tried to learn from their good efforts and tried to improve upon. Unfortunately I
+almost never published my posts very early, which is why my colleagues had little to no time to read it before our
+sessions. So I would give myself a negative rating for the timeliness, but an above-average rating for the content
+itself compared to others.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Session Participation&lt;/strong&gt;: I came reasonably well prepared into the sessions, having read the emails and slides from
+last time, the additional resources and the posts of the others. I enjoyed the sessions as they were focused and
+required one to be “present” with their mind. I think all participants did well.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Presentations&lt;/strong&gt;: The long-ish presentation is still ahead of me. The few things I presented were ok-ish. At one time
+I was confused as what to present, because we were asked to prepare to present the findings of our writing style
+analysis and then in the session we were asked to present the content (without having thought about how to present it).
+I also think all participants did well in this regard.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Learnings Summary&lt;/h2&gt;
+&lt;p&gt;So, I learned to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;read / understand a scientific paper&lt;/li&gt;
+&lt;li&gt;obtain more information / do literature research&lt;/li&gt;
+&lt;li&gt;put research in context (with respect to current state of the art in the field)&lt;/li&gt;
+&lt;li&gt;form my own scientific opinion / judgement&lt;/li&gt;
+&lt;li&gt;present scientific results in different ways (blog, orally, presentation, written document)&lt;/li&gt;
+&lt;li&gt;engage in a scientific discussion, express my view, formulate criticism&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;I can highly recommend this seminar to any other fellow students that might be reading this blog, thinking about
+enrolling. The university internal name of the course is “EVA Artificial Intelligence Seminar”.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[A Review of Forecasting at Scale]]></title><description><![CDATA[This is my final review of the paper
  Sean J. Taylor & Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician. I’m going…]]></description><link>https://sebastianhaeni.github.com/0007-forecasting-at-scale-review/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0007-forecasting-at-scale-review/</guid><pubDate>Tue, 02 Jun 2020 22:00:00 GMT</pubDate><content:encoded>&lt;p&gt;This is my final review of the paper
 &lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Sean J. Taylor &amp;#x26; Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;I’m going to follow a common peer review template that is in place at some conferences such as
