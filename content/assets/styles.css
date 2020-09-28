@@ -7,3 +7,7 @@ pre[class*="language-"] {
 .gatsby-highlight pre[class*="language-"] {
   font-size: 0.8em;
 }
+
+.anchor {
+  background-image: none;
+}
