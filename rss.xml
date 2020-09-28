@@ -1,22 +1,277 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 10 Jul 2020 08:35:17 GMT</lastBuildDate><item><title><![CDATA[Seminar Assessment on Oneself]]></title><description><![CDATA[In my first blog post related to the AI seminar that I took, I laid out my
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 28 Sep 2020 22:59:34 GMT</lastBuildDate><item><title><![CDATA[Orgazining optimized code reviews in your team]]></title><description><![CDATA[In the teams I worked so far, we always opted for full reviews of each engineer’s code.
+But how do you organize these reviews in a fashion…]]></description><link>https://sebastianhaeni.github.com/0009-orgazining-code-reviews/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0009-orgazining-code-reviews/</guid><pubDate>Mon, 28 Sep 2020 20:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In the teams I worked so far, we always opted for full reviews of each engineer’s code.
+But how do you organize these reviews in a fashion so that they:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;are efficient - do not take more time than necessary&lt;/li&gt;
+&lt;li&gt;improve code correctness and quality&lt;/li&gt;
+&lt;li&gt;improve code readability&lt;/li&gt;
+&lt;li&gt;find bugs&lt;/li&gt;
+&lt;li&gt;allow for knowledge spread&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We discussed in our team that we would like to create a consensus on what Change Reviews mean for
+us and how we apply them. The following is the documentation that I created for our team.&lt;/p&gt;
+&lt;p&gt;This has been influenced by the &lt;a href=&quot;https://google.github.io/eng-practices/review/reviewer/&quot;&gt;Google’s Engineering Practices documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;And further, how do you contribute to a code base in an aligned way? I have added some contribution
+guidelines as well. The contribution guidelines are inspired by &lt;a href=&quot;https://github.com/angular/angular/blob/master/CONTRIBUTING.md&quot;&gt;Angular’s guidelines&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;And how do you finally map your status into a project management tool like JIRA?&lt;/p&gt;
+&lt;p&gt;Additionally, we also are holding regular know how exchange sessions or discussions related to tech
+and engineering to ensure we have a common vision and understanding of recent or upcoming topics.&lt;/p&gt;
+&lt;h2 id=&quot;contents&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#contents&quot; aria-label=&quot;contents permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Contents&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#change-reviews&quot;&gt;Change Reviews&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#contribution-guidelines&quot;&gt;Contribution Guidelines&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#how-we-use-jira&quot;&gt;How we use JIRA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#tech-discussions&quot;&gt;Tech Discussions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;change-reviews&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#change-reviews&quot; aria-label=&quot;change reviews permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Change Reviews&lt;/h1&gt;
+&lt;h2 id=&quot;review-planning&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#review-planning&quot; aria-label=&quot;review planning permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Review Planning&lt;/h2&gt;
+&lt;h3 id=&quot;how-to-define-the-reviewer&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-to-define-the-reviewer&quot; aria-label=&quot;how to define the reviewer permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How to define the reviewer?&lt;/h3&gt;
+&lt;p&gt;In general, there should be two reviewers. The main reviewer does a thorough review, while the second reviewer is there
+to catch any big mishaps and to ensure knowledge sharing throughout the team.
+It might happen that there is only one reviewer in case of smaller tasks.&lt;/p&gt;
+&lt;h3 id=&quot;code-review-is-always-required&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#code-review-is-always-required&quot; aria-label=&quot;code review is always required permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Code Review is always required&lt;/h3&gt;
+&lt;p&gt;Each change has to be reviewed, even minor ones. The reason for reviews of big changes should be clear. Small changes
+should be reviewed to ensure nothing has been accidentally introduced that could break things. E.g. there’s a faulty
+merge in the change that the author was not aware of. These small reviews may be as short as 30 seconds, but they should
+still occur.&lt;/p&gt;
+&lt;h2 id=&quot;review-execution&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#review-execution&quot; aria-label=&quot;review execution permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Review Execution&lt;/h2&gt;
+&lt;h3 id=&quot;review-handover&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#review-handover&quot; aria-label=&quot;review handover permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Review Handover&lt;/h3&gt;
+&lt;p&gt;We regard the handover from the author to the main reviewer as one of the most important aspects of a successful review.
+The author has to make clear what they expect from the reviewer.&lt;/p&gt;
+&lt;p&gt;In general, there can be an “early look” review to guide the author in the right direction. For this, the build has to be
+successful to make the reviewer’s effort worthwhile. The integration tests are ok to be still running or failing if they take longer.
+In the end there always has to be a final review. For the final review, all builds and tests have to be successful and
+all merge conflicts resolved.&lt;/p&gt;
+&lt;p&gt;The author can optionally annotate their changes to explain complex factual relations.
+This will enable the reviewer to be faster when trying to understand the changes.&lt;/p&gt;
+&lt;p&gt;During the handover, it should be made clear if the reviewer is allowed to push changes onto the branch. This can make
+sense if the reviewer wants to commit small changes, such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;cosmetic changes&lt;/li&gt;
+&lt;li&gt;fixing comments&lt;/li&gt;
+&lt;li&gt;fixing typos&lt;/li&gt;
+&lt;li&gt;very small code fixes&lt;/li&gt;
+&lt;li&gt;rebase / merge onto the current &lt;code class=&quot;language-text&quot;&gt;develop&lt;/code&gt; branch if there are no conflicts or they are trivial&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To fasten up the review process, the author or the reviewer can also request a pair review. During the pair review,
+they can push changes directly within the review. After this, no further ping pong is necessary. A change can then be
+merged as long as the builds and tests are successful.&lt;/p&gt;
+&lt;h3 id=&quot;review-feedback&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#review-feedback&quot; aria-label=&quot;review feedback permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Review Feedback&lt;/h3&gt;
+&lt;p&gt;In case of an async review, the reviewer creates comments in the PR. If they want the author to change something, they
+create a task below the comment indicating action is needed. The change cannot be merged if there are incomplete tasks.&lt;/p&gt;
+&lt;p&gt;If the reviewer has not set any status on the PR yet, this means the review is in progress, and the author should
+refrain from modifying the branch. Once the reviewer sets the status to “Needs work”, the ball is back at the author
+to complete the tasks in the comments. Once the reviewer is happy, they set the status to “Approve”, and the author can
+go ahead and merge the changes.&lt;/p&gt;
+&lt;h3 id=&quot;review-contents&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#review-contents&quot; aria-label=&quot;review contents permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Review Contents&lt;/h3&gt;
+&lt;p&gt;The most important content of the review should be discussed in the handover.
+Besides, the reviewer must:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;understand the user story&lt;/li&gt;
+&lt;li&gt;understand each and every line of code in the change&lt;/li&gt;
+&lt;li&gt;understand the commit history&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The reviewer can test the code by clicking through the staged environment. They can also check it out and tinker around
+in the code and tests. If this makes sense or not can be different from case to case.&lt;/p&gt;
+&lt;p&gt;What the reviewer is not doing, is to clarify story requirements with any other than the author such as the product
+owner. They can or even should however discover if the story description diverges from the implementation such that
+the business requirements are not met.&lt;/p&gt;
+&lt;h2 id=&quot;review-completion&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#review-completion&quot; aria-label=&quot;review completion permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Review Completion&lt;/h2&gt;
+&lt;h3 id=&quot;merge&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#merge&quot; aria-label=&quot;merge permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Merge&lt;/h3&gt;
+&lt;p&gt;After the main reviewer gave their final “Approve”, the author can merge the changes.&lt;/p&gt;
+&lt;h3 id=&quot;follow-ups&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#follow-ups&quot; aria-label=&quot;follow ups permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Follow-Ups&lt;/h3&gt;
+&lt;p&gt;There always may be follow-ups after the change. This is something that should generally be avoided.
+A follow up can be a TODO/FIXME in the code, a bug, a missing feature, technical debt, ignored tests and so on.&lt;/p&gt;
+&lt;p&gt;If it happens, that it cannot be avoided, and the reviewers accept the follow-ups, these rules have to be observed:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Each follow up must exist as a JIRA issue&lt;/li&gt;
+&lt;li&gt;Commits introducing the follow up have to mention the JIRA issue&lt;/li&gt;
+&lt;li&gt;TODO and FIXME comments must contain the JIRA issue (e.g. &lt;code class=&quot;language-text&quot;&gt;// TODO fix label not being displayed (AAA-xxxx)&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;po-review&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#po-review&quot; aria-label=&quot;po review permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;PO Review&lt;/h3&gt;
+&lt;p&gt;The PO review for larger user stories is planned at latest during the daily stand up meeting. The author has the lead.&lt;/p&gt;
+&lt;h3 id=&quot;ux-review&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#ux-review&quot; aria-label=&quot;ux review permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;UX Review&lt;/h3&gt;
+&lt;p&gt;In a UX intensive task, it is generally a good idea to consolidate the UX designer and get some feedback. This should
+happen before any code review occurs.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;contribution-guidelines&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#contribution-guidelines&quot; aria-label=&quot;contribution guidelines permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Contribution guidelines&lt;/h1&gt;
+&lt;h2 id=&quot;commit-message-template&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#commit-message-template&quot; aria-label=&quot;commit message template permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Commit message template&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Template for commits related to a JIRA issue:&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;AAA-&amp;lt;number&amp;gt; (&amp;lt;type&amp;gt;) &amp;lt;subject&amp;gt;
+
+Explain why this change is being made&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If there is no issue, use the following template:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;(&amp;lt;type&amp;gt;) &amp;lt;subject&amp;gt;
+
+Explain why this change is being made&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Types:&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;feat&lt;/td&gt;
+&lt;td&gt;new feature&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;fix&lt;/td&gt;
+&lt;td&gt;bug fix&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;refactor&lt;/td&gt;
+&lt;td&gt;refactoring production code&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;style&lt;/td&gt;
+&lt;td&gt;formatting, missing semi colons etc; no code change&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;docs&lt;/td&gt;
+&lt;td&gt;changes to documentation&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;test&lt;/td&gt;
+&lt;td&gt;adding or refactoring tests; no production code change&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;build&lt;/td&gt;
+&lt;td&gt;updating pipelines, *.gradle, package.json etc; no production code change&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;deps&lt;/td&gt;
+&lt;td&gt;updating maven or npm dependencies&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;i18n&lt;/td&gt;
+&lt;td&gt;updating translation files&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;AAA-0000 (feat) implement X validation logic
+
+This introduces 2 new components:
+
+* X-tile
+* X-edit-form
+
+The service `XService` has been extended to support
+updating and removing X entities via the backend.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Remember to&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;not capitalize the subject line&lt;/li&gt;
+&lt;li&gt;Use the imperative mood in the subject line&lt;/li&gt;
+&lt;li&gt;Do not end the subject line with a period&lt;/li&gt;
+&lt;li&gt;Separate subject from body with a blank line&lt;/li&gt;
+&lt;li&gt;Use the body to explain what and why vs. how&lt;/li&gt;
+&lt;li&gt;Use multiple lines with ”-” for bullet points in body&lt;/li&gt;
+&lt;li&gt;Squash commits that make it hard to read the history.&lt;/li&gt;
+&lt;li&gt;Don’t squash commits if they contain different types as defined above.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;branching-model&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#branching-model&quot; aria-label=&quot;branching model permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Branching Model&lt;/h2&gt;
+&lt;p&gt;We are using the Git Flow branching model.&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&quot;https://nvie.com/posts/a-successful-git-branching-model/&quot;&gt;https://nvie.com/posts/a-successful-git-branching-model/&lt;/a&gt; for a very nice
+blog post explaining it very well.&lt;/p&gt;
+&lt;h3 id=&quot;feature-branches&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#feature-branches&quot; aria-label=&quot;feature branches permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Feature Branches&lt;/h3&gt;
+&lt;p&gt;Feature branches should be named with the prefix &lt;code class=&quot;language-text&quot;&gt;feature/&lt;/code&gt; as per recommendation of Git Flow.
+Additionally we include the JIRA Issue number and a short description of the feature.&lt;/p&gt;
+&lt;p&gt;E.g.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;feature/AAA-9999_Group-Easteregg-Tab&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This provides these benefits:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bitbucket will automatically link the branch with the JIRA issue and vice versa.&lt;/li&gt;
+&lt;li&gt;We can easily jump between requirements in JIRA and the branch.&lt;/li&gt;
+&lt;li&gt;With the description, we know what’s on a feature branch even without looking up the issue description.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Other prefixes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;release/&lt;/code&gt; reserved for branches for a version (also for hotfixes, albeit we deviate from the guide)&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;bugfix/&lt;/code&gt; reserved for fixes only (refrain from doing any refactoring here)&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;hotfix/&lt;/code&gt; for hotfixes that will be merged into the hotfix-release branch&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;doc/&lt;/code&gt; reserved for docs-only changes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;docs-branches&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#docs-branches&quot; aria-label=&quot;docs branches permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Docs Branches&lt;/h3&gt;
+&lt;p&gt;If you only update documentation you can prefix your branch with &lt;code class=&quot;language-text&quot;&gt;doc/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;E.g.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;doc/knowhow-transfer-update&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So, only use it if you are certain you only committed docs changes.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;how-we-use-jira&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-we-use-jira&quot; aria-label=&quot;how we use jira permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How we use JIRA&lt;/h1&gt;
+&lt;h2 id=&quot;before-a-sprint&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#before-a-sprint&quot; aria-label=&quot;before a sprint permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Before a sprint&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;We split stories into multiple stories and create an epic for it if the story has an estimate
+of over 40 hours before or during PI planning.&lt;/li&gt;
+&lt;li&gt;We create sub-tasks for each story which has an estimate of less than a work day.&lt;/li&gt;
+&lt;li&gt;Sub-task descriptions can be filled with additional hints or implementation detail. They should however
+not contain redundant information from the parent story.&lt;/li&gt;
+&lt;li&gt;We do not create extra review sub-tasks unless they are really needed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;during-a-sprint&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#during-a-sprint&quot; aria-label=&quot;during a sprint permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;During a sprint&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;We continuously move cards in the board so it is up to date all the time.&lt;/li&gt;
+&lt;li&gt;We log hours worked on a task when we move a card to another column and reduce the remaining estimate in
+accordance.&lt;/li&gt;
+&lt;li&gt;An individual contributor can create new sub-tasks in their story as long as the total sum of remaining
+estimates stays the same. The reshuffling has to be discussed with the main reviewer.&lt;/li&gt;
+&lt;li&gt;If the estimate for a task changes (up or down), this has to be discussed with the PO or Scrum Master as
+soon as it is detected.&lt;/li&gt;
+&lt;li&gt;When a developer is done with implementing a sub-task, they move the task to the review column.&lt;/li&gt;
+&lt;li&gt;If they reached a checkpoint which can be reviewed, they inform the reviewer personally and create a PR
+and assign the reviewer(s) to it.&lt;/li&gt;
+&lt;li&gt;The reviewer moves the task to the To Do column if the review is not OK or completes the task(s)
+together with the author (someone merges the PR) and moves the task to the Done column.&lt;/li&gt;
+&lt;li&gt;The reviewer also logs work hours on the task they reviewed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;po-review-1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#po-review-1&quot; aria-label=&quot;po review 1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;PO Review&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;A story can have a PO review or not. It is up to the PO and the team to decide if it makes sense or not.&lt;/li&gt;
+&lt;li&gt;If a story should include a PO review, we create a sub-task in the story with an empty estimate.&lt;/li&gt;
+&lt;li&gt;This sub-task is then moved along the columns on the board when it is ongoing or complete.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;tech-discussions&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tech-discussions&quot; aria-label=&quot;tech discussions permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Tech Discussions&lt;/h1&gt;
+&lt;p&gt;To ensure we have a common vision and understanding in technical topics regarding our services
+that we build, we regularly hold tech discussion meetings. Everybody is invited to add their topics
+to a topic list. Every developer can then vote on topics. After the event is over, we clear all votes and it starts over.&lt;/p&gt;
+&lt;p&gt;The Tech Discussions help us to improve:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;common understanding of technical aspects&lt;/li&gt;
+&lt;li&gt;know how sharing of new concepts&lt;/li&gt;
+&lt;li&gt;discussion of technical directions we should take&lt;/li&gt;
+&lt;li&gt;presentation of results of spike undertakings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Action items are tracked as JIRA issues. The documentation of discussed topics always has to be
+up-to-date and ensures the discussed items are not forgotten over time or decisions can be looked up
+again.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;conclusion&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#conclusion&quot; aria-label=&quot;conclusion permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;Maybe you discovered some practice which could help you in your team?&lt;/p&gt;
+&lt;p&gt;It certainly helped me a lot having this written down. Even we discussed everything in the entire
+team and everbody agreed to it, it occurred sometimes that the discussed items were forgotten, and
+having this document helped us to quickly resolve questions that we have already answered a year ago.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Seminar Assessment on Oneself]]></title><description><![CDATA[In my first blog post related to the AI seminar that I took, I laid out my
 learning goals. Now the seminar is coming to an end, and I will…]]></description><link>https://sebastianhaeni.github.com/0008-seminar-self-assessment/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0008-seminar-self-assessment/</guid><pubDate>Tue, 07 Jul 2020 17:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In &lt;a href=&quot;../0002-ai-seminar-intro&quot;&gt;my first blog post related to the AI seminar&lt;/a&gt; that I took, I laid out my
 learning goals. Now the seminar is coming to an end, and I will try to assess my own performance and review
 if the goals have been met.&lt;/p&gt;
-&lt;h2&gt;Goal Verification&lt;/h2&gt;
+&lt;h2 id=&quot;goal-verification&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#goal-verification&quot; aria-label=&quot;goal verification permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Goal Verification&lt;/h2&gt;
 &lt;p&gt;Here are the goals once again. So, let’s go through it.&lt;/p&gt;
-&lt;h3&gt;1. I want to &lt;em&gt;know&lt;/em&gt; in detail how the process of writing scientific papers is like and hear from an expert that has experience in this.&lt;/h3&gt;
+&lt;h3 id=&quot;1-i-want-to-know-in-detail-how-the-process-of-writing-scientific-papers-is-like-and-hear-from-an-expert-that-has-experience-in-this&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-i-want-to-know-in-detail-how-the-process-of-writing-scientific-papers-is-like-and-hear-from-an-expert-that-has-experience-in-this&quot; aria-label=&quot;1 i want to know in detail how the process of writing scientific papers is like and hear from an expert that has experience in this permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. I want to &lt;em&gt;know&lt;/em&gt; in detail how the process of writing scientific papers is like and hear from an expert that has experience in this.&lt;/h3&gt;
 &lt;p&gt;Thanks to our lecturer who is a journal editor himself, I learned a lot of the process that scientific papers go
 through, and I’m grateful for those insights. And by practicing certain aspects of the process myself, such as reviewing
 a paper, I got to understand the details of it as well.&lt;/p&gt;
 &lt;p&gt;💯 goal fulfilled&lt;/p&gt;
-&lt;h3&gt;2. I want to &lt;em&gt;try&lt;/em&gt; criticizing a paper and get feedback.&lt;/h3&gt;
+&lt;h3 id=&quot;2-i-want-to-try-criticizing-a-paper-and-get-feedback&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-i-want-to-try-criticizing-a-paper-and-get-feedback&quot; aria-label=&quot;2 i want to try criticizing a paper and get feedback permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. I want to &lt;em&gt;try&lt;/em&gt; criticizing a paper and get feedback.&lt;/h3&gt;
 &lt;p&gt;In my last blog post I &lt;a href=&quot;../0007-forecasting-at-scale-review&quot;&gt;reviewed&lt;/a&gt; the paper I was reading. During this activity
 I had to research the actual structure of a review, and I think I captured it well. And I also learned about how others
 approach this activity.&lt;/p&gt;
 &lt;p&gt;During our session we talked about the reviews, and I got a bit convoluted with what I could actually improve. My note
 taking was sub-par at that point which is why I’m now unsure how I faired.&lt;/p&gt;
 &lt;p&gt;🔳 goal fulfillment unsure&lt;/p&gt;
-&lt;h3&gt;3. I want to &lt;em&gt;refine&lt;/em&gt; my writing skills.&lt;/h3&gt;
+&lt;h3 id=&quot;3-i-want-to-refine-my-writing-skills&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-i-want-to-refine-my-writing-skills&quot; aria-label=&quot;3 i want to refine my writing skills permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. I want to &lt;em&gt;refine&lt;/em&gt; my writing skills.&lt;/h3&gt;
 &lt;p&gt;Writing blog posts for a broader audience definitely helped to refine my writing skills.
 Each time I dedicated a lot of thinking time into the structure of the post. My process was as follows:&lt;/p&gt;
 &lt;ol&gt;
@@ -36,7 +291,7 @@ support the reading flow of the reader. I’m still having trouble to stay away 
 &lt;p&gt;&lt;a href=&quot;../0004-dissecting-paper-style&quot;&gt;Looking at the writing style&lt;/a&gt; of the paper I read was also helpful, as I think
 it’s style was quite good, and I identified the parts that were not so good.&lt;/p&gt;
 &lt;p&gt;💯 goal fulfilled&lt;/p&gt;
-&lt;h3&gt;4. I want to &lt;em&gt;get to know&lt;/em&gt; the method explained in my chosen paper in detail.&lt;/h3&gt;
+&lt;h3 id=&quot;4-i-want-to-get-to-know-the-method-explained-in-my-chosen-paper-in-detail&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#4-i-want-to-get-to-know-the-method-explained-in-my-chosen-paper-in-detail&quot; aria-label=&quot;4 i want to get to know the method explained in my chosen paper in detail permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;4. I want to &lt;em&gt;get to know&lt;/em&gt; the method explained in my chosen paper in detail.&lt;/h3&gt;
 &lt;p&gt;I think now I understand the contents of the paper “Forecasting at Scale”, because I not only did a skimming read, a
 thorough read and reading of surrounding literature, I also summarized it in a &lt;a href=&quot;../0006-forecasting-at-scale-content&quot;&gt;blog post&lt;/a&gt;
 and held a short presentation.&lt;/p&gt;
@@ -72,16 +327,16 @@ summary for a possible decoding to be successful.&lt;/p&gt;
 Image Source: &lt;a href=&quot;https://mc.ai/variational-autoencoders-an-intuitive-explanation-some-keras-code-2/&quot;&gt;mc.ai&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;In turn I discovered the key points of the paper and internalized it for myself.&lt;/p&gt;
 &lt;p&gt;💯 goal fulfilled&lt;/p&gt;
-&lt;h3&gt;5. I want to &lt;em&gt;establish&lt;/em&gt; a regular blogging habit beyond this seminar.&lt;/h3&gt;
+&lt;h3 id=&quot;5-i-want-to-establish-a-regular-blogging-habit-beyond-this-seminar&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#5-i-want-to-establish-a-regular-blogging-habit-beyond-this-seminar&quot; aria-label=&quot;5 i want to establish a regular blogging habit beyond this seminar permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;5. I want to &lt;em&gt;establish&lt;/em&gt; a regular blogging habit beyond this seminar.&lt;/h3&gt;
 &lt;p&gt;I can’t judge this goal just yet. I have written one post that is not related to the seminar as yet and I have
 more topics in my queue. I sure hope I will find the motivation to keep this going. I clearly see the benefit of doing
 so.&lt;/p&gt;
 &lt;p&gt;🔳 goal fulfillment not possible yet&lt;/p&gt;
-&lt;h3&gt;6. I want to &lt;em&gt;share&lt;/em&gt; my learning process and gain insights how others do the same.&lt;/h3&gt;
+&lt;h3 id=&quot;6-i-want-to-share-my-learning-process-and-gain-insights-how-others-do-the-same&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#6-i-want-to-share-my-learning-process-and-gain-insights-how-others-do-the-same&quot; aria-label=&quot;6 i want to share my learning process and gain insights how others do the same permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;6. I want to &lt;em&gt;share&lt;/em&gt; my learning process and gain insights how others do the same.&lt;/h3&gt;
 &lt;p&gt;Through this blog and colloquial sessions with my peers and lecturer I was able to share my learning process. This blog
 post itself is the culmination of it.&lt;/p&gt;
 &lt;p&gt;💯 goal fulfilled&lt;/p&gt;
-&lt;h2&gt;Comparing myself to others&lt;/h2&gt;
+&lt;h2 id=&quot;comparing-myself-to-others&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#comparing-myself-to-others&quot; aria-label=&quot;comparing myself to others permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Comparing myself to others&lt;/h2&gt;
 &lt;p&gt;I was not the only one participating in this seminar, and we were specifically asked to compare our performance to
 others.&lt;/p&gt;
 &lt;p&gt;Here I will split my comparison into the different parts that we participated in:&lt;/p&gt;
@@ -101,7 +356,7 @@ I was confused as what to present, because we were asked to prepare to present t
 analysis and then in the session we were asked to present the content (without having thought about how to present it).
 I also think all participants did well in this regard.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Learnings Summary&lt;/h2&gt;
+&lt;h2 id=&quot;learnings-summary&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#learnings-summary&quot; aria-label=&quot;learnings summary permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Learnings Summary&lt;/h2&gt;
 &lt;p&gt;So, I learned to:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;read / understand a scientific paper&lt;/li&gt;
@@ -122,7 +377,7 @@ me know what questions should be asked oneself when giving a review.&lt;/p&gt;
 &lt;p&gt;A peer review always has to be in a context. This can for example be a certain conference or journal.
 So, I’m going to pretend I’m reviewing this for an AI conference similar to IJCAI (which might not make sense to ever
 submit this paper there, but I’m getting there 😄).&lt;/p&gt;
-&lt;h3&gt;My Scores&lt;/h3&gt;
+&lt;h3 id=&quot;my-scores&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#my-scores&quot; aria-label=&quot;my scores permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;My Scores&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Relevance: 5 / 10 ⭐&lt;/li&gt;
 &lt;li&gt;Significance: 5 / 10 ⭐&lt;/li&gt;
@@ -133,8 +388,8 @@ submit this paper there, but I’m getting there 😄).&lt;/p&gt;
 &lt;li&gt;Overall Score: 4 / 10 ⭐&lt;/li&gt;
 &lt;li&gt;Confidence on my assessment: 5 / 10 ⭐&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;My Comments About The Paper:&lt;/h3&gt;
-&lt;h4&gt;Summary&lt;/h4&gt;
+&lt;h3 id=&quot;my-comments-about-the-paper&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#my-comments-about-the-paper&quot; aria-label=&quot;my comments about the paper permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;My Comments About The Paper:&lt;/h3&gt;
+&lt;h4 id=&quot;summary&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#summary&quot; aria-label=&quot;summary permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Summary&lt;/h4&gt;
 &lt;p&gt;The paper “Forecasting at Scale” is a well laid out paper giving an insight into methods and techniques used to process
 business time series at scale, do forecasts with the analyst in the loop and automatically select models. The trend
 model incorporates dynamic growth rates and change points. The seasonality model is based on Fourier series. The
@@ -152,19 +407,19 @@ even similar methods. Sometimes the authors also don’t explain their choices.&
 &lt;p&gt;I greatly appreciate the accompanying Python and R forecasting library &lt;a href=&quot;https://facebook.github.io/prophet/&quot;&gt;Prophet&lt;/a&gt;
 that has all mentioned methods implemented and is super fun to use. The paper is a good introduction for users of the
 library.&lt;/p&gt;
-&lt;h4&gt;Major Issues&lt;/h4&gt;
+&lt;h4 id=&quot;major-issues&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#major-issues&quot; aria-label=&quot;major issues permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Major Issues&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;As mentioned in the summary, comprehensible verification of the chosen trend and seasonality methods is largely missing.&lt;/li&gt;
 &lt;li&gt;This paper is confirmatory of previous work and thus belongs into a journal rather than to a conference.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;Minor Issues&lt;/h4&gt;
+&lt;h4 id=&quot;minor-issues&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#minor-issues&quot; aria-label=&quot;minor issues permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Minor Issues&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Table 1 is superfluous. The description of holidays and their format is enough.&lt;/li&gt;
 &lt;li&gt;The style of figures should be consistent throughout the paper.&lt;/li&gt;
 &lt;li&gt;The remark that the authors are storing SHF in Hive or MySQL can be helpful but feels out of place. Either it should
 just be more of a focus to describe implementation details or leave them away completely.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;Confidential Notes to Editor&lt;/h4&gt;
+&lt;h4 id=&quot;confidential-notes-to-editor&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#confidential-notes-to-editor&quot; aria-label=&quot;confidential notes to editor permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Confidential Notes to Editor&lt;/h4&gt;
 &lt;p&gt;Since this is not a real review and there’s no editor I will not write any notes here, but still include it so it’s
 clear a review usually includes this section.&lt;/p&gt;
 &lt;p&gt;One could mention that paper could be suspect to plagiarism or comments that the authors maybe didn’t know enough about
@@ -174,15 +429,15 @@ This can for example be collected data that only your or your organization have 
 &lt;p&gt;If you have a conflict of interest you should not even start the review and make it clear beforehand.&lt;/p&gt;
 &lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2&gt;Review Template&lt;/h2&gt;
+&lt;h2 id=&quot;review-template&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#review-template&quot; aria-label=&quot;review template permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Review Template&lt;/h2&gt;
 &lt;p&gt;The score categories I used above are explained here. The explanations are taken from the slide deck we received at my
 university ZHAW.&lt;/p&gt;
-&lt;h3&gt;Relevance&lt;/h3&gt;
+&lt;h3 id=&quot;relevance&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#relevance&quot; aria-label=&quot;relevance permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Relevance&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Is the paper fully within the scope of the conference?&lt;/li&gt;
 &lt;li&gt;Will the questions and results of the paper be of interest to researchers in the field?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Significance&lt;/h3&gt;
+&lt;h3 id=&quot;significance&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#significance&quot; aria-label=&quot;significance permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Significance&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Is this a significant advance in the state of the art?&lt;/li&gt;
 &lt;li&gt;Is this a paper that people are likely to read and cite?&lt;/li&gt;
@@ -190,13 +445,13 @@ university ZHAW.&lt;/p&gt;
 &lt;li&gt;Does it open new research directions?&lt;/li&gt;
 &lt;li&gt;Is it a paper that is likely to have a lasting impact?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Originality&lt;/h3&gt;
+&lt;h3 id=&quot;originality&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#originality&quot; aria-label=&quot;originality permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Originality&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Reviewers should recognise and reward papers that propose genuinely new ideas.&lt;/li&gt;
 &lt;li&gt;As a reviewer you should try to assess whether the ideas are truly new.&lt;/li&gt;
 &lt;li&gt;Novel combinations, adaptations or extensions of existing ideas are also valuable.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Technical Quality&lt;/h3&gt;
+&lt;h3 id=&quot;technical-quality&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#technical-quality&quot; aria-label=&quot;technical quality permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Technical Quality&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Are the results technically sound?&lt;/li&gt;
 &lt;li&gt;Are there obvious flaws in the conceptual approach?&lt;/li&gt;
@@ -206,7 +461,7 @@ university ZHAW.&lt;/p&gt;
 &lt;li&gt;Is the evaluation appropriate?&lt;/li&gt;
 &lt;li&gt;Did the authors clearly assess both the strengths and weaknesses of their approach?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Clarity and quality of writing&lt;/h3&gt;
+&lt;h3 id=&quot;clarity-and-quality-of-writing&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#clarity-and-quality-of-writing&quot; aria-label=&quot;clarity and quality of writing permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Clarity and quality of writing&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Is the paper clearly written?&lt;/li&gt;
 &lt;li&gt;Is there a good use of examples and figures?&lt;/li&gt;
@@ -217,12 +472,12 @@ university ZHAW.&lt;/p&gt;
 a poorly-written version. However, if the paper is likely to be accepted, please make suggestions to improve the
 clarity of the paper, and provide details of typos.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Scholarship, i.e. scientific context&lt;/h3&gt;
+&lt;h3 id=&quot;scholarship-ie-scientific-context&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#scholarship-ie-scientific-context&quot; aria-label=&quot;scholarship ie scientific context permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Scholarship, i.e. scientific context&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Does the paper situate the work with respect to the state of the art?&lt;/li&gt;
 &lt;li&gt;Are relevant papers cited, discussed, and compared to the presented work?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Overall Score&lt;/h3&gt;
+&lt;h3 id=&quot;overall-score&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#overall-score&quot; aria-label=&quot;overall score permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Overall Score&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;(10) This is best-paper material&lt;/li&gt;
 &lt;li&gt;(9) An excellent paper, a very strong accept&lt;/li&gt;
@@ -234,7 +489,7 @@ clarity of the paper, and provide details of typos.&lt;/li&gt;
 &lt;li&gt;(3) A clear rejection. I vote and argue for rejection. Clearly below the standards of the conference&lt;/li&gt;
 &lt;li&gt;(2) A very strong rejection. I will actively fight for rejection.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Confidence on your assessment&lt;/h3&gt;
+&lt;h3 id=&quot;confidence-on-your-assessment&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#confidence-on-your-assessment&quot; aria-label=&quot;confidence on your assessment permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Confidence on your assessment&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;(10) My own current research is on the topic of the paper&lt;/li&gt;
 &lt;li&gt;(9) I have undertaken research on the topic of the paper&lt;/li&gt;
@@ -247,7 +502,7 @@ clarity of the paper, and provide details of typos.&lt;/li&gt;
 &lt;li&gt;(2) My knowledge in the area is very limited&lt;/li&gt;
 &lt;li&gt;(1) My assessment can be wrong&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Comments to Authors (free text):&lt;/h3&gt;
+&lt;h3 id=&quot;comments-to-authors-free-text&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#comments-to-authors-free-text&quot; aria-label=&quot;comments to authors free text permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Comments to Authors (free text):&lt;/h3&gt;
 &lt;p&gt;General points:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Make sure you substantiate all the scores for the different criteria above.&lt;/li&gt;
@@ -294,7 +549,7 @@ clarity of the paper, and provide details of typos.&lt;/li&gt;
  Sean J. Taylor & Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician. I’m…]]></description><link>https://sebastianhaeni.github.com/0006-forecasting-at-scale-content/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0006-forecasting-at-scale-content/</guid><pubDate>Tue, 12 May 2020 23:30:00 GMT</pubDate><content:encoded>&lt;p&gt;This is my third blog post about the paper
 &lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Sean J. Taylor &amp;#x26; Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;I’m going to focus on its contents and try to place it in the field of forecasting and business time series.&lt;/p&gt;
-&lt;h2&gt;Business Time Series&lt;/h2&gt;
+&lt;h2 id=&quot;business-time-series&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#business-time-series&quot; aria-label=&quot;business time series permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Business Time Series&lt;/h2&gt;
 &lt;p&gt;Most large corporations process a lot of interesting data in the form of Business Time Series. These can be customer
 related such as purchases, interactions through consultations, support, incident reports, usage of the service and so
 on. They can also be about internal processes that cannot be attributed to a single customer, such as infrastructure
@@ -303,7 +558,7 @@ providing services to multiple customers.&lt;/p&gt;
 create forecasts. The paper “Forecasting at Scale” provides the reader with practices proofed in
 the real world because they have been applied at Facebook. If the proposed methods work outside of Facebook and are
 applicable to other organizations has to be found out.&lt;/p&gt;
-&lt;h2&gt;Preliminary reading&lt;/h2&gt;
+&lt;h2 id=&quot;preliminary-reading&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#preliminary-reading&quot; aria-label=&quot;preliminary reading permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Preliminary reading&lt;/h2&gt;
 &lt;p&gt;I’m going to list a few topics that you should be familiar with in case you decide to read the paper.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Linear Regression, Advanced Regression Methods, Exponential Smoothing Methods, Bayesian Statistics, Fourier Series,
@@ -313,14 +568,14 @@ applicable to other organizations has to be found out.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.jstatsoft.org/article/view/v076i01&quot;&gt;Stan&lt;/a&gt;, &lt;a href=&quot;https://www.r-project.org/&quot;&gt;R&lt;/a&gt;, &lt;a href=&quot;https://shiny.rstudio.com/&quot;&gt;Shiny&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Assembly of Ideas&lt;/h2&gt;
+&lt;h2 id=&quot;assembly-of-ideas&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#assembly-of-ideas&quot; aria-label=&quot;assembly of ideas permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Assembly of Ideas&lt;/h2&gt;
 &lt;p&gt;The paper has the main idea to assemble several methods into a scalable forecasting system. So what are the ideas
 that the authors have assembled to build this system of scale?&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;A forecasting model&lt;/li&gt;
 &lt;li&gt;Automatic evaluation of forecasts&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;The &lt;a href=&quot;https://facebook.github.io/prophet/&quot;&gt;Prophet&lt;/a&gt; Forecasting Model&lt;/h2&gt;
+&lt;h2 id=&quot;the-prophet-forecasting-model&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#the-prophet-forecasting-model&quot; aria-label=&quot;the prophet forecasting model permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;The &lt;a href=&quot;https://facebook.github.io/prophet/&quot;&gt;Prophet&lt;/a&gt; Forecasting Model&lt;/h2&gt;
 &lt;p&gt;As we know from the STL paper (Seasonal and Trend Decomposition using Loess), one can try to decompose a time series
 into trend and seasonality components using Loess regression.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Trend&lt;/strong&gt;&lt;/p&gt;
@@ -495,7 +750,7 @@ holiday in terms of trend or seasonality change.&lt;/p&gt;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;h2&gt;Automatic Evaluation of Forecasts&lt;/h2&gt;
+&lt;h2 id=&quot;automatic-evaluation-of-forecasts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#automatic-evaluation-of-forecasts&quot; aria-label=&quot;automatic evaluation of forecasts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Automatic Evaluation of Forecasts&lt;/h2&gt;
 &lt;p&gt;The analyst can optimize a model given time. If there are too many forecasts that have to be produced that can be
 handled by humans, the automatic evaluation of forecasts comes into play.&lt;/p&gt;
 &lt;p&gt;The metric used to compare models is the mean absolute percentage error (MAPE) over a number of forecasts produced with
@@ -507,7 +762,7 @@ the model to produce an error term using MAPE which can be compared to baseline 
 &lt;p&gt;Time series data usually encompasses a lot of data points and running SHFs with the maximum amount of periods would not
 be feasible as the model needs to be retrained each time. With SHFs, the simulation count is significantly reduced and
 the computation can be run independent on separate machines.&lt;/p&gt;
-&lt;h2&gt;Paper Context&lt;/h2&gt;
+&lt;h2 id=&quot;paper-context&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#paper-context&quot; aria-label=&quot;paper context permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Paper Context&lt;/h2&gt;
 &lt;p&gt;The paper “Forecasting at Scale”, picks up common knowledge that the field of business time series has been using for
 quite some time but mix it with other techniques to solve new challenges while making it scalable and allowing the
 analyst to be in the loop.&lt;/p&gt;
@@ -516,7 +771,7 @@ makes all those techniques readily usable for a broader audience. The paper is w
 library. If you’re not planning that have a go with it, I can still recommend it as there might be some smallish novel
 ideas introduced that you might find interesting. If you are already well versed in the time series field, I would say
 that this paper is not going to contain much new for you.&lt;/p&gt;
-&lt;h2&gt;Paper Follow ups&lt;/h2&gt;
+&lt;h2 id=&quot;paper-follow-ups&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#paper-follow-ups&quot; aria-label=&quot;paper follow ups permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Paper Follow ups&lt;/h2&gt;
 &lt;p&gt;The library &lt;a href=&quot;https://facebook.github.io/prophet/&quot;&gt;Prophet&lt;/a&gt; is under active development for over a year now. The open source community contributes to future
 improvements to the code. The basic methods mentioned in the paper implemented haven’t been changed though. So I’m
 guessing that they are a good fit for the real world.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Automatically keep your dependencies up to date in closed source projects for free]]></title><description><![CDATA[We tackle the question of why it’s important to keep your dependencies up to date, compare a few proprietary
@@ -543,7 +798,7 @@ solutions and then talk about how to do it with NPM, Gradle and Jenkins yourself
         loading=&quot;lazy&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;h2&gt;Why it is important to keep your dependencies up to date&lt;/h2&gt;
+&lt;h2 id=&quot;why-it-is-important-to-keep-your-dependencies-up-to-date&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#why-it-is-important-to-keep-your-dependencies-up-to-date&quot; aria-label=&quot;why it is important to keep your dependencies up to date permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Why it is important to keep your dependencies up to date&lt;/h2&gt;
 &lt;p&gt;There are several reasons why you should keep the dependencies you use in your project up to date:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Keep the burden of migrating small in case of incompatibilities:&lt;/strong&gt; If you do not regularly upgrade your dependencies
 you will eventually have to and face a big list of breaking changes which do not take minutes to fix but hours, days or
@@ -563,7 +818,7 @@ latest version. But then you find yourself to be back 3 major versions which did
 vulnerability. So, what are your options? You can upgrade the library and spend all the migration effort right there and
 then and put everything else on hold, or just accept the risk. Neither are easy to sell to your business owner. If
 you are using the latest versions of your dependencies, the upgrades cost you almost zero time.&lt;/p&gt;
-&lt;h3&gt;How recent should you keep dependencies&lt;/h3&gt;
+&lt;h3 id=&quot;how-recent-should-you-keep-dependencies&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-recent-should-you-keep-dependencies&quot; aria-label=&quot;how recent should you keep dependencies permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How recent should you keep dependencies&lt;/h3&gt;
 &lt;p&gt;Generally, I would say that keeping your dependencies at the absolute latest version, including major, minor and patch is
 the preferred way. Don’t use betas, release candidates or other non stable versions.
 Although using the absolute latest doesn’t always make sense depending on several factors. If you’re using libraries or
@@ -608,7 +863,7 @@ versions just after your latest major rollout to production. If you use a branch
 that would mean you update on the &lt;code class=&quot;language-text&quot;&gt;develop&lt;/code&gt; branch. This allows for all testers and developers working on the
 new version to experience the new major version of your dependencies during development. They can find incompatibilities
 before you ship to customers.&lt;/p&gt;
-&lt;h2&gt;Dependency Update Automation Bots&lt;/h2&gt;
+&lt;h2 id=&quot;dependency-update-automation-bots&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#dependency-update-automation-bots&quot; aria-label=&quot;dependency update automation bots permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Dependency Update Automation Bots&lt;/h2&gt;
 &lt;p&gt;There are several products offered on the Internet to automate dependency updates for you. Here’s a list of a few of
 them:&lt;/p&gt;
 &lt;ul&gt;
@@ -623,7 +878,7 @@ project you have to pay, and sometimes these are considerable amounts. Sometimes
 CI systems.&lt;/p&gt;
 &lt;p&gt;Luckily, there is no need to pay for these services, you can just build it yourself with all the control you want. The
 following sections describe how I built dependency bots for our team.&lt;/p&gt;
-&lt;h2&gt;How to automate updates with your automation system such as Jenkins&lt;/h2&gt;
+&lt;h2 id=&quot;how-to-automate-updates-with-your-automation-system-such-as-jenkins&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-to-automate-updates-with-your-automation-system-such-as-jenkins&quot; aria-label=&quot;how to automate updates with your automation system such as jenkins permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How to automate updates with your automation system such as Jenkins&lt;/h2&gt;
 &lt;p&gt;The basic principle is that you have an automatically scheduled job run by your automation system, such as Jenkins,
 that looks at your dependencies, does a diff with the package registry or repository and updates your files specifying
 the new versions, then creates a commit on a new Git branch and pushes that to the Git repository. With the new branch
@@ -695,7 +950,7 @@ merge the pull request for the one dependency that works.&lt;/p&gt;
 &lt;li&gt;Either add a &lt;code class=&quot;language-text&quot;&gt;git push&lt;/code&gt; command, or in case of Jenkins run the &lt;a href=&quot;https://plugins.jenkins.io/git/#git-publisher&quot;&gt;Git Publisher plugin&lt;/a&gt; to publish the branch.&lt;/li&gt;
 &lt;li&gt;Add code that automatically creates a Pull Request in your Git repository.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;How to automatically update NPM dependencies&lt;/h2&gt;
+&lt;h2 id=&quot;how-to-automatically-update-npm-dependencies&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-to-automatically-update-npm-dependencies&quot; aria-label=&quot;how to automatically update npm dependencies permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How to automatically update NPM dependencies&lt;/h2&gt;
 &lt;p&gt;If you want to automatically update your NPM dependencies, you already have the tools from NPM itself, no need for other
 plugins. You can run &lt;code class=&quot;language-text&quot;&gt;npm update&lt;/code&gt; to update the versions in your &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; file according to the version selector
 you have defined.&lt;/p&gt;
@@ -720,7 +975,7 @@ in my project because NPM ran out of memory. So, you might want to scale it back
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;npm outdated&lt;/code&gt; to print outdated versions&lt;/li&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;npm update&lt;/code&gt; to automatically update them&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;How to automatically update Gradle dependencies&lt;/h2&gt;
+&lt;h2 id=&quot;how-to-automatically-update-gradle-dependencies&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-to-automatically-update-gradle-dependencies&quot; aria-label=&quot;how to automatically update gradle dependencies permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How to automatically update Gradle dependencies&lt;/h2&gt;
 &lt;p&gt;If you’re using Gradle to manage your dependencies for Java, Kotlin or Groovy projects (or others?), then there’s no
 built-in way to update your dependencies, but there are great plugins to do so.&lt;/p&gt;
 &lt;p&gt;I’m actually using two plugins; one depends on the other.&lt;/p&gt;
@@ -771,10 +1026,10 @@ a comment.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Dissecting a 
 The paper is the one mentioned in the…]]></description><link>https://sebastianhaeni.github.com/0004-dissecting-paper-style/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0004-dissecting-paper-style/</guid><pubDate>Thu, 23 Apr 2020 20:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In this post I want to dissect a paper’s style and try to criticize it irregardless of it’s content.
 The paper is the one mentioned in the previous post:&lt;/p&gt;
 &lt;p&gt;&lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Sean J. Taylor &amp;#x26; Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;h2&gt;Standard Structure&lt;/h2&gt;
+&lt;h2 id=&quot;standard-structure&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#standard-structure&quot; aria-label=&quot;standard structure permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Standard Structure&lt;/h2&gt;
 &lt;p&gt;Let’s go over the standard structure of a paper and describe what to look for, and then giving the verdict of how the
 paper did.&lt;/p&gt;
-&lt;h3&gt;0. Title&lt;/h3&gt;
+&lt;h3 id=&quot;0-title&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#0-title&quot; aria-label=&quot;0 title permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;0. Title&lt;/h3&gt;
 &lt;p&gt;A good title for a paper should honestly reflect the content, give the reader hints what topics it will touch,
 and reveals the category of the paper (argumentative, analytical, definition, compare and contrast, cause and effect, report.
 interpretive, etc.).&lt;/p&gt;
@@ -788,7 +1043,7 @@ described in the paper and rather focuses on the fact that the paper is practica
 is mentioned. So in my opinion it’s a bit catchy but that’s maybe in the nature of the authors since they work for Facebook
 and can afford to have a title like that. It’s clear the content will not be about biomedical topics or physics.
 It could also be about weather forecasting if it weren’t published in a journal named “The American Statistician”.&lt;/p&gt;
-&lt;h3&gt;1. Abstract&lt;/h3&gt;
+&lt;h3 id=&quot;1-abstract&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-abstract&quot; aria-label=&quot;1 abstract permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Abstract&lt;/h3&gt;
 &lt;p&gt;The abstract is the first thing a paper, and the part most often read. It should stand for itself and not require the
 reader to read any other part of the paper to understand it.&lt;/p&gt;
 &lt;p&gt;The structure of an abstract is:&lt;/p&gt;
@@ -805,7 +1060,7 @@ feel guided into the topic. The second sentence starts explaining the problem as
 above. From then on the abstract still follows the structure but tends to say “we will describe in this paper” and not
 actually giving the reader the result right there in the abstract. It’s nicely rounded off by explaining where these
 methods are now productively in place.&lt;/p&gt;
-&lt;h3&gt;2. Introduction and Related Work&lt;/h3&gt;
+&lt;h3 id=&quot;2-introduction-and-related-work&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-introduction-and-related-work&quot; aria-label=&quot;2 introduction and related work permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. Introduction and Related Work&lt;/h3&gt;
 &lt;p&gt;The introduction explains the problem in depth and why it’s interesting and important. It also explains why naive approaches
 usually fail and why other people have not solved it before and thus makes the problem hard. It should also introduce
 the proposed approach.&lt;/p&gt;
@@ -819,7 +1074,7 @@ and the main body describes solutions to forecasting problems for the good first
 related work. I could imagine the reason being the other few companies that could encounter scales like Facebook don’t
 publish their results as white papers. Though I could also imagine the authors didn’t care much about related research work,
 since they were building a practical implementation that matches their company environment.&lt;/p&gt;
-&lt;h3&gt;3. Main Body&lt;/h3&gt;
+&lt;h3 id=&quot;3-main-body&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-main-body&quot; aria-label=&quot;3 main body permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. Main Body&lt;/h3&gt;
 &lt;p&gt;This part should talk about formulation, implementation, results, experiments, etc.&lt;/p&gt;
 &lt;p&gt;The main body is a longer piece of content which should be grouped into sections. Ideally the text doesn’t introduce
 more than one idea per sentence or paragraph. A topic should be in its own section.&lt;/p&gt;
@@ -837,19 +1092,19 @@ more than one idea per sentence or paragraph. A topic should be in its own secti
 &lt;p&gt;&lt;strong&gt;Verdict&lt;/strong&gt;: The main body is well-structured, sections are not too long, paragraphs have a reasonable length and contains
 a good amount of visualizations. Details as to why they have chosen a certain method over another are often left out
 as one can read the reasons in the respective paper, which I guess follows the principle of omitting unnecessary material.&lt;/p&gt;
-&lt;h3&gt;4. Conclusions&lt;/h3&gt;
+&lt;h3 id=&quot;4-conclusions&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#4-conclusions&quot; aria-label=&quot;4 conclusions permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;4. Conclusions&lt;/h3&gt;
 &lt;p&gt;The conclusion is a brief summary of the main findings and includes a discussion, perspective and future work etc.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Verdict&lt;/strong&gt;: The conclusion doesn’t go into any details anymore, which is good as it should be brief. What I’m missing from it is
 some sort of critical questioning of the results. What the authors describe is only positive and that they are happy.
 That’s maybe what truly are. There’s no mention of future work of possible improvements.&lt;/p&gt;
-&lt;h3&gt;5. Acknowledgements&lt;/h3&gt;
+&lt;h3 id=&quot;5-acknowledgements&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#5-acknowledgements&quot; aria-label=&quot;5 acknowledgements permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;5. Acknowledgements&lt;/h3&gt;
 &lt;p&gt;As the name says, in this part the authors acknowledge people that helped the creation of the paper.&lt;/p&gt;
-&lt;h3&gt;6. References&lt;/h3&gt;
+&lt;h3 id=&quot;6-references&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#6-references&quot; aria-label=&quot;6 references permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;6. References&lt;/h3&gt;
 &lt;p&gt;References should be complete and relevant and correctly cited.&lt;/p&gt;
-&lt;h3&gt;7. Appendices&lt;/h3&gt;
+&lt;h3 id=&quot;7-appendices&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#7-appendices&quot; aria-label=&quot;7 appendices permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;7. Appendices&lt;/h3&gt;
 &lt;p&gt;This part is optional and sometimes used to append large figures, tables or code.&lt;/p&gt;
-&lt;h2&gt;Style Review&lt;/h2&gt;
-&lt;h3&gt;Graphs, Figures and Tables&lt;/h3&gt;
+&lt;h2 id=&quot;style-review&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#style-review&quot; aria-label=&quot;style review permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Style Review&lt;/h2&gt;
+&lt;h3 id=&quot;graphs-figures-and-tables&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#graphs-figures-and-tables&quot; aria-label=&quot;graphs figures and tables permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Graphs, Figures and Tables&lt;/h3&gt;
 &lt;p&gt;If you haven’t heard about Edward Tufte, go read about his work now. He has produced some great literature about
 statistics visualizations. He talks about information design (e.g. data-ink ratio), criticizes PowerPoint, encourages
 small multiples (produce many small visualizations instead of one superimposed graph) and other techniques.&lt;/p&gt;
@@ -922,22 +1177,22 @@ and should not be compared. Also, isn’t weekly also a trend (referring to the 
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;h1&gt;References&lt;/h1&gt;
+&lt;h1 id=&quot;references&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#references&quot; aria-label=&quot;references permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;References&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;Justin Zobel (2014) Writing for Computer Science, Third Edition, New York: Springer.&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Facebook's Prophet and the paper]]></title><description><![CDATA[For the AI seminar, I am attending, I selected the following paper:  Sean J. Taylor & Benjamin Letham (2018) “Forecasting at Scale”, The…]]></description><link>https://sebastianhaeni.github.com/0003-facebook-prophet-paper/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0003-facebook-prophet-paper/</guid><pubDate>Fri, 20 Mar 2020 22:00:00 GMT</pubDate><content:encoded>&lt;p&gt;For the AI seminar, I am attending, I selected the following paper:&lt;/p&gt;
 &lt;p&gt;&lt;span style=&quot;font-size: 1.2em&quot;&gt; &lt;em&gt;&lt;a href=&quot;https://amstat.tandfonline.com/doi/full/10.1080/00031305.2017.1380080&quot;&gt;Sean J. Taylor &amp;#x26; Benjamin Letham (2018) “Forecasting at Scale”, The American Statistician&lt;/a&gt;&lt;/em&gt;.&lt;/span&gt;&lt;/p&gt;
-&lt;h2&gt;Abstract&lt;/h2&gt;
+&lt;h2 id=&quot;abstract&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#abstract&quot; aria-label=&quot;abstract permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Abstract&lt;/h2&gt;
 &lt;p&gt;In the coming weeks, I want to evaluate the method described in the paper and see what can be accomplished with it in an
 environment relevant to me. The relevant environment for me is time series, mostly business time series, but can be of
 different sorts as well.&lt;/p&gt;
-&lt;h2&gt;Content&lt;/h2&gt;
+&lt;h2 id=&quot;content&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#content&quot; aria-label=&quot;content permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Content&lt;/h2&gt;
 &lt;p&gt;The paper “Forecasting at scale” describes the method that Facebook uses to do forecasting on time series data based
 on an additive model where non-linear trends are fit with yearly, weekly and daily seasonality, plus holiday effects.
 The procedure is robust to missing data and shifts in the trend, and typically handles outliers well.&lt;/p&gt;
-&lt;h2&gt;Motivation&lt;/h2&gt;
+&lt;h2 id=&quot;motivation&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#motivation&quot; aria-label=&quot;motivation permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Motivation&lt;/h2&gt;
 &lt;p&gt;I’m explaining my motivation behind selecting the paper:&lt;/p&gt;
-&lt;h3&gt;Why have I chosen this paper?&lt;/h3&gt;
+&lt;h3 id=&quot;why-have-i-chosen-this-paper&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#why-have-i-chosen-this-paper&quot; aria-label=&quot;why have i chosen this paper permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Why have I chosen this paper?&lt;/h3&gt;
 &lt;p&gt;Last year I got a task when doing volunteering service for the country, to work on a time series data set. I built a
 proof of concept system that could process the gigabytes of CSV files and aggregate the time series to different sample
 durations. The time series were also transformed using different methods such as &lt;a href=&quot;https://en.wikipedia.org/wiki/CUSUM&quot;&gt;CUSUM&lt;/a&gt;
@@ -988,14 +1243,14 @@ as it’s method promises that it can not only cope with holiday effects but als
 detection and allows for Analyst-in-the-Loop Modeling.&lt;/p&gt;
 &lt;p&gt;But unfortunately the time we had run out and I had no chance to look at this method in depth. This AI seminar now gives
 me the chance to catch up.&lt;/p&gt;
-&lt;h3&gt;Why is it relevant and interesting?&lt;/h3&gt;
+&lt;h3 id=&quot;why-is-it-relevant-and-interesting&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#why-is-it-relevant-and-interesting&quot; aria-label=&quot;why is it relevant and interesting permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Why is it relevant and interesting?&lt;/h3&gt;
 &lt;p&gt;Facebook has developed the Prophet library in house and is sharing it as open source with the community. At my day job,
 we’re operating applications at scale and thus are confronted with the same problems that Facebook has tried to solve.&lt;/p&gt;
 &lt;p&gt;I think it can be interesting for larger companies trying to achieve application operating models that can do self-healing,
 scale automatically using predictions, anticipate surges and find anomalies so an operator can have a closer look and
 feed the result back into the model. Until 2025 we want to have AIOps established in the company. And we’re certainly
 not the only company trying to do this.&lt;/p&gt;
-&lt;h2&gt;Expectations &amp;#x26; Goals&lt;/h2&gt;
+&lt;h2 id=&quot;expectations--goals&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#expectations--goals&quot; aria-label=&quot;expectations  goals permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Expectations &amp;#x26; Goals&lt;/h2&gt;
 &lt;p&gt;My goal of working through this paper and the accompanying library is to deepen my knowledge of how time series analysis
 can be approached beside the methods I already know like STL. Also, I would like to be able to tell our business owners
 and fellow coworkers if this method could be a useful tool.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[AI Seminar Intro]]></title><description><![CDATA[As mentioned in my first blog post New Beginnings, I’m inscribed to a course
@@ -1003,7 +1258,7 @@ named “AI Seminar”. In this course, each student is expected to…]]></descr
 named “AI Seminar”. In this course, each student is expected to read a paper of their choice.
 We will go through understanding writing style, understanding content, reviewing and criticizing
 a paper, evaluating yourself oneself and have a final presentation.&lt;/p&gt;
-&lt;h2&gt;Why I have chosen this seminar&lt;/h2&gt;
+&lt;h2 id=&quot;why-i-have-chosen-this-seminar&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#why-i-have-chosen-this-seminar&quot; aria-label=&quot;why i have chosen this seminar permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Why I have chosen this seminar&lt;/h2&gt;
 &lt;p&gt;I have not touched on that many results of scientific work. This course is ideal to fix that for me.
 We will discuss in person and work through a paper in depth. I feel like this is something that will
 always be handy to have experienced regarding my future career, even if I would never write a paper.
@@ -1011,7 +1266,7 @@ But since I’m inscribed in this seminar, I may even would feel comfortable wri
 &lt;p&gt;That the papers we read are supposed to be in the field of AI is also something adding to my
 motivation to choose this seminar as my specialization is Data Science. Meaning I can learn about
 some AI methods that I am interested in anyway. So, two flies with one clap.&lt;/p&gt;
-&lt;h2&gt;My learning goals&lt;/h2&gt;
+&lt;h2 id=&quot;my-learning-goals&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#my-learning-goals&quot; aria-label=&quot;my learning goals permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;My learning goals&lt;/h2&gt;
 &lt;p&gt;My learning goals pretty much align with the course description. So I want to learn about scientific
 writing, what a good paper is about and get familiar with a topic of my interest.&lt;/p&gt;
 &lt;ol&gt;
@@ -1027,7 +1282,7 @@ I try to explain why having a personal blog is a good…]]></description><link>h
 I try to explain why having a personal blog is a good idea IMHO and what gives me the motivation to
 start it now. If you don’t have your own place to write, this maybe gives you some motivation to do
 so too.&lt;/p&gt;
-&lt;h2&gt;Who am I&lt;/h2&gt;
+&lt;h2 id=&quot;who-am-i&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#who-am-i&quot; aria-label=&quot;who am i permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Who am I&lt;/h2&gt;
 &lt;p&gt;I’m a software engineer working at a large telecommunications company in Switzerland. Here I build
 large scale full stack web applications with technologies such as Springboot and Angular. We pursue
 a modern development pipeline with state of the art tooling and automation with autonomous releasing
@@ -1035,7 +1290,7 @@ and advanced monitoring techniques.&lt;/p&gt;
 &lt;p&gt;Besides that, I’m doing my Master of Science with specialization in Data Science.&lt;/p&gt;
 &lt;p&gt;So I have lots of things I learn daily. Some things are personal ideas, some things are
 implementations of ideas of the industry, some things are just personal reflection.&lt;/p&gt;
-&lt;h2&gt;Motivation #1: Writing down what I learned&lt;/h2&gt;
+&lt;h2 id=&quot;motivation-1-writing-down-what-i-learned&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#motivation-1-writing-down-what-i-learned&quot; aria-label=&quot;motivation 1 writing down what i learned permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Motivation #1: Writing down what I learned&lt;/h2&gt;
 &lt;p&gt;If you learn new things on a daily basis, you will eventually have learned that many relevant things
 you are not able to recall each and every learning correctly unless you write it down.&lt;/p&gt;
 &lt;p&gt;Now if you write it down for your personal use only, you can write down pretty much anything. It
@@ -1048,7 +1303,7 @@ from it. What is left at that point is an abstract description of problem and so
 theory should be applicable to you in the future in a new setting. Because you’ll not always be
 in the same environment forever and your problem and solution space changes.&lt;/p&gt;
 &lt;p&gt;Also while you have go through the abstraction process you start to get to the core of you learning.&lt;/p&gt;
-&lt;h2&gt;Motivation #2: Sharing with others&lt;/h2&gt;
+&lt;h2 id=&quot;motivation-2-sharing-with-others&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#motivation-2-sharing-with-others&quot; aria-label=&quot;motivation 2 sharing with others permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Motivation #2: Sharing with others&lt;/h2&gt;
 &lt;p&gt;You might learn useful things that you share verbally, by email or text message, but with a blog you
 can share what you learned with people you don’t know. They would probably reach a single article of
 the blog through a Google search, read it and apply it to their problem.&lt;/p&gt;
@@ -1060,7 +1315,7 @@ snippet.&lt;/p&gt;
 &lt;p&gt;By sharing the blog post publicly and including a discussion or comment section, you are able to
 get feedback. This may be that you explained something not clearly or that there are other people
 that have thought about this problem before that you don’t know about.&lt;/p&gt;
-&lt;h2&gt;Motivation #3: Refine my writing skills&lt;/h2&gt;
+&lt;h2 id=&quot;motivation-3-refine-my-writing-skills&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#motivation-3-refine-my-writing-skills&quot; aria-label=&quot;motivation 3 refine my writing skills permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Motivation #3: Refine my writing skills&lt;/h2&gt;
 &lt;p&gt;Explaining something so everybody can understand is an essential skill for engineers working in
 teams. If you want to introduce a new concept, raise awareness about architectural problems and so
 on, not everybody will understand what you mean without investing time explaining it.&lt;/p&gt;
@@ -1068,13 +1323,13 @@ on, not everybody will understand what you mean without investing time explainin
 way to get better at this, is to exercise it. So a blog can be an excellent tool to refine your
 writing skills.&lt;/p&gt;
 &lt;p&gt;Also my mother tongue is not English, so this blog allows me to refine my English writing.&lt;/p&gt;
-&lt;h2&gt;Motivation #4: Trying Gatsby.js&lt;/h2&gt;
+&lt;h2 id=&quot;motivation-4-trying-gatsbyjs&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#motivation-4-trying-gatsbyjs&quot; aria-label=&quot;motivation 4 trying gatsbyjs permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Motivation #4: Trying Gatsby.js&lt;/h2&gt;
 &lt;p&gt;I’m reading a lot of people are using &lt;a href=&quot;https://www.gatsbyjs.org/&quot;&gt;Gatsby.js&lt;/a&gt;. It sounds like a promising
 technology and I am eager to get my hands on it. It has some cool concepts. So, I’m building this
 blog with Gatsby.js.&lt;/p&gt;
 &lt;p&gt;See &lt;a href=&quot;https://github.com/sebastianhaeni/blog&quot;&gt;https://github.com/sebastianhaeni/blog&lt;/a&gt;
 if you want to read the source code.&lt;/p&gt;
-&lt;h2&gt;Motivation #5: AI Seminar course&lt;/h2&gt;
+&lt;h2 id=&quot;motivation-5-ai-seminar-course&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#motivation-5-ai-seminar-course&quot; aria-label=&quot;motivation 5 ai seminar course permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Motivation #5: AI Seminar course&lt;/h2&gt;
 &lt;p&gt;Lastly, and where I finally got the motivation to start this blog is a seminar about AI that I’m
 inscribed in for my Masters. In that course, we go through a scientific paper and are expected to
 write blog posts about the process and what we learned when reading and asking questions about it.&lt;/p&gt;</content:encoded></item></channel></rss>

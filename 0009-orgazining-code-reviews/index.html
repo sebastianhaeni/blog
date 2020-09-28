@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style id="typography.js">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{font:118.75%/1.58 'Lora',serif;box-sizing:border-box;overflow-y:scroll;}*{box-sizing:inherit;}*:before{box-sizing:inherit;}*:after{box-sizing:inherit;}body{color:hsla(0,0%,0%,0.73);font-family:'Lora',serif;font-weight:400;word-wrap:break-word;font-kerning:normal;-moz-font-feature-settings:"kern", "liga", "clig", "calt";-ms-font-feature-settings:"kern", "liga", "clig", "calt";-webkit-font-feature-settings:"kern", "liga", "clig", "calt";font-feature-settings:"kern", "liga", "clig", "calt";}img{max-width:100%;margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;}h1{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;color:hsla(0,0%,0%,0.9);font-family:'Varela Round',sans-serif;font-weight:400;text-rendering:optimizeLegibility;font-size:2rem;line-height:1.1;}h2{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;color:hsla(0,0%,0%,0.9);font-family:'Varela Round',sans-serif;font-weight:400;text-rendering:optimizeLegibility;font-size:1.51572rem;line-height:1.1;}h3{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;color:hsla(0,0%,0%,0.9);font-family:'Varela Round',sans-serif;font-weight:400;text-rendering:optimizeLegibility;font-size:1.31951rem;line-height:1.1;}h4{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;color:hsla(0,0%,0%,0.9);font-family:'Varela Round',sans-serif;font-weight:400;text-rendering:optimizeLegibility;font-size:1rem;line-height:1.1;}h5{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;color:hsla(0,0%,0%,0.9);font-family:'Varela Round',sans-serif;font-weight:400;text-rendering:optimizeLegibility;font-size:0.87055rem;line-height:1.1;}h6{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;color:hsla(0,0%,0%,0.9);font-family:'Varela Round',sans-serif;font-weight:400;text-rendering:optimizeLegibility;font-size:0.81225rem;line-height:1.1;}hgroup{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;}ul{margin-left:1.58rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;list-style-position:outside;list-style-image:none;}ol{margin-left:1.58rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;list-style-position:outside;list-style-image:none;}dl{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;}dd{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;}p{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;}figure{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;}pre{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;font-size:0.85rem;line-height:1.58rem;}table{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;font-size:1rem;line-height:1.58rem;border-collapse:collapse;width:100%;}fieldset{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;}blockquote{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0.9875rem;padding-right:0;padding-top:0;margin-bottom:1.58rem;font-size:1.1487rem;line-height:1.58rem;border-left:0.5925rem solid #134896;color:hsla(0,0%,0%,0.65);font-style:italic;}form{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;}noscript{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;}iframe{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;}hr{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:calc(1.58rem - 1px);background:hsla(0,0%,0%,0.2);border:none;height:1px;}address{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.58rem;}b{font-weight:700;}strong{font-weight:700;}dt{font-weight:700;}th{font-weight:700;}li{margin-bottom:calc(1.58rem / 2);}ol li{padding-left:0;}ul li{padding-left:0;}li > ol{margin-left:1.58rem;margin-bottom:calc(1.58rem / 2);margin-top:calc(1.58rem / 2);}li > ul{margin-left:1.58rem;margin-bottom:calc(1.58rem / 2);margin-top:calc(1.58rem / 2);}blockquote *:last-child{margin-bottom:0;}li *:last-child{margin-bottom:0;}p *:last-child{margin-bottom:0;}li > p{margin-bottom:calc(1.58rem / 2);}code{font-size:0.85rem;line-height:1.58rem;}kbd{font-size:0.85rem;line-height:1.58rem;}samp{font-size:0.85rem;line-height:1.58rem;}abbr{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}acronym{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}abbr[title]{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;text-decoration:none;}thead{text-align:left;}td,th{text-align:left;border-bottom:1px solid hsla(0,0%,0%,0.12);font-feature-settings:"tnum";-moz-font-feature-settings:"tnum";-ms-font-feature-settings:"tnum";-webkit-font-feature-settings:"tnum";padding-left:1.05333rem;padding-right:1.05333rem;padding-top:0.79rem;padding-bottom:calc(0.79rem - 1px);}th:first-child,td:first-child{padding-left:0;}th:last-child,td:last-child{padding-right:0;}a{color:#134896;text-decoration:none;text-shadow:.03em 0 #fff,-.03em 0 #fff,0 .03em #fff,0 -.03em #fff,.06em 0 #fff,-.06em 0 #fff,.09em 0 #fff,-.09em 0 #fff,.12em 0 #fff,-.12em 0 #fff,.15em 0 #fff,-.15em 0 #fff;background-image:linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 1px, #134896 1px, #134896 2px, rgba(0, 0, 0, 0) 2px);}a:hover,a:active{text-shadow:none;background-image:none;}h1,h2,h3,h4,h5,h6{margin-top:2.37rem;margin-bottom:0.79rem;}li>ol,li>ul{margin-left:20px;margin-bottom:0;}blockquote > :last-child{margin-bottom:0;}blockquote cite{font-size:1rem;line-height:1.58rem;color:hsla(0,0%,0%,0.73);font-style:normal;font-weight:400;}blockquote cite:before{content:"— ";}@media only screen and (max-width:480px){html{font-size:106.25%;line-height:28px;}blockquote{border-left:0.29625rem solid #134896;color:hsla(0,0%,0%,0.59);padding-left:0.88875rem;font-style:italic;margin-left:-1.185rem;margin-right:0;}}</style><style data-href="/blog/styles.c2fc1d7581b4d134dedc.css">code[class*=language-],pre[class*=language-]{color:#000;background:none;text-shadow:0 1px #fff;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}code[class*=language-],pre[class*=language-]{font-size:medium}.gatsby-highlight code[class*=language-],.gatsby-highlight pre[class*=language-]{font-size:.8em}.anchor{background-image:none}</style><meta name="generator" content="Gatsby 2.24.65"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="preconnect" href="https://www.google-analytics.com"/><link rel="dns-prefetch" href="https://www.google-analytics.com"/><link rel="alternate" type="application/rss+xml" title="Blog of Sebastian Häni" href="/blog/rss.xml"/><link rel="icon" href="/blog/favicon-32x32.png?v=b4ad523f144d7d9048b92d580ba7b53d" type="image/png"/><link rel="manifest" href="/blog/manifest.webmanifest"/><meta name="theme-color" content="#663399"/><link rel="apple-touch-icon" sizes="48x48" href="/blog/icons/icon-48x48.png?v=b4ad523f144d7d9048b92d580ba7b53d"/><link rel="apple-touch-icon" sizes="72x72" href="/blog/icons/icon-72x72.png?v=b4ad523f144d7d9048b92d580ba7b53d"/><link rel="apple-touch-icon" sizes="96x96" href="/blog/icons/icon-96x96.png?v=b4ad523f144d7d9048b92d580ba7b53d"/><link rel="apple-touch-icon" sizes="144x144" href="/blog/icons/icon-144x144.png?v=b4ad523f144d7d9048b92d580ba7b53d"/><link rel="apple-touch-icon" sizes="192x192" href="/blog/icons/icon-192x192.png?v=b4ad523f144d7d9048b92d580ba7b53d"/><link rel="apple-touch-icon" sizes="256x256" href="/blog/icons/icon-256x256.png?v=b4ad523f144d7d9048b92d580ba7b53d"/><link rel="apple-touch-icon" sizes="384x384" href="/blog/icons/icon-384x384.png?v=b4ad523f144d7d9048b92d580ba7b53d"/><link rel="apple-touch-icon" sizes="512x512" href="/blog/icons/icon-512x512.png?v=b4ad523f144d7d9048b92d580ba7b53d"/><title data-react-helmet="true">Orgazining optimized code reviews in your team | Blog of Sebastian Häni</title><meta data-react-helmet="true" name="description" content="In the teams I worked so far, we always opted for full reviews of each engineer’s code.
+But how do you organize these reviews in a fashion so that they: are…"/><meta data-react-helmet="true" property="og:title" content="Orgazining optimized code reviews in your team"/><meta data-react-helmet="true" property="og:description" content="In the teams I worked so far, we always opted for full reviews of each engineer’s code.
+But how do you organize these reviews in a fashion so that they: are…"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="sebastianhaeni"/><meta data-react-helmet="true" name="twitter:title" content="Orgazining optimized code reviews in your team"/><meta data-react-helmet="true" name="twitter:description" content="In the teams I worked so far, we always opted for full reviews of each engineer’s code.
+But how do you organize these reviews in a fashion so that they: are…"/><meta data-react-helmet="true" name="google-site-verification" content="8zORk751Im3yhCfNGm4aWV2E_DcmAWj_OdYKbXYrNsw"/><link as="script" rel="preload" href="/blog/webpack-runtime-bc5119fc84ff82f6844a.js"/><link as="script" rel="preload" href="/blog/styles-55e82d6ff5158c00b714.js"/><link as="script" rel="preload" href="/blog/framework-de237a875aa45b276a9d.js"/><link as="script" rel="preload" href="/blog/app-4493d334cab59b23ad25.js"/><link as="script" rel="preload" href="/blog/commons-1f5cbce50d7966b54a27.js"/><link as="script" rel="preload" href="/blog/cd7d5f864fc9e15ed8adef086269b0aeff617554-aff7d161a569ac52b562.js"/><link as="script" rel="preload" href="/blog/component---src-templates-blog-post-js-52b1cc2fb94b67cf1dcf.js"/><link as="fetch" rel="preload" href="/blog/page-data/0009-orgazining-code-reviews/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/blog/page-data/sq/d/1146911855.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/blog/page-data/sq/d/3333504701.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/blog/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div style="margin-left:auto;margin-right:auto;max-width:37.92rem;padding:2.37rem 1.185rem"><header><h3 style="font-family:Montserrat, sans-serif;margin-top:0"><a style="box-shadow:none;text-decoration:none;color:inherit" href="/blog/">Blog of Sebastian Häni</a></h3></header><main><article><header><h1 style="margin-top:1.58rem;margin-bottom:0">Orgazining optimized code reviews in your team</h1><p style="font-size:0.87055rem;line-height:1.58rem;display:block;margin-bottom:1.58rem">September 28, 2020<!-- --> | <a href="/blog/tags/agile">Agile</a> | <span class="disqus-comment-count" data-disqus-identifier="2cba918b-153a-526a-977d-6a22d3a364d5" data-disqus-url="https://sebastianhaeni.github.com/blog/0009-orgazining-code-reviews/">...</span></p></header><section><p>In the teams I worked so far, we always opted for full reviews of each engineer’s code.
+But how do you organize these reviews in a fashion so that they:</p>
+<ul>
+<li>are efficient - do not take more time than necessary</li>
+<li>improve code correctness and quality</li>
+<li>improve code readability</li>
+<li>find bugs</li>
+<li>allow for knowledge spread</li>
+</ul>
+<p>We discussed in our team that we would like to create a consensus on what Change Reviews mean for
+us and how we apply them. The following is the documentation that I created for our team.</p>
+<p>This has been influenced by the <a href="https://google.github.io/eng-practices/review/reviewer/">Google’s Engineering Practices documentation</a>.</p>
+<p>And further, how do you contribute to a code base in an aligned way? I have added some contribution
+guidelines as well. The contribution guidelines are inspired by <a href="https://github.com/angular/angular/blob/master/CONTRIBUTING.md">Angular’s guidelines</a>.</p>
+<p>And how do you finally map your status into a project management tool like JIRA?</p>
+<p>Additionally, we also are holding regular know how exchange sessions or discussions related to tech
+and engineering to ensure we have a common vision and understanding of recent or upcoming topics.</p>
+<h2 id="contents" style="position:relative;"><a href="#contents" aria-label="contents permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contents</h2>
+<ul>
+<li><a href="#change-reviews">Change Reviews</a></li>
+<li><a href="#contribution-guidelines">Contribution Guidelines</a></li>
+<li><a href="#how-we-use-jira">How we use JIRA</a></li>
+<li><a href="#tech-discussions">Tech Discussions</a></li>
+</ul>
+<hr>
+<h1 id="change-reviews" style="position:relative;"><a href="#change-reviews" aria-label="change reviews permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Change Reviews</h1>
+<h2 id="review-planning" style="position:relative;"><a href="#review-planning" aria-label="review planning permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Review Planning</h2>
+<h3 id="how-to-define-the-reviewer" style="position:relative;"><a href="#how-to-define-the-reviewer" aria-label="how to define the reviewer permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to define the reviewer?</h3>
+<p>In general, there should be two reviewers. The main reviewer does a thorough review, while the second reviewer is there
+to catch any big mishaps and to ensure knowledge sharing throughout the team.
+It might happen that there is only one reviewer in case of smaller tasks.</p>
+<h3 id="code-review-is-always-required" style="position:relative;"><a href="#code-review-is-always-required" aria-label="code review is always required permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Code Review is always required</h3>
+<p>Each change has to be reviewed, even minor ones. The reason for reviews of big changes should be clear. Small changes
+should be reviewed to ensure nothing has been accidentally introduced that could break things. E.g. there’s a faulty
+merge in the change that the author was not aware of. These small reviews may be as short as 30 seconds, but they should
+still occur.</p>
+<h2 id="review-execution" style="position:relative;"><a href="#review-execution" aria-label="review execution permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Review Execution</h2>
+<h3 id="review-handover" style="position:relative;"><a href="#review-handover" aria-label="review handover permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Review Handover</h3>
+<p>We regard the handover from the author to the main reviewer as one of the most important aspects of a successful review.
+The author has to make clear what they expect from the reviewer.</p>
+<p>In general, there can be an “early look” review to guide the author in the right direction. For this, the build has to be
+successful to make the reviewer’s effort worthwhile. The integration tests are ok to be still running or failing if they take longer.
+In the end there always has to be a final review. For the final review, all builds and tests have to be successful and
+all merge conflicts resolved.</p>
+<p>The author can optionally annotate their changes to explain complex factual relations.
+This will enable the reviewer to be faster when trying to understand the changes.</p>
+<p>During the handover, it should be made clear if the reviewer is allowed to push changes onto the branch. This can make
+sense if the reviewer wants to commit small changes, such as:</p>
+<ul>
+<li>cosmetic changes</li>
+<li>fixing comments</li>
+<li>fixing typos</li>
+<li>very small code fixes</li>
+<li>rebase / merge onto the current <code class="language-text">develop</code> branch if there are no conflicts or they are trivial</li>
+</ul>
+<p>To fasten up the review process, the author or the reviewer can also request a pair review. During the pair review,
+they can push changes directly within the review. After this, no further ping pong is necessary. A change can then be
+merged as long as the builds and tests are successful.</p>
+<h3 id="review-feedback" style="position:relative;"><a href="#review-feedback" aria-label="review feedback permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Review Feedback</h3>
+<p>In case of an async review, the reviewer creates comments in the PR. If they want the author to change something, they
+create a task below the comment indicating action is needed. The change cannot be merged if there are incomplete tasks.</p>
+<p>If the reviewer has not set any status on the PR yet, this means the review is in progress, and the author should
+refrain from modifying the branch. Once the reviewer sets the status to “Needs work”, the ball is back at the author
+to complete the tasks in the comments. Once the reviewer is happy, they set the status to “Approve”, and the author can
+go ahead and merge the changes.</p>
+<h3 id="review-contents" style="position:relative;"><a href="#review-contents" aria-label="review contents permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Review Contents</h3>
+<p>The most important content of the review should be discussed in the handover.
+Besides, the reviewer must:</p>
+<ul>
+<li>understand the user story</li>
+<li>understand each and every line of code in the change</li>
+<li>understand the commit history</li>
+</ul>
+<p>The reviewer can test the code by clicking through the staged environment. They can also check it out and tinker around
+in the code and tests. If this makes sense or not can be different from case to case.</p>
+<p>What the reviewer is not doing, is to clarify story requirements with any other than the author such as the product
+owner. They can or even should however discover if the story description diverges from the implementation such that
+the business requirements are not met.</p>
+<h2 id="review-completion" style="position:relative;"><a href="#review-completion" aria-label="review completion permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Review Completion</h2>
+<h3 id="merge" style="position:relative;"><a href="#merge" aria-label="merge permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Merge</h3>
+<p>After the main reviewer gave their final “Approve”, the author can merge the changes.</p>
+<h3 id="follow-ups" style="position:relative;"><a href="#follow-ups" aria-label="follow ups permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Follow-Ups</h3>
+<p>There always may be follow-ups after the change. This is something that should generally be avoided.
+A follow up can be a TODO/FIXME in the code, a bug, a missing feature, technical debt, ignored tests and so on.</p>
+<p>If it happens, that it cannot be avoided, and the reviewers accept the follow-ups, these rules have to be observed:</p>
+<ul>
+<li>Each follow up must exist as a JIRA issue</li>
+<li>Commits introducing the follow up have to mention the JIRA issue</li>
+<li>TODO and FIXME comments must contain the JIRA issue (e.g. <code class="language-text">// TODO fix label not being displayed (AAA-xxxx)</code>)</li>
+</ul>
+<h3 id="po-review" style="position:relative;"><a href="#po-review" aria-label="po review permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PO Review</h3>
+<p>The PO review for larger user stories is planned at latest during the daily stand up meeting. The author has the lead.</p>
+<h3 id="ux-review" style="position:relative;"><a href="#ux-review" aria-label="ux review permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UX Review</h3>
+<p>In a UX intensive task, it is generally a good idea to consolidate the UX designer and get some feedback. This should
+happen before any code review occurs.</p>
+<hr>
+<h1 id="contribution-guidelines" style="position:relative;"><a href="#contribution-guidelines" aria-label="contribution guidelines permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contribution guidelines</h1>
+<h2 id="commit-message-template" style="position:relative;"><a href="#commit-message-template" aria-label="commit message template permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Commit message template</h2>
+<p><em>Template for commits related to a JIRA issue:</em></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">AAA-&lt;number&gt; (&lt;type&gt;) &lt;subject&gt;
+
+Explain why this change is being made</code></pre></div>
+<p>If there is no issue, use the following template:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">(&lt;type&gt;) &lt;subject&gt;
+
+Explain why this change is being made</code></pre></div>
+<p><em>Types:</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>feat</td>
+<td>new feature</td>
+</tr>
+<tr>
+<td>fix</td>
+<td>bug fix</td>
+</tr>
+<tr>
+<td>refactor</td>
+<td>refactoring production code</td>
+</tr>
+<tr>
+<td>style</td>
+<td>formatting, missing semi colons etc; no code change</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>changes to documentation</td>
+</tr>
+<tr>
+<td>test</td>
+<td>adding or refactoring tests; no production code change</td>
+</tr>
+<tr>
+<td>build</td>
+<td>updating pipelines, *.gradle, package.json etc; no production code change</td>
+</tr>
+<tr>
+<td>deps</td>
+<td>updating maven or npm dependencies</td>
+</tr>
+<tr>
+<td>i18n</td>
+<td>updating translation files</td>
+</tr>
+</tbody>
+</table>
+<p><em>Example:</em></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">AAA-0000 (feat) implement X validation logic
+
+This introduces 2 new components:
+
+* X-tile
+* X-edit-form
+
+The service `XService` has been extended to support
+updating and removing X entities via the backend.</code></pre></div>
+<p><em>Remember to</em></p>
+<ul>
+<li>not capitalize the subject line</li>
+<li>Use the imperative mood in the subject line</li>
+<li>Do not end the subject line with a period</li>
+<li>Separate subject from body with a blank line</li>
+<li>Use the body to explain what and why vs. how</li>
+<li>Use multiple lines with ”-” for bullet points in body</li>
+<li>Squash commits that make it hard to read the history.</li>
+<li>Don’t squash commits if they contain different types as defined above.</li>
+</ul>
+<h2 id="branching-model" style="position:relative;"><a href="#branching-model" aria-label="branching model permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Branching Model</h2>
+<p>We are using the Git Flow branching model.</p>
+<p>See <a href="https://nvie.com/posts/a-successful-git-branching-model/">https://nvie.com/posts/a-successful-git-branching-model/</a> for a very nice
+blog post explaining it very well.</p>
+<h3 id="feature-branches" style="position:relative;"><a href="#feature-branches" aria-label="feature branches permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Feature Branches</h3>
+<p>Feature branches should be named with the prefix <code class="language-text">feature/</code> as per recommendation of Git Flow.
+Additionally we include the JIRA Issue number and a short description of the feature.</p>
+<p>E.g.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">feature/AAA-9999_Group-Easteregg-Tab</code></pre></div>
+<p>This provides these benefits:</p>
+<ul>
+<li>Bitbucket will automatically link the branch with the JIRA issue and vice versa.</li>
+<li>We can easily jump between requirements in JIRA and the branch.</li>
+<li>With the description, we know what’s on a feature branch even without looking up the issue description.</li>
+</ul>
+<p>Other prefixes:</p>
+<ul>
+<li><code class="language-text">release/</code> reserved for branches for a version (also for hotfixes, albeit we deviate from the guide)</li>
+<li><code class="language-text">bugfix/</code> reserved for fixes only (refrain from doing any refactoring here)</li>
+<li><code class="language-text">hotfix/</code> for hotfixes that will be merged into the hotfix-release branch</li>
+<li><code class="language-text">doc/</code> reserved for docs-only changes</li>
+</ul>
+<h3 id="docs-branches" style="position:relative;"><a href="#docs-branches" aria-label="docs branches permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Docs Branches</h3>
+<p>If you only update documentation you can prefix your branch with <code class="language-text">doc/</code>.</p>
+<p>E.g.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">doc/knowhow-transfer-update</code></pre></div>
+<p>So, only use it if you are certain you only committed docs changes.</p>
+<hr>
+<h1 id="how-we-use-jira" style="position:relative;"><a href="#how-we-use-jira" aria-label="how we use jira permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How we use JIRA</h1>
+<h2 id="before-a-sprint" style="position:relative;"><a href="#before-a-sprint" aria-label="before a sprint permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Before a sprint</h2>
+<ul>
+<li>We split stories into multiple stories and create an epic for it if the story has an estimate
+of over 40 hours before or during PI planning.</li>
+<li>We create sub-tasks for each story which has an estimate of less than a work day.</li>
+<li>Sub-task descriptions can be filled with additional hints or implementation detail. They should however
+not contain redundant information from the parent story.</li>
+<li>We do not create extra review sub-tasks unless they are really needed.</li>
+</ul>
+<h2 id="during-a-sprint" style="position:relative;"><a href="#during-a-sprint" aria-label="during a sprint permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>During a sprint</h2>
+<ul>
+<li>We continuously move cards in the board so it is up to date all the time.</li>
+<li>We log hours worked on a task when we move a card to another column and reduce the remaining estimate in
+accordance.</li>
+<li>An individual contributor can create new sub-tasks in their story as long as the total sum of remaining
+estimates stays the same. The reshuffling has to be discussed with the main reviewer.</li>
+<li>If the estimate for a task changes (up or down), this has to be discussed with the PO or Scrum Master as
+soon as it is detected.</li>
+<li>When a developer is done with implementing a sub-task, they move the task to the review column.</li>
+<li>If they reached a checkpoint which can be reviewed, they inform the reviewer personally and create a PR
+and assign the reviewer(s) to it.</li>
+<li>The reviewer moves the task to the To Do column if the review is not OK or completes the task(s)
+together with the author (someone merges the PR) and moves the task to the Done column.</li>
+<li>The reviewer also logs work hours on the task they reviewed.</li>
+</ul>
+<h2 id="po-review-1" style="position:relative;"><a href="#po-review-1" aria-label="po review 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PO Review</h2>
+<ul>
+<li>A story can have a PO review or not. It is up to the PO and the team to decide if it makes sense or not.</li>
+<li>If a story should include a PO review, we create a sub-task in the story with an empty estimate.</li>
+<li>This sub-task is then moved along the columns on the board when it is ongoing or complete.</li>
+</ul>
+<hr>
+<h1 id="tech-discussions" style="position:relative;"><a href="#tech-discussions" aria-label="tech discussions permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tech Discussions</h1>
+<p>To ensure we have a common vision and understanding in technical topics regarding our services
+that we build, we regularly hold tech discussion meetings. Everybody is invited to add their topics
+to a topic list. Every developer can then vote on topics. After the event is over, we clear all votes and it starts over.</p>
+<p>The Tech Discussions help us to improve:</p>
+<ul>
+<li>common understanding of technical aspects</li>
+<li>know how sharing of new concepts</li>
+<li>discussion of technical directions we should take</li>
+<li>presentation of results of spike undertakings</li>
+</ul>
+<p>Action items are tracked as JIRA issues. The documentation of discussed topics always has to be
+up-to-date and ensures the discussed items are not forgotten over time or decisions can be looked up
+again.</p>
+<hr>
+<h1 id="conclusion" style="position:relative;"><a href="#conclusion" aria-label="conclusion permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Conclusion</h1>
+<p>Maybe you discovered some practice which could help you in your team?</p>
+<p>It certainly helped me a lot having this written down. Even we discussed everything in the entire
+team and everbody agreed to it, it occurred sometimes that the discussed items were forgotten, and
+having this document helped us to quickly resolve questions that we have already answered a year ago.</p></section><hr style="margin-bottom:1.58rem"/><footer><div style="display:flex;margin-bottom:3.95rem"><div class=" gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:50px;height:50px;margin-right:0.79rem;margin-bottom:0;min-width:50px;border-radius:100%"><img aria-hidden="true" src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAQCAwUG/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAbZ74prepXHmswe2E//EABsQAQACAwEBAAAAAAAAAAAAAAIBAwAREgQh/9oACAEBAAEFApj5JZXOLXMR1ZrHc03azPmc2U//xAAXEQEAAwAAAAAAAAAAAAAAAAAQATFB/9oACAEDAQE/AYow/8QAFhEAAwAAAAAAAAAAAAAAAAAAARAx/9oACAECAQE/ATUav//EAB4QAAEDBAMAAAAAAAAAAAAAAAEAAhEQEiExMlGR/9oACAEBAAY/AlzkdUygM+0uJ1pBzTBhBztr/8QAGxAAAwADAQEAAAAAAAAAAAAAAAERITFBYVH/2gAIAQEAAT8hljh6FBr1FsYlk3r1kCU7oYVcnhwoNqcI5V8P/9oADAMBAAIAAwAAABDPF8H/xAAWEQEBAQAAAAAAAAAAAAAAAAABEDH/2gAIAQMBAT8QIpYan//EABcRAAMBAAAAAAAAAAAAAAAAAAEQETH/2gAIAQIBAT8QMxFgv//EABwQAQACAwADAAAAAAAAAAAAAAEAESExQVFxsf/aAAgBAQABPxBXVZQaulauFstpyLTJqCoAqj3ZRAbmxJDPfkyRlI1jA9SOYS4XXPEyKpFFDTP/2Q==" alt="Sebastian Häni" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms;border-radius:50%"/><noscript><picture><source srcset="/blog/static/b4ad523f144d7d9048b92d580ba7b53d/99438/profile-pic.jpg 1x,
+/blog/static/b4ad523f144d7d9048b92d580ba7b53d/aba1d/profile-pic.jpg 1.5x,
+/blog/static/b4ad523f144d7d9048b92d580ba7b53d/b315d/profile-pic.jpg 2x" /><img loading="lazy" width="50" height="50" srcset="/blog/static/b4ad523f144d7d9048b92d580ba7b53d/99438/profile-pic.jpg 1x,
+/blog/static/b4ad523f144d7d9048b92d580ba7b53d/aba1d/profile-pic.jpg 1.5x,
+/blog/static/b4ad523f144d7d9048b92d580ba7b53d/b315d/profile-pic.jpg 2x" src="/blog/static/b4ad523f144d7d9048b92d580ba7b53d/99438/profile-pic.jpg" alt="Sebastian Häni" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><p>Written by <strong>Sebastian Häni</strong> <!-- -->who lives, studies and works in Zurich building useful things.<!-- --> <a href="https://sebastianhaeni.ch" rel="noopener noreferrer" target="_blank">You can find his social links on his personal website.</a></p></div></footer></article><nav><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/blog/0008-seminar-self-assessment/">← <!-- -->Seminar Assessment on Oneself</a></li><li></li></ul></nav><div id="disqus_thread"></div></main><footer style="margin-top:4.74rem;text-align:center;font-size:0.79rem">© <!-- -->2020<!-- --> Sebastian Häni</footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-39972934-3', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/0009-orgazining-code-reviews/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-e31c70983b95bf93fc93.js"],"app":["/app-4493d334cab59b23ad25.js"],"component---src-pages-404-js":["/component---src-pages-404-js-00ca0359d36b3a5442f5.js"],"component---src-pages-index-js":["/component---src-pages-index-js-9491a4d76fee60b17be1.js"],"component---src-pages-tags-js":["/component---src-pages-tags-js-2f9acfde9bdca166b0a6.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-52b1cc2fb94b67cf1dcf.js"],"component---src-templates-tags-js":["/component---src-templates-tags-js-37fbbe2333ff651fc180.js"]};/*]]>*/</script><script src="/blog/polyfill-e31c70983b95bf93fc93.js" nomodule=""></script><script src="/blog/component---src-templates-blog-post-js-52b1cc2fb94b67cf1dcf.js" async=""></script><script src="/blog/cd7d5f864fc9e15ed8adef086269b0aeff617554-aff7d161a569ac52b562.js" async=""></script><script src="/blog/commons-1f5cbce50d7966b54a27.js" async=""></script><script src="/blog/app-4493d334cab59b23ad25.js" async=""></script><script src="/blog/framework-de237a875aa45b276a9d.js" async=""></script><script src="/blog/styles-55e82d6ff5158c00b714.js" async=""></script><script src="/blog/webpack-runtime-bc5119fc84ff82f6844a.js" async=""></script></body></html>
