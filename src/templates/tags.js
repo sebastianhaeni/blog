@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 // Components
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext
@@ -15,7 +15,7 @@ const Tags = ({ pageContext, data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title={`Tag "${tag}"`} />
+      <Seo title={`Tag "${tag}"`} />
       <h1>{tagHeader}</h1>
       <ul>
         {edges.map(({ node }) => {

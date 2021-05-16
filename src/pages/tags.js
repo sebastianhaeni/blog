@@ -5,7 +5,7 @@ import kebabCase from "lodash/kebabCase"
 // Components
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 const TagsPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -13,7 +13,7 @@ const TagsPage = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Tags" />
+      <Seo title="Tags" />
       <h1>Tags</h1>
       <ul>
         {group.map((tag) => (

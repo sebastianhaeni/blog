@@ -4,7 +4,7 @@ import { graphql, Link } from "gatsby"
 import config from "../../gatsby-config"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import Tags from "../components/tags"
 import { rhythm, scale } from "../utils/typography"
 import { CommentCount, Disqus } from "gatsby-plugin-disqus"
@@ -21,7 +21,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
+      <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
