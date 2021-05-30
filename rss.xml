@@ -1,4 +1,130 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 28 Sep 2020 22:59:34 GMT</lastBuildDate><item><title><![CDATA[Orgazining optimized code reviews in your team]]></title><description><![CDATA[In the teams I worked so far, we always opted for full reviews of each engineer’s code.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 30 May 2021 10:48:38 GMT</lastBuildDate><item><title><![CDATA[Setting up Apache Spark and Zeppelin]]></title><description><![CDATA[This article describes how to setup Spark and Zeppelin either on your own machine or on a server or cloud. Spark and Zeppelin are big…]]></description><link>https://sebastianhaeni.github.com/0010-spark-zeppelin-setup/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0010-spark-zeppelin-setup/</guid><pubDate>Sun, 16 May 2021 18:00:00 GMT</pubDate><content:encoded>&lt;p&gt;This article describes how to setup Spark and Zeppelin either on your own machine or on a server or cloud. Spark and Zeppelin are big software products with a wide variety of plugins, interpreters, etc. Finding the compatible versions, Dockerfiles, configs, etc. for a simple setup can be daunting. This here might help you to deploy and play around with Spark on your local machine or create a server setup as a ground to do some demos or proof of concepts. In this setup we will use the local file system and not a distributed one. When you use Spark in a production grade setup, you want to scale your filesystem and workers. But, our goal here is to create a playground environment.&lt;/p&gt;
+&lt;p&gt;This blog post refers to this accompanying GitHub repository:&lt;/p&gt;
+&lt;p style=&quot;text-align: center&quot;&gt;
+&lt;a href=&quot;https://github.com/sebastianhaeni/spark-zeppelin-docker&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;sebastianhaeni/spark-zeppelin-docker&lt;/a&gt;
+&lt;/p&gt;
+&lt;h2 id=&quot;what-is-spark-and-zeppelin&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#what-is-spark-and-zeppelin&quot; aria-label=&quot;what is spark and zeppelin permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;What is Spark and Zeppelin&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://spark.apache.org/&quot;&gt;Apache Spark&lt;/a&gt;&lt;/strong&gt; is an engine to process your data in a highly parallel and fault tolerant way. You can submit programs as Spark jobs which will be run on Spark cluster consisting of at least one worker node connecting to a distributed storage. The programs can be written most famously in Python (&lt;a href=&quot;https://spark.apache.org/docs/latest/api/python/&quot;&gt;PySpark&lt;/a&gt;) or &lt;a href=&quot;https://www.scala-lang.org/&quot;&gt;Scala&lt;/a&gt; using the &lt;a href=&quot;https://en.wikipedia.org/wiki/MapReduce&quot;&gt;MapReduce&lt;/a&gt; paradigm. Alternatively, you can use &lt;a href=&quot;https://spark.apache.org/sql/&quot;&gt;Spark SQL&lt;/a&gt; to submit SQL queries and retrieve the query result. However, the user interface of the Spark master and worker nodes merely display running jobs and logs. There is no user interface to submit jobs. This calls for a Notebook solution.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://zeppelin.apache.org/&quot;&gt;Apache Zeppelin&lt;/a&gt;&lt;/strong&gt; is a notebook web application like &lt;a href=&quot;https://jupyterlab.readthedocs.io/en/stable/&quot;&gt;JupyterLab&lt;/a&gt; focusing on notebook collaboration. Both tools cover a similar feature set. There are many opinions out there on which tool is better. Please make your own opinion about it. This article just covers how to install it. Zeppelin fits quite nicely into the Spark world, but you can achieve the same results using JupyterLab.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.75675675675676%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABcSAAAXEgFnn9JSAAACI0lEQVQozz2Sy05UQRCGzyP6Bj6GqCQa1rqRKLjQRBGIJLOReGGhYkIgAxgUScgYIZjBGYQZOXNufe/PVB+xk0r33/XX39VVlc2ufmHu3TcerH7lznKXmZVdbr7ocntph+nl3WS3FreZXtphaqHL288n7P04Y7s3YO/4Itnc2j43nm0wvdglG41GGNXgrcYZRXAGggUCXrDVtCtA9ATv0VrjnCME35qzNOUEbxVZWZYopfCxDTPOY32kaRS/BkOqukZc3ge0sWkvioKqqrBWsMcYiwsRpQ1ZWSvOhkPy0TllVZFf5hRlk4gSKA/WdZ0eNS6kRyU7uROflnvrmDQGYy1ZrQxN3aCKS4bnfco/ZxitCCGkr4loUZYQHIeDnN4gByKTSYGyAecDMcaUfRIUoJqGvcMe26/mOV35gFQwxoAxJmXTliIw1TngycZJwkVRMswbjPWJmzgiKIdPH9d5/GiOnaUOnbsdfvcvWoJuvyHr+KLi+tNdXu70E56UFYWySZAYU5ZJULTzkwHnC5v0ZlZ5fX+G8eA0BV11s1COe2vfufZwi4Wtn8k3zov03ca4tJMEHZkUX5Y/HDN6fkDRHyYcpYbWMbisebM/ZPb9D+bXj9g8Gv/LsCaEiHWexngq6YXSZErr1H4nc0fEx5iycs7/r2H0rp3DZNIAgzFt9lcc0RCtrG5Uukym290mQZcChSi1kS6KiU+wzJ74BGttErdRir/klDrMurQQLAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Apache Zeppelin Notebook&quot;
+        title=&quot;Apache Zeppelin Notebook&quot;
+        src=&quot;/blog/static/6c98a066d067a1daace2fc3c41b7b310/fcda8/zeppelin.png&quot;
+        srcset=&quot;/blog/static/6c98a066d067a1daace2fc3c41b7b310/12f09/zeppelin.png 148w,
+/blog/static/6c98a066d067a1daace2fc3c41b7b310/e4a3f/zeppelin.png 295w,
+/blog/static/6c98a066d067a1daace2fc3c41b7b310/fcda8/zeppelin.png 590w,
+/blog/static/6c98a066d067a1daace2fc3c41b7b310/efc66/zeppelin.png 885w,
+/blog/static/6c98a066d067a1daace2fc3c41b7b310/c83ae/zeppelin.png 1180w,
+/blog/static/6c98a066d067a1daace2fc3c41b7b310/0e904/zeppelin.png 1384w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;text-align: center&quot;&gt;Image Source: &lt;a href=&quot;https://zeppelin.apache.org/&quot;&gt;zeppelin.apache.org&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;setup&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#setup&quot; aria-label=&quot;setup permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Setup&lt;/h2&gt;
+&lt;p&gt;This diagram shows all the Docker containers we will setup:
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 46.621621621621614%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAABt0lEQVQoz11S24rbMBCdJoUGSsln5L2fsNDv2bd+TGme+iUl231LXlMH50IcothyfJdkK9JomelmKTtwOINsnzmjY4B3td1uYTqdQggBhBBPwzAERLz510JEZmutN8YwhmHgM+ecf68H3nt4fHxkQUR8QsQwDINzzoXb7RastYF6GpRlWZBShqZp+BkVHI9HyLKMQbVarWA2m3GvlHq+Xq/BGOP2+z2eTie01qJSCp1z2Pc9DsPAPZ03TYOQpul4uVyO1+v1uKqqUZ7nd7Ofuq571lqzYJ7noaqq0Pd96LqO+Q6qu2M4n8+wWCzYWdd1d7EPJOi9X4R/5bz3bwIkSGvWdR0Oh0MoioKH0TaQJMnPzWbzY7fb/RJCfL+LAcBH5xyHUlWVo+kEEivLkgWoj+OYhZVS7BJoUpIkIU3T0LbtXwD4MhqNPpNoXdd8h1prJ4TAy+XCd1WWJWqt0RiDUkps2/btXiGO44eiKB6klN+iKPpKQU0mE07Ze/+HVqXf4v+UyR25pGFRFIXX4Dh96PuePyYopZjn8zlz0zS/6UWtda+1tgRjDLOU0pZlaYUQzHmeW6WUfQETajIiP7WhugAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;System Components&quot;
+        title=&quot;System Components&quot;
+        src=&quot;/blog/static/c9bf1aca3bdedff69cea15257a9b2655/fcda8/system-components.drawio.png&quot;
+        srcset=&quot;/blog/static/c9bf1aca3bdedff69cea15257a9b2655/12f09/system-components.drawio.png 148w,
+/blog/static/c9bf1aca3bdedff69cea15257a9b2655/e4a3f/system-components.drawio.png 295w,
+/blog/static/c9bf1aca3bdedff69cea15257a9b2655/fcda8/system-components.drawio.png 590w,
+/blog/static/c9bf1aca3bdedff69cea15257a9b2655/c7dcc/system-components.drawio.png 641w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;instructions&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#instructions&quot; aria-label=&quot;instructions permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Instructions&lt;/h2&gt;
+&lt;p&gt;Note: You need to configure Docker to have at least 4 GB of memory.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone this repo &lt;code class=&quot;language-text&quot;&gt;git clone https://github.com/sebastianhaeni/spark-zeppelin-docker.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Build the base image &lt;code class=&quot;language-text&quot;&gt;docker build -f Dockerfile_base -t registry.local:5000/spark-zeppelin-demo/spark_base:latest .&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Build the remaining images &lt;code class=&quot;language-text&quot;&gt;docker compose build&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Append the following to your &lt;code class=&quot;language-text&quot;&gt;/etc/hosts&lt;/code&gt; (Linux &amp;#x26; MacOS) / &lt;code class=&quot;language-text&quot;&gt;C:\Windows\System32\drivers\etc\hosts&lt;/code&gt; (Windows) file
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;127.0.0.1 zeppelin.local
+127.0.0.1 spark-ui-proxy.local&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;Run with &lt;code class=&quot;language-text&quot;&gt;docker compose up&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Open &lt;a href=&quot;http://zeppelin.local/&quot;&gt;http://zeppelin.local/&lt;/a&gt; in your browser to access Zeppelin&lt;/li&gt;
+&lt;li&gt;Open &lt;a href=&quot;http://spark-ui-proxy.local/&quot;&gt;http://spark-ui-proxy.local/&lt;/a&gt; in your browser to access Spark&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And there you go. An example notebook is included as well to get you going.&lt;/p&gt;
+&lt;h2 id=&quot;reverse-proxy&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#reverse-proxy&quot; aria-label=&quot;reverse proxy permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Reverse Proxy&lt;/h2&gt;
+&lt;p&gt;The reverse proxy allows us to proxy to an internal container by server name.
+So, we don’t have to map ports from the internal Docker network and we don’t have
+to remember names.&lt;/p&gt;
+&lt;p&gt;To make this possible, we also need a custom Python web server that transforms the responses from Spark-Master and Spark-Worker.
+They do not support reverse proxies out of the box (no support for X-Forwarded-For etc.), thus we rewrite the &lt;code class=&quot;language-text&quot;&gt;&amp;lt;a&amp;gt;&lt;/code&gt; links to
+the correct URLs.&lt;/p&gt;
+&lt;h2 id=&quot;spark-and-zeppelin&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spark-and-zeppelin&quot; aria-label=&quot;spark and zeppelin permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spark and Zeppelin&lt;/h2&gt;
+&lt;h3 id=&quot;base-image&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#base-image&quot; aria-label=&quot;base image permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Base Image&lt;/h3&gt;
+&lt;p&gt;The Spark and Zeppelin images both depend on a base image, that we have to build beforehand.&lt;/p&gt;
+&lt;p&gt;This image contains:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;JDK&lt;/li&gt;
+&lt;li&gt;Scala&lt;/li&gt;
+&lt;li&gt;Anaconda &amp;#x26; Python&lt;/li&gt;
+&lt;li&gt;Apache Spark&lt;/li&gt;
+&lt;li&gt;Apache Zeppelin&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The reason why we create a single image with both Spark and Zeppelin, is that Spark needs
+some JARs from Zeppelin (namely the spark interpreter jar) and Zeppelin needs some Spark JARs
+to connect to it. Also, Spark needs Anaconda (Python) to run PySpark. Zeppelin has a pure Python
+interpreter that also needs Anaconda (to be able to achieve something meaningful).&lt;/p&gt;
+&lt;p&gt;If you need to add another Python package to the image, you can do so either with &lt;code class=&quot;language-text&quot;&gt;conda install&lt;/code&gt;
+or &lt;code class=&quot;language-text&quot;&gt;pip install&lt;/code&gt; at the end of &lt;code class=&quot;language-text&quot;&gt;Dockerfile_base&lt;/code&gt;. Please be sure to rebuild the images
+after doing so.&lt;/p&gt;
+&lt;h3 id=&quot;apache-spark&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#apache-spark&quot; aria-label=&quot;apache spark permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Apache Spark&lt;/h3&gt;
+&lt;p&gt;The current configuration will create the following 3 containers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;spark-master: Spark Master Node where workers connect&lt;/li&gt;
+&lt;li&gt;spark-worker-1: A worker node, connecting to the master. Could be scaled.
+&lt;ul&gt;
+&lt;li&gt;Please note that the amount of CPU cores and memory to be reserved by the worker are defined in &lt;code class=&quot;language-text&quot;&gt;Dockerfile_worker&lt;/code&gt;
+and can be optionally overwritten by environment variables.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;spark-ui-proxy: To access the nodes’ web UI, we need to transform the content with correct URLs (they don’t properly support reverse proxies)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Please note that the Spark nodes have a volume mapping to &lt;code class=&quot;language-text&quot;&gt;./data&lt;/code&gt; . This is where you can place files to read in your Zeppelin notebook.
+An example file is already provided.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;pyspark
+df &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; spark&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;read&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;json&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/srv/data/example/people.json&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;apache-zeppelin&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#apache-zeppelin&quot; aria-label=&quot;apache zeppelin permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Apache Zeppelin&lt;/h3&gt;
+&lt;p&gt;Zeppelin will be connected to the Spark Master (Spark Interpreter) once you run the first Spark cell in a notebook.&lt;/p&gt;
+&lt;h3 id=&quot;compatibility-issues&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#compatibility-issues&quot; aria-label=&quot;compatibility issues permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Compatibility Issues&lt;/h3&gt;
+&lt;p&gt;Please note that Spark, Zeppelin, Python, JDK, Scala have to be compatible to each other.
+In the current setup, these have been tested and matched to each other. For example, this would
+not work:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Upgrade from JDK 1.8 to e.g. 11. You will run into some class not found issues when running Zeppelin.&lt;/li&gt;
+&lt;li&gt;Upgrade from Python 3.7 to Python 3.8. You will notice weird errors when running a PySpark script.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So if there’s a need to upgrade, please reserve enough time to test the compatibility between those
+systems well enough.&lt;/p&gt;
+&lt;p&gt;A good approach can be a test notebook in Zeppelin containing blocks with Scala, Python, PySpark and
+SQL interpreters. Run them all successfully, and you basically proved that the system works.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Orgazining optimized code reviews in your team]]></title><description><![CDATA[In the teams I worked so far, we always opted for full reviews of each engineer’s code.
 But how do you organize these reviews in a fashion…]]></description><link>https://sebastianhaeni.github.com/0009-orgazining-code-reviews/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0009-orgazining-code-reviews/</guid><pubDate>Mon, 28 Sep 2020 20:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In the teams I worked so far, we always opted for full reviews of each engineer’s code.
 But how do you organize these reviews in a fashion so that they:&lt;/p&gt;
 &lt;ul&gt;
@@ -307,7 +433,7 @@ summary for a possible decoding to be successful.&lt;/p&gt;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 74.32432432432432%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsSAAALEgHS3X78AAABxUlEQVQoz6VT227aQBDlt/sHzVN/oGpfIlVC6lMfKlVKCCiATczF3tT2OnFkfIUGfMNYYHzpgbUSJ02fsg+ruZwzMzsz26recVpNpSzLV0JTPRwOWZa9QWZuwzD6gwGzALo5HQjMMhNnhBAGzvMcd4spjGzb9lgQtkksiiKl9E6jd1RFRI7no8iXZUKpBlhRFK7rgl9nzk8HZOGGD/2FKJGyyH71pK/tLryKSld/bCJNERFpdrsdyAhxJC+XS5QH65EsjNYLYzi4TvPqofNF+vYBgKurS8/SbsmMasfMYRgCWZcNKYoiCBbKHo/WruE5Np7x+LPtfD47ooPAX5hEnGgnchzHoNSZPc/zff8UxREEfuXOueF1VhVc++LHx3PYe72uZ+q30lRVVahJkpimWZPRz/1+XxS57ThjYRSuF/f3yi6rAvf748OnosQU9GDt/iYzlhng5zc/NdyyrMn4Jt36/X43CGLAqmqbZYdO5yIMV7IsKYrKuvtMfhrVfD6fTngIm00C38lVzxw3pUSWFYZn3hdLgswcNwyCoLldzIsOS5Kk63pz/16sJ+KlaYpm/rvGaBLGiYL/u9vv+hjN979pf+X6C7TVUbcEAyaOAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 74.32432432432432%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB0UlEQVQoz6WTTW/TQBCG+4f5Gb1w5dYjXLgiDpX4SE2RGtukKTb1ZwI4Mv5IbG+aGK/tbHZe5DgktOoFdbTa1Y7mmdnZffcET7CTfzdCiO12C6CfeyMiKSWAqqo2m80jMBEBuL4em6bZezjnd3fL9Wr1NxEpihKGYR8shLgHE5Hrep7nMFaMRiPf9/2J73nedDJRVZXz9Wikp2kKoGmaOI73cJ9JSmnbjm0Z2TyyHRfA2at3n4YWID3PW+axpg2TNCWisiz7LB0cRVFd10TkOK5jGVHgDYdXAG5fPkvV1+uGLgbv2Tz4omvz+RxAlmVHOAgCzjkR2Y5jffuax7M8ywD8fHGaf3wLYFlkRRzoupruKhdFcTx2GIZlWQJwHMe2zF+Br6pd5TenZ+b5Zy5aRRmweahrwyRJiIgxFkXRHhZCtG0rpezgW5Nl0Wz2fUvIfjz/nZ/XDYJgsmKprqtJkgJUVdWxMgApJRFZtuV7VpHHl5eKEFugBSjPi4vBh7YpNe0qjhMAdV0nSXK87f6dDcOYTu1eDzs/dm6Sslt0fQ8f4u+JxHVdwzD6/ntsN7q+FovFeHzDGDsEP5QnUdcP5/yBhvu3bZrmgD0CP+lj/C/8B4suUZn3bYQeAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -593,7 +719,7 @@ into trend and seasonality components using Loess regression.&lt;/p&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 27.027027027027025%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsSAAALEgHS3X78AAAAnklEQVQY051PywrEIBDr/39cD6IUTz0IRezDg/ZFbbNkoD0sy8LuwDCPZGKs8EN0XYdpmr5yquM4oJSCMQZ938M5h3VdkVJCzhnLsmDbNqnjOCLGiHmeBWeSSx7reZ6oSG7b9gFLKY8wHVlrUde1PDoMg/RaaxGnW+45ExOHn2zfjvZ9F2LTNCJ+XZfMIQTp+Tvvvex4I4IE3vPf4O0L0S2CES/zpZ4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 27.027027027027025%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAApklEQVQY052P2wqEMAxE/f+vqyBqwZdWVLAXQWy9IM4yeVyWhd3A0NAkk5MCP8Q4jliW5WtPcd832raF1hohBAzDgPM8kVJCzlny67rk9d5jXVccxyF1irV936X+PA8KDtEwxoht26R5nmf0fS9EXdehqirUdQ3nHMqyRNM0Yk7xnyKMEH7C5maacxlNlVIwxoDX8AKKOamstZimSSjFkJjv+jd48gsel4H5no3cgQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -626,7 +752,7 @@ manually specified change points with the respective growth rate of that time in
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 14.864864864864865%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsSAAALEgHS3X78AAAAfklEQVQI132OQQrFIAxEvf/9XIqCFmqrWBVFqHX+T6DbBkIy8DIZgX89z4O1Fr6KmBgjxhifnKi1whiD67pQSkFKCed58jH1u2/bBikl9n1n7jgOZr33CCHwJC3mnLjvm91ba8g5QykF5xyDZEhmpK21rHvvrCkEhaEnWmvmf2C75XhYP5Z1AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 14.864864864864865%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAfUlEQVQI14WOwQrEIAxE/f8PFC+VIoqgtlZFUIrOksBed3N5QxheIgBg741/M8ZAzhlrrZ89EWOEtRa1VrTWUErBdV14nod53zeLjDFQSnGmLu2pk1LiTOy9Q8w58b4vX/7KpJQIIcB7zzzPk4VEkpDUOQd6RmvN+TgOPvQBgtLlhHzLAyoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -665,7 +791,7 @@ yearly, holiday or weekday components, we can create an additive model based on 
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 20.27027027027027%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsSAAALEgHS3X78AAAAj0lEQVQY021PQQrEIAz0/w/04MUqWkWtoHiwWJolWSxd2UAMM5k4CYMlaq1w3/cPd54n5cq/e9d1EWb4xBih9w7HccC2beCco49LKbDvOwghQClFPHKYqLXWkl5K+fQZunrvobVGlXNOAjQJIdAQ1olzzpBSomGt9YNRZ4z5bjgD10bBGANWHo3/nTx78+QPzeoztPZylIoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 20.27027027027027%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAlUlEQVQY021P2wqFMAzb/3+gLwORObxNx0B92LzkkIDnQSxkbdMsWw1ese/7m8J5njiOA19BnrjvW73hEWNEzlm5aRqM4yjjbdswDAOstXDOiV/XVUgpoe976QnOp2mCoXPXdRJRUFUV6rrWZZq1bauaYvbzPKv23stoWRaEEKSjqXl/n8NSyp/jg+Sv6xK+Vib/rP0DIMczxsAcJUEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -696,7 +822,7 @@ yearly, holiday or weekday components, we can create an additive model based on 
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 75.67567567567568%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsSAAALEgHS3X78AAAB4UlEQVQ4y4VUCXKDMBDj/09sZ5qk3JcNGJsb1doUpk0yLTMbH8FaSbsm0Frj9nlDrWq4ccC2bxJ89n0/41j/9wT7tsOMFqXVKJySGJbxCeAV+KsEAX/6vsc4jiDbKI6QpimappE9jtu2/Tr0E/wxiQC2bQvrLKqqQhiGAkhwJlJKYV1XOfAI/JjkZEig6/UqQMYYAYrjGFF0Z1uWpTDlexynaZIkwzBgnudnhkVR4HK5yMuDLwxZck2wxAeTfVw+kGWZMGbQjrquhcDB/AQkI600tnXDNE4yb7QHdwOWaYbrfdGKUg7/JfeUPO8LzOJQDhpq6tCtDuM+o/Jr7hWDgp7Nn/4dcWfoetjBIdMl4iJBWuZQrZZ2Ukaj6tR97qVaa+Gcw7IsIpvx1DY0uPOVztMMaZKKZOttcNaJDZTfdR2SJJHq00v6yjXtYmGYiMUKDv2938jzHJEviP2ex0kM5Y1XtTqrySCrA4BkWBQy5lwYOn8z1OgZmAKfbYraNbjpBGHjmegYYZv56/j/tTslW++J3BTfNmmeSb91pvOse5ieYc4+pGQyYw/yDEf+dygISJdBj4wP+vP+9i7+8CD9Y7scjU6p6Xdv8gxBKPesMjMQ8PDymD9+BH7u8R369erj8AXJnYx+IXqurwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 75.67567567567568%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB00lEQVQ4y42UiY7bMAxE8///mMunrPjS6dtTDFO3aRabrgGGBiM9cSjSp67rkKQJ6r5BGCPmbcG2b3h99n3/x396TvzxU0Qz9HiEFpVvMC6TbCb4FXbYJ7gArbWYxglN3SBJEhR5jr7vMQwDqOB98yv8/RABcrP3HpXWyPMcj8dDQMYY8eu6yuJlWb6VekAFqJTC9XoVH2OUA9I0RZZlKIpC4nVdQ2uNtm1lzTzPT2XT9DXDsixxT+6SZQgBt9sN9/sdVVUJjP9dLhcBMusDxIMJ/wIkxDmHfdsxjSOssQJnXddlRQwRXdthHMefSR62CWb2KEONeuxhFo+wDlChEWO8n/23oFcToPMecYyoGo1cFVC6Qmd7xGlA74xYGIKUgJlTDSXz/T3rk5C3TSSpooQqS6kRF3vnsa0ruraFs1aAhPGijktkuXhBjNM/gdjhgoeqFLI8g48BaZ4hLwtUD422a7Ftf6eHG2lsJ8ZlCH7756TMEd1okTuNzFZoB4PUKBROIzGl+E8T8hr7c8usBaVRjq40TG/kdp11CD5Iy1Ay+5ATRIn0R98eTX86psBYK2DW5Xw+y7RQ1jFFnCBCCeE7+5Tr3z8eJ2b2k6/I//rv6MNfUW2MwuOqE2kAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -732,7 +858,7 @@ holiday in terms of trend or seasonality change.&lt;/p&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 36.486486486486484%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsSAAALEgHS3X78AAABVElEQVQoz1VRXW+DMAzk//+X/YM9bS97mLZKndDU7xZ1pSEBlgSSEOBmp6q2IVnxJfjubGegbxiGfzHGCMwzpjH+3v3JOcIQ4LxDpH9718Nay1TIOOm6Dm3bomkadIQr2eD5bYWyaqg4IIQAozvEIaacCatKojOWhEZ6sygvJaZpQlaWJfS3Rl3XRCTR1g22lzMeXp+QH3eQVCiVwkv+icX6ACkVWhLOdwe8r08wvYP3A4SQqYtMEokxBlrr5FBrg+Jrh+XyEcVpA0VC4nrFep9jsfmAqCooEjid98iLFWxvEahtoSQGcp8JIVL/bNfTTPreE1ZwXUHt14T7JNZZgeq6TeKGWvWuhWmPNAYHFz1Uq9I8M54BFzHgnG2HMBCeEccp3d2Wwm8+5c65hKfpvkQ2onmPyHgzvBQmvRWNyQW7Zdf8xnO+C/LJjvmMcUwxE9M9fgB00hm+z2lemwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 36.486486486486484%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABVElEQVQozz2RSW/bMBSE9f9/Tm8FeuqpQQ89xGhso0jjxk6shdRCSlylr3h0YgIDbo9vhjMVQAjhjhhjwZYyOaWylvOc0/3uduZZlqWsZR7HgW3bqIwxCIZhQCmFMRNtp/n6sOP5XBO8x3uP0hPL7O/EddPR64GcV+Z54f3tSkqJqm1b+r4vDTslRZpzW/Pl13d2L0eapkF1HT/3e348HamblkFrjqd/PBye6Y0lxlREiNpKVI3jiLW2NB7HiffrK7933zifDiitEdK/pz2Pfx6p2watNG/XE4fXJ8w8EXKiVi1ucVRaa6ZpEisLg/MB5wwxNHg34ZzD2pngB/ruBWtN+WKMM85eSHEhpMAw6aK0EiPFVPFFPBCIZyFkkgST80dYiZwjKd1CkLrPoHLyuMWwrhuVKJMGomRd1wJ54L3jk+xyuXw0WAuB2HPb3wilToak/B+yVBmwb85YRgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -783,7 +909,7 @@ solutions and then talk about how to do it with NPM, Gradle and Jenkins yourself
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 66.21621621621621%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsSAAALEgHS3X78AAADq0lEQVQ4yw2R+U/TBwDFvz/tT1iW/bJkS7a5H7aMJRtbJJtLHDiJmImK6BgUxiWHFJBDkHK1XG3FthQKlFKrFCyUcsxyFRhBYSKwcMkQKgzQKXKFG8xn/eHl/fje5z1BejMQm1nO7KSD6bFuulqrWF6a5eBwm929dQ721tjdesHR4SprzsdYjRKSUgOwamUw0sTrdj3lxVKyJam4u32GoC0Ko9dhZmPNycRIF/0OC/PzUxy93WZ/f5X9vRX2t5eZHu6gv6WSmmoZmWnhGJTpWDXpNLqkV+UizYhHdOknBJkkiNamCpbmR/j7cRv9PU04mg2sr8y4mk6wtbHAUK8Vbawv8mh/6o3FiMMukiEOwFyahjY/BlVuFHnJQVwLO4eQnRVJTnY8eo2EyfEBmspzGatRUFcYy8JML5sr0zRWK2hI/o1H0gjqy2TkJl6m3lDA3JCVu9octCU5KOUp/Hj8S4TMjFBCI/wwlkkZHeqmIs6PZ8ZCVKKfaa9VcbS7RGeLBVtJHlUurHu2PsqKs+izm1jsv09uyFn8PN2wt1Rw8by3CzkrmstXzlClk9NoLkMVeIqpkgwMET6Upl+lr7EWS2UJDQYd+cUmJGo7BaU2hkcH6dSmU5d4gQvffoAx8QxnT51AsGhSSbjqT6chj4KkYDw/fZdBSQAi94/45btjDJk0jDo6UeYpKNebafqjixBxMS32bhKunEQV6c1IsxZlih9lt28gDNjN9Jg1OF2HaMUhhHp8iKNARGXSJSLdj/F64glvXi7Q1PyAsJibVNV1c6PQglqto+ZWAuVZUQxY9aj6zUxMmRHatBmYdEWM1VazddKHpRM+zAWHsxoVzY6HJ5saJbDLg/aHfH9aRPLvwa7DpCRcl9HdWkvdXSMmo5H6DhvSHAnCXzYdpco0OlKD2Pj8a8bDk2grMTBYcJvFr35gThbF251XmOraOe4ViO6aH5VZ6URHJHNHp6ZNLkZ5q4g/H42iUesRdvY30RfFoZGI6VKoscnyaS5WYa+p4aFOT1dtFS+f/4NUXsG5XxO5kxJKTOR1svIrmOpppCUvGqmxnqczM4yNTyL8u+ikwWriXkowjk+8ePqeN873T+P82JexL3x5oohjbKCX0Hg5qRlqNOJQRLFFlFVaXYHpaPQGLMOzLC49Z/3NC4SDwx1WXy3Qq4hhwM2LeeEblgUPnC4ffMeNZ6VxWGruc16UQlRwJOVJsQSJlRTIVGSKY/GPV1PVMcx/6xuurQ/5HxiK2wZsgCzvAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 66.21621621621621%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAADoUlEQVQ4ywXBW0xTBwCA4fO6l2V72rLH7VFnYkzcmMkmgrqxgVuyYBDU1RrKigqBAtIid7n2IgVaDpXW0lJ6UYEWSrmIOio1DhG2MAQMtUgiQxAYU0Cm/75PqCk9y1CPicXIKH+O9jHU28qLpQXevNlga2uV7c0VNl895+3OCi8e38XRko+yQMqgVcf2gxs87RYx1lVRqFKwd9dnCKJWzkiwg421p4yFunkQ7GY+MsU7XrO5ucz21jIbq2GCPdfwO+qwNJdRfDEVsSoHmzoHuyYHk66Ysvx0zkvjEarKUunpauHpTIjx3we40+fidqeJpYVxFubH+XctQp+zATE9AUPWKTrt9ZyT/IimWI7XWo5Jm0NjVSaXL0o4c+I7hLLS8xSo5FiNZfwxfo+OK7lMu67QUniGxch9Xi7+hcdUTXfBWYYr5LQ311Cencgt71VmQx5EtYp6fTFqdT5fR+1BUCqlyNKO0+Vq4v5dH9aMRGau1aA7fYS7XjOvXoYJdDjxibUYK8qxd49y1VjDw+FOwv0WVMdjSTq8m8EeM99/exChWCUjJSUBh0WPRV9K3ckjTBsuoUk+hFiUgd8sctNsxGaop6reRZGuk4qGDsYnHuAulWFXJCI7ugtDajQ/xcUgdInFlCgkPOo0ki09RvzujwkVJZPw+SckRe/hScDN5EiQmgotbe038fqHkCoa8PcGSI3fj02ZzOSgFU2lDL/PiBAKePjNbSA8epumUz9THr+XEW0arosnqY75kn+ePGZlaR6nx0vy2TyaWvtRVdoRG43cEAuxaVQEPBYaRtqYnHAg+LQ5mE1aZpu0vN0XzVJsEnPS86xJ5bzbf4gNix7Ywe7u48CRZGrTU7BXlpOXW06/143HasJmb8PX50ORrUQYu+VGVOcykJ3C4lcx3CuqwmtzEtQ1MBcdx5RYwM7rVXSGdg7GncajOk1lfiG5mUquW5sJVMiobmxidGyS+kYLwur6EvoSGc1lSgbUBnz5JQxWahlsNhNqaWXoupWF8CyZ+bVIZAVYcyVI0y7RILqY7bfjqs2j1h1gYT7Mw0cTCOHIDL0BDzcykxj+8ABz78Uw/34skQ+OMvHpYSabFARvDfBLhprLpXquZP2KRGHAZnbi12Shc3QRmHrGysoi66t/I7xlhxfPprlTLWds3zEWhCieC98wJ0QR+ugL5pwlNJsc/JAo59yJZAyKDCTZejQVWrIuKEi8oMfQGWR5bR34j/8B8NbYp9WrdxoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -833,7 +959,7 @@ has LTS for the two most recent major versions to allow you to upgrade within ha
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 39.189189189189186%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsSAAALEgHS3X78AAAA8UlEQVQoz02RiQ6DMAxD+/+/iQRIIG5KuZrxwjwNKWrtHDZNWJbFpmmyfd8tpWTzPNu2bY65k4M/jsPWdXUMD4YHw4Ov+7bQNI0VReEkw+u6tmEYfCj3siw9R3PXdVZVlQd5ePJt27qB8zwtoHZdl/HRRBEfiuTAnPejjqBcgvVHBPecs4UYo0/XQBWjRiFDqIEjB5YALsdxdA4DcAFwPoBPtuUQN4QGchL05Hx7vZ7q5xDw75DQQN5Sjy6HWhTNckgg5AMhGQKR0rvp+OUQUmjz4t/65D3sAEEfyJZRxI3UUeTOKV5u+773AHOyeT0TAz9xBGx6xzRaUwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 39.189189189189186%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA9klEQVQoz02RCY6FMAxDe/9jIpDY96Vl8+jlK2iQIhLHtV0I+75rmibFGJVS0rIs2rZN53lqXVfN8yw4zMdx2B7sP5+iv+9bYRxHZVlmohyo61pt2xqhaRrleW47Zt5lWaooChOBX1WVYRhgGkgDmee6LiO+76vneb60JMIdAVKDcxiMHgwe5wLKEBkQ5DBkZoheGLi4C8InNTM6cALfh8ETeo87O0RcEGMwBNjDZ0+BW0IaygW9RwB3T8Ts1wVHkJT0ntIEcSWVJ40pybGUTpt5G2b9r5idRxAM7cr8SRz426ShPBk1DMOXyqvve+Oz67ru+0w8f2FrbGFmX5taAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -891,8 +1017,7 @@ introduce update groups. In my project, I decided to introduce 4 update groups:&
 &lt;li&gt;NPM packages: scheduled nightly against &lt;code class=&quot;language-text&quot;&gt;develop&lt;/code&gt; branch&lt;/li&gt;
 &lt;li&gt;Major, Minor, Patch updates for Open Source Gradle dependencies: scheduled nightly against &lt;code class=&quot;language-text&quot;&gt;develop&lt;/code&gt; branch&lt;/li&gt;
 &lt;li&gt;Minor, Patch updates for Open Source Gradle dependencies: manually triggered if needed against &lt;code class=&quot;language-text&quot;&gt;master&lt;/code&gt; branch&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Internal Gradle dependencies: scheduled every 6 hours against &lt;code class=&quot;language-text&quot;&gt;develop&lt;/code&gt; branch&lt;/p&gt;
+&lt;li&gt;Internal Gradle dependencies: scheduled every 6 hours against &lt;code class=&quot;language-text&quot;&gt;develop&lt;/code&gt; branch
 &lt;ul&gt;
 &lt;li&gt;In our project, we use software libraries from other teams of the company in our code that are updated multiple
 times per day, and we want to integrate with these changes just a few hours after they have been released.&lt;/li&gt;
@@ -1129,7 +1254,7 @@ the data to ink ratio.&lt;/p&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 37.16216216216216%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsSAAALEgHS3X78AAABaklEQVQoz32Ra0/bMBiF8///y4TEPjCJi1il0ValKSwbFFogK5c2xGkuTpPUuTx7HcRXjnxs2T4+r33slGVJnu+4W6x48N9YvQQoFROqhFwXwh11ZdhXe4wwS3OmfxfM/RV+GJIXJXGUEGwCLBz1HrKJFD+uJwy8K86F30ZjTqYup9MZZzOPo8mMoXfLxe9bDmRv4F2yjtZs4jfSnaYqDUmSil2HE0VbtonifjFm+XAto8vh8ID5/RTvZiJmxxxdnuDOXX79GfF9fMjT0qXIIzFSQk1eVQThO13b4oShkien1HuFTjdk8SvP/oBk+0ys/vH4NOTFHxGulwSvN/iPPynLlA90NLWhNAWZzuwUp2kaSqlQ1y1109IIjcn7UZoUyug62W+MrO2pKile16IxPSubrdEUhf7I0HZFUfRs5cpWrHXei21JG0ko4VsYU5NlutdYrf1Qe+4TXScZ2u4rGGNvVX2psR6fPv8BGBIRiDt2SAgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 37.16216216216216%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABcklEQVQoz2WRCW/TQBCF/f9/C0hIqEAljlRU6oFD7PRInBZIG2QSH+v42nh3vf6qNSBV8KQZzcy+mXma9bTWyFbyc7MljlPSRFCXNU3dog4d3aHDGoPRml7rsba4e2C13rDeJTRSUoiCJElx8LI0JRGCtzOfkzBkEs458md8mAZ8Dm84u444nS8Jlt8Joh8c+yEfwymbNOZXsaWUDYe2Q4gCGPBELsiLjKvVBcv7gNv7GS/OXnMVTfGvLzn68olXl++5uPnKZH7Oy/M3RCufpkpomx1SlrRKkWYZg7V4TmpdCWS9ocgeyHbfiBbvSLYrkjjiNppwF50QPy55XAcsFsfU1W5UMww9xiik7ijKPcMw4Cml6LoOO0DfW3pr0WqPtX/iLmewNcYcMMbdNccYN8jQ9z1KaZSuaGX9+4bOtW07miO4T6rqBrfIDS32e/JcjAu1NpRVPXIcV0o59jk47qjQOWfP8Tx3TU3T/H35j/svngDZwBEqtNW/XAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1161,7 +1286,7 @@ and should not be compared. Also, isn’t weekly also a trend (referring to the 
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 77.70270270270271%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsSAAALEgHS3X78AAACLklEQVQ4y3VUyZKrMAzk/78vpxzeTM2FCYTF2HjBgF63bJJcJlWNbNnW0pLSrOsqxhiZ51mmaXrJC5/7v84oaec8T2n6vhfnrGwpSQhBYoxvGd/7S/d5nhJQpfdejuOQpm1bKBI2p5xQ0MtLnofgAxwVWEvR83Hcsri4KYoNGByGQcyyyOyCjMuqeBorsy1rSuejYlm9YlxcOXNe1hotU1aDtDyOo6ax77vCgJOAFLjO+yH/vn+k7XoJiGhFNMM4Vc4Y6a41YMr8NfzknGUD1ACkRTQhIY1tUx15nkE+0z3otN7PH+A9LcqCdOmNygQjA1K0PiC1IJP1MiEtAwcEU3Q42+AoV2wVzFBTfjweykGGh3mN6vkqBtPh+oSkPuVdXEiyABbgG6kFInX7Xovi/aqXEziikYtLBS4TRwU7gHpSYhCA9cUQg6K+0UOE+wRPNMxGpRPquq5TwpkFeSzrTs+maQRVTobJSPv7q/2oHLIo9MyqkhOGHtHQ5DSEqAa+v77kfr/L8/nUh8oZJe7yDQNhYFplHrDkNkSt7oximFoQ9iaLQkkjrC45HNCD1F+gc6asReEc0qjBRQM+4rbrBJCXMi2n7hfPQpSpeHEJcB/Bf95S4ZBNzFZIMHCNVZGnPiz9VSSL9h6/U9cs5pqypk4HDdPlpFhr68CjLbQ3na4Ll6G0RV2zOK/7QNuPMs2mpMwPL9DIUf8UuL5GiRW/3W4KGuE5O+Fa66ia+bX/D6mP3DNLNUFzAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 77.70270270270271%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAACMElEQVQ4y3VT2W7jMAz0/39fX4o+dItN9kgT25IsidThWQzlJsUWFTDWQZkiZ8hJVeG9g3MO67r+h+Wb86/Ytg29d0y3280OVAU552+RUnqs81iLCOSYaa+1Ynp7ezNj7zv2/StwYN87gH3gsGltSFoRpEC0DIfLsliELmbMIWL2ETe/YQ0Ry4EtC2JWhJgRUobbEm4+Yt2SnYnqI8JSCug0hIDWGmprCN4bxr7j9PsPfvw8I2nBJop5HbzuvaP3Zvx578Ex8UMyS6nmoLdm0WQtdkYbH7xc/lq6e29orVo0Bj56rEnDFGO06GotqIx2S5aKTxlLSJbyGjN8knuKquNu+QQKYymfTifLn5G4JJYWBeBrTIdpEbxMEaIoPPnMCq3VBBoZHqKwbMgXuWKa/Jmpf6AbTwMfzrmWUuCTWuT8txQ1p5MZRWCOQzC8v79bKV2vVyOftsvlYjbOQwQH7xxc2HD+9QcpxsEhjpFTsuImN/kogSyCeZ7x+vqKl5cXnM9niJBDNTCQViuoA6MzlasdbEiiCEngY7aapDjLNuY5JGRRtFqMFu6JdRu1y2q4i8K0+CqJXqIgaoGUIcB+dEhpDS4pogzeWhtctt6tU6JWi5SOTZSYMlJpR509WqzvQyA6HULUu/2jLWkP8qjLiVyQJx+CCcE9SacAXH+uMxY9Z9rYGVxT3cvscJ0Xi9JE4YV1We7Efm4lEv78/IynpydTnYPKs3usrPbdFOcZ9/8AFMrb5RUKA7cAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1219,7 +1344,7 @@ colleague stumbled upon the &lt;a href=&quot;https://cran.r-project.org/web/pack
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 53.37837837837838%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAACDUlEQVQoz3VSa08aURDl/3/vQwu4gYKhIKC2vFRqhfRD/UBcFmhjiWDKsqvysLz2dfd05i5QadKbTDJ3HueeO3NCwvfhuh48T6zN+48FOZd9x4FwXQgfEELAJ38xm2NlWQhZtg2fQHcMf8/LOPwg41OP/fgIdz6HRzGj30dbVWETsdBiucS/hxlYFGc2zGAbp9jzZAKt3cbn8yq0RgPtVguFUgWVi0t4VBviQptenFChYQzR6/Wg3tzg+ts1mpqGn7e30PUBTNOA2mzitFBCJpvH4YcjJMhymSze7oVRq9cDQGYxHA5Rp0Dl7Bz5k4/I5k+QTGUQS6ZkY7FUxlWthtzxKcIHcUSVONLpDJTYe8QTSeTzx+h0OvSjNcPO9x94tRfB6/0oWQT7EUUWR5SYbObcm3cHUOIJZHM5+fBV/SuqF1WcEeOG2sR4MoVNo5KAqqohHFVwRF/5VCiizA21OqqXX1AolpEjxqk0M63QtzX8GuiYPk/xYJrQaSE8b9+xwQsOsWxMXUeL5ta/v8dgMMDo6Qnj8Xg9VwN3NNdutwuDcktqFiJYljSSik8mRiNYzNCXOnQxm81gUYL9rfZEoD1eWgAkdqS0IyvypQ5t28FsvtgKe75YYrWyJJBD4L9JsCx8rBs2d85zLZsUPNXKGTIgN25eWxKYEMHrzNBhTRJDbuQ6vm+OZdkS7OX5A/UzKK+UCXdrAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 53.37837837837838%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACFElEQVQoz22S608aURDF+f+/t9FGEJQaH+CiAipgUx9EY9qK22jxS1FAIMLKiizcfdz9NffiWm16kvkyM+fMZObEwjDEDwKCQL6J4D8xq+lez0OqAKSUEAQ4oxETIYhNhUCJvgv+4t+azvk+4uEBz7YJpMTqdTG/fWcqXGJjZ/LaGEFtMH0e43me3i6CFIKn4SP1mxsq5QMuzs+5vrqiVDlgq7CLUIKqURGHwyHdbpdGo4FpmpydnlGrXVKv12k1m/R6Pa6ur8kX91nLbLKe2SS1sk4uazA/H2e/VNI6Mc/zGQwGVKtVSuUKxlaerLHFylqGVHqV9OoG2/kiXw8P2ckXSKTSxJNLrG9ssJxeIbX8GSOX4+Kihu/7sw2brTZzC0k+zMf5+CnO3MKiblTE5FL6JZ8gkVwmu2nowSfVU46OjikXdvlRM+kPLLxI8HfjlsTiElkjR2F3j/LBF45Pqhwdn7BfrrC9kyeTNSgW97g0f9K+v+fJtrEsi87tHVPHIXQFrusRk2HI0Hrkl2nSbLXodDq6Ud3Utm36/b7Oq9t2220cx9FWCeXs69J1CZWFLAvXdYmppPrkeDxGCKHvEHlPEaUM9LGn0+nrx99ZSIm+WE2oDZXA6Hk8E5ESZzLBmczIvh/omut5mixcl6fRs76Vqqu+iKt01IP1l1VEUEbX7n+ZPqt7WkgRI3EFdTP/jU8V/gBqtyjOyy0h+wAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
