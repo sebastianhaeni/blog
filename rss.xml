@@ -1,4 +1,185 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 10 Jul 2022 11:45:05 GMT</lastBuildDate><item><title><![CDATA[OpenTelemetry Introduction]]></title><description><![CDATA[What is OpenTelemetry OpenTelemetry has been formed as a merge by the teams of OpenTracing and OpenCensus while providing full compatibility…]]></description><link>https://sebastianhaeni.github.com/0011-opentelemetry-intro/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0011-opentelemetry-intro/</guid><pubDate>Sun, 10 Jul 2022 09:30:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;what-is-opentelemetry&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#what-is-opentelemetry&quot; aria-label=&quot;what is opentelemetry permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;What is OpenTelemetry&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 10 Jul 2022 16:55:44 GMT</lastBuildDate><item><title><![CDATA[Distributed Tracing]]></title><description><![CDATA[Distributed Tracing Distributed Tracing enables us to follow invocations across services and monitor them. We can observe a single service…]]></description><link>https://sebastianhaeni.github.com/0012-distributed-tracing/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0012-distributed-tracing/</guid><pubDate>Sun, 10 Jul 2022 18:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;distributed-tracing&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#distributed-tracing&quot; aria-label=&quot;distributed tracing permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Distributed Tracing&lt;/h2&gt;
+&lt;p&gt;Distributed Tracing enables us to follow invocations across services and monitor them. We can observe a single service using logs and metrics. But what if we have a chain of services that fulfill a single purpose for an end user? For example if we have a user that clicks on an order button in a web frontend, we call the frontend’s backend BFF (I personally favour the &lt;strong&gt;B&lt;/strong&gt;ackend-&lt;strong&gt;f&lt;/strong&gt;or-&lt;strong&gt;F&lt;/strong&gt;rontend pattern) which internally calls an inventory microservice to see if the product is available, and also calls a billing microservice to get the user’s bill they will need to approve. If the billing service returns an error, the BFF returns an error to the user. However the inventory microservice returned a successful response. If we only have logs and metrics, we do not know what we just described, we simply know there were some errors, but their correlation is not given. With tracing we know that an error in a service very likely lead to another error in the consumer service if they are in the same recorded trace.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 64.1891891891892%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACdUlEQVQoz1WSy27TQBSG/XaseQIkViyR2LBBPAESKwSL0EpVL6ygjUTaNFUpLU3dxK3j+pa0TmI7Y8/YydjjJL7EHg9KAqJ8q3Ok8+n8OjocW1GuYIypmqqoiiiKgiAoiqLrumEYvV5PEARZlpMkWQ+vLe5xs6wLyuIsieZ6t6tpmrxC1/XBYEAIYf+zlCmlGONgCfa8ieNg18XQde0VAADLsiCEURQRQmYr1vu4siyTJIEQAuDaI8ceAeQhjMeU/olDKc3zHAAwGo1s23ZdF0K4WCyWckSI53lFUfxL/vcAJWP5IhtaaILDx2nX5lIOEMJ6L3xQO3r+9CV9/pZ1JDzHqIyTktJFPLe7lnMj5lFYZmmZZSxNkW0XcVxmGVciNOZbbGxt7s63t70Xr8LX7yhjs9z1luuTGPKir/UzhDOA0n6/nM9pkpSTCZvNOAphZllAEJlv1HcunzybDtouMx9C4SYZj1mcUMt07rRQfxj+6ujVOhsOcsuaSdJU1zlq21NFQVqXDdXPH8HGhwFz1KBxitrtqe+zNE0lKTSMQJUTWSVtGUvdgufRxYWnaVxiGKjVIgOTKe1vu+j9mx+kUcXfa06tlkHI4thvXmKjH2taensTHNfFL1VSOwTVKmm3ucg0YbM5qtWG1erd1qa1t61WKqReVyqV1DRZloHra9BowKMjZWdH3twQPm35B9X+3i6s1zk2meS+P+X5UNfh6am1v+/y/Pj2Fp6cEMdhs1kRBLEkRZo2ueaNrwfq4XmgyOjnuXN1xamiaN/fp6vXo3E893wIAH921jo+Jhi7pqmIYgQhK0tWLCI/dIEvd26btcN7UfwN37i0VdVwEbEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Tracing&quot;
+        title=&quot;Tracing&quot;
+        src=&quot;/blog/static/823be77aa194870b0ca3596b17d0b293/fcda8/tracing.png&quot;
+        srcset=&quot;/blog/static/823be77aa194870b0ca3596b17d0b293/12f09/tracing.png 148w,
+/blog/static/823be77aa194870b0ca3596b17d0b293/e4a3f/tracing.png 295w,
+/blog/static/823be77aa194870b0ca3596b17d0b293/fcda8/tracing.png 590w,
+/blog/static/823be77aa194870b0ca3596b17d0b293/efc66/tracing.png 885w,
+/blog/static/823be77aa194870b0ca3596b17d0b293/59000/tracing.png 917w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+Source: &lt;a href=&quot;https://medium.com/nikeengineering/hit-the-ground-running-with-distributed-tracing-core-concepts-ff5ad47c7058&quot;&gt;https://medium.com/nikeengineering/hit-the-ground-running-with-distributed-tracing-core-concepts-ff5ad47c7058&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A trace has an ID and consists of one or more spans. A span has an ID, timestamp, duration, a local and a remote endpoint as well as a name. For REST calls we traditionally use the HTTP method and path as the span name, e.g. &lt;code class=&quot;language-text&quot;&gt;GET /info&lt;/code&gt;. So, how can we collect spans that form a trace from different services running in different containers? The service that starts a trace is generating a trace ID and with every request it creates in the trace context, it not only creates a span, but it also sends the generated trace ID as an HTTP header. Zipkin specified the span propagation headers first and termed them &lt;code class=&quot;language-text&quot;&gt;B3&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;   Client Tracer                                                  Server Tracer     
+┌───────────────────────┐                                       ┌───────────────────────┐
+│                       │                                       │                       │
+│   TraceContext        │          Http Request Headers         │   TraceContext        │
+│ ┌───────────────────┐ │         ┌───────────────────┐         │ ┌───────────────────┐ │
+│ │ TraceId           │ │         │ X-B3-TraceId      │         │ │ TraceId           │ │
+│ │                   │ │         │                   │         │ │                   │ │
+│ │ ParentSpanId      │ │ Inject  │ X-B3-ParentSpanId │ Extract │ │ ParentSpanId      │ │
+│ │                   ├─┼────────&gt;│                   ├─────────┼&gt;│                   │ │
+│ │ SpanId            │ │         │ X-B3-SpanId       │         │ │ SpanId            │ │
+│ │                   │ │         │                   │         │ │                   │ │
+│ │ Sampling decision │ │         │ X-B3-Sampled      │         │ │ Sampling decision │ │
+│ └───────────────────┘ │         └───────────────────┘         │ └───────────────────┘ │
+│                       │                                       │                       │
+└───────────────────────┘                                       └───────────────────────┘&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;See &lt;a href=&quot;https://github.com/openzipkin/b3-propagation&quot;&gt;B3-Propagation&lt;/a&gt; to learn more about B3 headers. Other vendors followed suit with their propagation format, which meant there were suddenly multiple out there. Nowadays, it’s best practice to follow the &lt;a href=&quot;https://www.w3.org/TR/trace-context/&quot;&gt;Trace Context W3C Recommendation&lt;/a&gt;. If unsure, or during migrations, you can include different propagation headers in your requests, as they don’t bite each other.&lt;/p&gt;
+&lt;p&gt;The service answering this request picks up the headers and does not generate a new trace ID, but instead uses the provided trace ID. If this service calls yet another service, it simply passes on the trace ID it received. This is handled by instrumentation libraries and a developer usually does not have to care about this, except configuring the tracer library. OpenTelemetry provides state of the art implementation libraries that we can use. They provide compatibility to OpenTelemetry Collector, Prometheus, Jaeger and many others and support different transports (TCP, gRPC, UDP) and different deployment models (in-application, agent, …).&lt;/p&gt;
+&lt;p&gt;So, each service now knows to which trace its spans belong to, but how do we collect this information? This is where the Collector comes in. We could tell our services to send the spans to an OpenTelemetry Collector or to a Jaeger collector or any other collector that we’d like. Given the common trace ID, the tracing backend can then correlate the spans together and display them in a single timeline. Sending spans in batches to a collector can impact your service’s performance, so there are options to also do this using a sidecar / agent approach, which involves running another process on the same host next to the service container or even a process running in the same container using process daemons.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/fdf486d007afca44e1ebe7c8504a8860/29114/trace.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 55.4054054054054%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAABZklEQVQoz52Ry27CMBBF8/8SC1Ykhf4KKzZ9LLrrpm1IC+Rtmzxtx5lbJUAgtJUqLJ3FzFhnxmNrOp2a5XJpVquVmUwmZrFYmNls1mPb9kAXO7ZtHMfpuTvi9PmZuZ/PzWI+N5bWGnmRoygLtG2L/x4NoAagjnSxAWB9uC5tt1sqioLyLCMuBD17Hj16Hj15Hj24bk8Xv4cR+Skjn3HacUGblNM6iukrSWmTMtokKVlCCIRhgKqqIKVCXdcQPITgPgQPBjjbge0ZcqWQy7pHmebH5NaesV4opRwA0a/PlBlDKWIoXUPKAo1WIKIRVsYZojCEVIfpOmHbFYHx5dPuyhytrIcmdGx+FgqOOIpGwutLJw45QFcFjKwuZj/XrT3nSOK4F10LL6WjBgCaMoeuS6i2HdWtMI4RBOMd/iW8jj9TgbckGz85iCL4vn+TcJ0IvOzYWBgnCcLuU24Qat3gdceGKbsdfgOTc0O81EGYkQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Jaeger Trace&quot;
+        title=&quot;Jaeger Trace&quot;
+        src=&quot;/blog/static/fdf486d007afca44e1ebe7c8504a8860/fcda8/trace.png&quot;
+        srcset=&quot;/blog/static/fdf486d007afca44e1ebe7c8504a8860/12f09/trace.png 148w,
+/blog/static/fdf486d007afca44e1ebe7c8504a8860/e4a3f/trace.png 295w,
+/blog/static/fdf486d007afca44e1ebe7c8504a8860/fcda8/trace.png 590w,
+/blog/static/fdf486d007afca44e1ebe7c8504a8860/efc66/trace.png 885w,
+/blog/static/fdf486d007afca44e1ebe7c8504a8860/c83ae/trace.png 1180w,
+/blog/static/fdf486d007afca44e1ebe7c8504a8860/29114/trace.png 1920w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Tracing data is complementary to logs and metrics and does not replace them.&lt;/p&gt;
+&lt;p&gt;Using tracing data, we can also visualize system architectures based on actual data in realtime. Especially with microservices and with chaos engineering, your system architecture diagrams will quickly be outdated. We can analyze the local and remote endpoints of each span and determine the direction of communication between two services. Aggregated over all spans we get a dependency map. If we index this data we can even query for the map during a time frame and even visualize throughput and error rates on edges between services.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/4836c3812a19deefa75c7129c113d2a9/d9ed5/jaeger-dag-graph.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 48.64864864864865%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABRklEQVQoz5VQQW7CMBDMR5ESolbAjQv/4BV9BXyhPIFbAzQQZ+O1HTueyiaJIKWHjrSyvdbOzkyS5zm22y0+Dwfs9nus12u85zkWmw0Wux3ePj6QzmbI5nNkWRYr7Wt8pymWyyVWqxUS5xyUUmCtodsW8B4B3nt4awHn8B8k04bvCae9ruvGv6tkECs4a++LHyqZNgLIGJyqCooZSutIFhDcaK3BxqC1dlzyi3CqjpWKA7ZtIaUEM+N4OkMIgTbE8gLD7Eg4kmkTCay1UU2wVQuBqxDxHRSHRUIyKub47/qcnxQO55kI32UJIoIkwkUIfJUlrDGRMCCoLGsCKY3OuTGSPy0/5tUwQxBBVBWKywXHooCsa1SNRNM7eBT1pHC4F3WN2+0WCYP1oUKuJCUape6qXoh5SWisiwoHK1OUUkJqHa1P538ApJ30Ph6giLkAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Jaeger Directed Acyclic Graph&quot;
+        title=&quot;Jaeger Directed Acyclic Graph&quot;
+        src=&quot;/blog/static/4836c3812a19deefa75c7129c113d2a9/fcda8/jaeger-dag-graph.png&quot;
+        srcset=&quot;/blog/static/4836c3812a19deefa75c7129c113d2a9/12f09/jaeger-dag-graph.png 148w,
+/blog/static/4836c3812a19deefa75c7129c113d2a9/e4a3f/jaeger-dag-graph.png 295w,
+/blog/static/4836c3812a19deefa75c7129c113d2a9/fcda8/jaeger-dag-graph.png 590w,
+/blog/static/4836c3812a19deefa75c7129c113d2a9/efc66/jaeger-dag-graph.png 885w,
+/blog/static/4836c3812a19deefa75c7129c113d2a9/c83ae/jaeger-dag-graph.png 1180w,
+/blog/static/4836c3812a19deefa75c7129c113d2a9/d9ed5/jaeger-dag-graph.png 2880w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;tools&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tools&quot; aria-label=&quot;tools permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Tools&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Instrumentation:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://opentelemetry.io/registry/?component=instrumentation&quot;&gt;OpenTelemetry Instrumentation&lt;/a&gt; *&lt;strong&gt;recommended&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.jaegertracing.io/docs/1.36/client-libraries/&quot;&gt;Jaeger&lt;/a&gt; - deprecated&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://zipkin.io/pages/tracers_instrumentation.html&quot;&gt;Zipkin&lt;/a&gt; - deprecated&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/xray/latest/devguide/xray-api.html&quot;&gt;AWS X-Ray&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Collecting:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://opentelemetry.io/docs/collector/&quot;&gt;OpenTelemetry Collector&lt;/a&gt; *&lt;strong&gt;recommended&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.jaegertracing.io/&quot;&gt;Jaeger&lt;/a&gt; - preferred over Zipkin&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://zipkin.io/&quot;&gt;Zipkin&lt;/a&gt; - first one to be widely adopted&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/xray/&quot;&gt;AWS X-Ray&lt;/a&gt; - if you’re running services on AWS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Analysis / Post-Processing:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.jaegertracing.io/&quot;&gt;Jaeger&lt;/a&gt; - supports wide range of storage backends, decent UI *&lt;strong&gt;recommended&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://zipkin.io/&quot;&gt;Zipkin&lt;/a&gt; - first one to be widely adopted, scaling issues, UI bugs&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/xray/&quot;&gt;AWS X-Ray&lt;/a&gt; - if you’re running services on AWS, automatic integration into lots of AWS services&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Others: &lt;a href=&quot;https://tanzu.vmware.com/observability&quot;&gt;Tanzu Observability&lt;/a&gt;, &lt;a href=&quot;https://www.dynatrace.com/&quot;&gt;Dynatrace&lt;/a&gt;, &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview&quot;&gt;Azure Application Insights&lt;/a&gt;, &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/azure-monitor/overview&quot;&gt;Azure Monitor&lt;/a&gt;, &lt;a href=&quot;https://graphiteapp.org/&quot;&gt;Graphite&lt;/a&gt;, &lt;a href=&quot;https://www.datadoghq.com/&quot;&gt;Datadog&lt;/a&gt;, &lt;a href=&quot;https://cloud.google.com/monitoring&quot;&gt;Google Cloud Monitoring&lt;/a&gt;, &lt;a href=&quot;https://lightstep.com/&quot;&gt;Lightstep&lt;/a&gt;, &lt;a href=&quot;https://logz.io/&quot;&gt;Logz.io&lt;/a&gt;, &lt;a href=&quot;https://sentry.io/&quot;&gt;Sentry&lt;/a&gt;, &lt;a href=&quot;https://www.splunk.com/en_us/products/apm-application-performance-monitoring.html&quot;&gt;Splunk APM&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;system-architecture&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#system-architecture&quot; aria-label=&quot;system architecture permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;System Architecture&lt;/h2&gt;
+&lt;p&gt;My personally recommended architecture looks like this:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/571735106220a0a56f3c49713cc1083f/460fa/architecture.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 29.72972972972973%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABYlAAAWJQFJUiTwAAABKElEQVQY022RUUrDQBCGex0P4gF88CK+CVUPoiL44BHEF6GCUGwRwfQlgkFbkDRpa7JJNtlNdj/ZlYYK/vAxMDsz/+zuwHYtHtNhLVhre5y6riPLMqqqQmuN0trHLUqpHmMMA3a0HbIrVxiGIXme/9YY43HN1pq+rm1bbzAQjzdk9+eo17v+QAhBWZYYa2maBiklSZqiVc1yXXFyEXB2GbBYFpRFTpIkVFL63kF0tMd0uM/H9TFNXVMUBUEQMJvNyDZr6loSRRGj0QOrNObtc8PBcMzh6ZiXMCX+mvM0maKkxLiBXRaT5YJ4tfEO7ipuu0IIVFPTda3fUIiCpqkppebqNvJ8i4ZWK8qyYvIesK7Kv2/4n9ynOKM+thowHmfmco7n+YJMaX4AYc/GMUVnbCsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Tracing Architecture&quot;
+        title=&quot;Tracing Architecture&quot;
+        src=&quot;/blog/static/571735106220a0a56f3c49713cc1083f/fcda8/architecture.png&quot;
+        srcset=&quot;/blog/static/571735106220a0a56f3c49713cc1083f/12f09/architecture.png 148w,
+/blog/static/571735106220a0a56f3c49713cc1083f/e4a3f/architecture.png 295w,
+/blog/static/571735106220a0a56f3c49713cc1083f/fcda8/architecture.png 590w,
+/blog/static/571735106220a0a56f3c49713cc1083f/efc66/architecture.png 885w,
+/blog/static/571735106220a0a56f3c49713cc1083f/c83ae/architecture.png 1180w,
+/blog/static/571735106220a0a56f3c49713cc1083f/460fa/architecture.png 1910w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The service, of which there can be many, is deployed using an agent (if available for the language and framework). This is then sending the tracing data (and metrics) to the OpenTelemetry collector, which has a configured pipeline to receive spans and forward them to the Jaeger collector, which stores it in a storage backend such as an Elasticsearch database. The Jaeger Query service allows an engineer to query the traces and visualize them.&lt;/p&gt;
+&lt;h2 id=&quot;upcoming&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#upcoming&quot; aria-label=&quot;upcoming permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Upcoming&lt;/h2&gt;
+&lt;p&gt;This post is part of a series around OpenTelemetry. See the other posts in this series:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;../0011-opentelemetry-intro/&quot;&gt;Introduction to OpenTelemetry&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;OpenTelemetry Collector Components&lt;/li&gt;
+&lt;li&gt;OpenTelemetry Instrumentation&lt;/li&gt;
+&lt;li&gt;Instrumenting React.js applications&lt;/li&gt;
+&lt;li&gt;Instrumenting Angular applications&lt;/li&gt;
+&lt;li&gt;Full Stack OpenTelemetry Example&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[OpenTelemetry Introduction]]></title><description><![CDATA[What is OpenTelemetry OpenTelemetry has been formed as a merge by the teams of OpenTracing and OpenCensus while providing full compatibility…]]></description><link>https://sebastianhaeni.github.com/0011-opentelemetry-intro/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0011-opentelemetry-intro/</guid><pubDate>Sun, 10 Jul 2022 09:30:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;what-is-opentelemetry&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#what-is-opentelemetry&quot; aria-label=&quot;what is opentelemetry permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;What is OpenTelemetry&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://opentelemetry.io/&quot;&gt;OpenTelemetry&lt;/a&gt; has been formed as a merge by the teams of &lt;a href=&quot;https://opentracing.io/&quot;&gt;OpenTracing&lt;/a&gt; and &lt;a href=&quot;https://opencensus.io/&quot;&gt;OpenCensus&lt;/a&gt; while providing full compatibility to existing technologies in the field.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/blog/f6223368c23b452d95af0ef477cfd31b/opentelemetry.svg&quot; alt=&quot;OpenTelemetry&quot;&gt;&lt;/p&gt;
 &lt;p&gt;OpenTracing has created a set of vendor-agnostic APIs to collect tracing data in applications running primarily as Cloud Native. This means that a developer who wants to collect tracing data in their application does not have to implement a vendor’s API in their code, but instead uses an open API that is then implemented by the respective vendors. Similar to Slf4J as a logging API that allows Log4J, Logback etc. to be used as a logging backend. OpenCensus is a project by Google to collect observability data through standard formats that are also vendor agnostic. Thus, OpenTelemetry is a project that creates vendor agnostic APIs for instrumenting applications and at the same time collecting that data from multiple sources and only then passing it to a vendor’s tool.&lt;/p&gt;
@@ -98,7 +279,7 @@ abstracted the vendor library for you, but you still needed to include it in you
 &lt;h2 id=&quot;upcoming&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#upcoming&quot; aria-label=&quot;upcoming permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Upcoming&lt;/h2&gt;
 &lt;p&gt;This post was a first introduction into OpenTelemetry. I am planning to release a series of posts around this topic.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Introduction to Distributed Tracing&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;../0012-distributed-tracing/&quot;&gt;Introduction to Distributed Tracing&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;OpenTelemetry Collector Components&lt;/li&gt;
 &lt;li&gt;OpenTelemetry Instrumentation&lt;/li&gt;
 &lt;li&gt;Instrumenting React.js applications&lt;/li&gt;
