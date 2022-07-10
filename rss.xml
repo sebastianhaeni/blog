@@ -1,4 +1,128 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 30 May 2021 10:48:38 GMT</lastBuildDate><item><title><![CDATA[Setting up Apache Spark and Zeppelin]]></title><description><![CDATA[This article describes how to setup Spark and Zeppelin either on your own machine or on a server or cloud. Spark and Zeppelin are big…]]></description><link>https://sebastianhaeni.github.com/0010-spark-zeppelin-setup/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0010-spark-zeppelin-setup/</guid><pubDate>Sun, 16 May 2021 18:00:00 GMT</pubDate><content:encoded>&lt;p&gt;This article describes how to setup Spark and Zeppelin either on your own machine or on a server or cloud. Spark and Zeppelin are big software products with a wide variety of plugins, interpreters, etc. Finding the compatible versions, Dockerfiles, configs, etc. for a simple setup can be daunting. This here might help you to deploy and play around with Spark on your local machine or create a server setup as a ground to do some demos or proof of concepts. In this setup we will use the local file system and not a distributed one. When you use Spark in a production grade setup, you want to scale your filesystem and workers. But, our goal here is to create a playground environment.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 10 Jul 2022 11:36:21 GMT</lastBuildDate><item><title><![CDATA[Distributed Tracing]]></title><description><![CDATA[Distributed Tracing Distributed Tracing enables us to follow invocations across services and monitor them. We can observe a single service…]]></description><link>https://sebastianhaeni.github.com/0012-distributed-tracing/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0012-distributed-tracing/</guid><pubDate>Sat, 30 Jul 2022 18:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;distributed-tracing&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#distributed-tracing&quot; aria-label=&quot;distributed tracing permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Distributed Tracing&lt;/h2&gt;
+&lt;p&gt;Distributed Tracing enables us to follow invocations across services and monitor them. We can observe a single service using logs and metrics. But what if we have a chain of services that fulfill a single purpose for an end user? For example if we have a user that clicks on an order button in a web frontend, we call the frontend’s backend BFF (I personally favour the &lt;strong&gt;B&lt;/strong&gt;ackend-&lt;strong&gt;f&lt;/strong&gt;or-&lt;strong&gt;F&lt;/strong&gt;rontend pattern) which internally calls an inventory microservice to see if the product is available, and also calls a billing microservices get the user’s bill they will need to approve. If the billing service returns an error instead, the BFF returns an error to the user. However the inventory microservice returned a successful response. If we only have logs and metrics, we do not know what we just described, we simply know there were some errors, but their correlation is not given. With tracing we know that an error in a service very likely lead to another error in the consumer service if they are in the same recorded trace.&lt;/p&gt;
+&lt;p&gt;A trace has an ID and consists of one or more spans. A span has an ID, timestamp, duration, a local and a remote endpoint as well as a name. For REST calls we traditionally use the HTTP method and path as the span name. Now, how can we collect spans that form a trace from different services running in different containers? The service that starts a trace is generating a trace ID and with every request it creates in the trace context, it not only creates a span, but it also sends the generated trace ID as an HTTP header starting with &lt;code class=&quot;language-text&quot;&gt;b3-&lt;/code&gt;. See &lt;a href=&quot;https://github.com/openzipkin/b3-propagation&quot;&gt;B3-Propoagation&lt;/a&gt; to learn more about B3 headers. The service answering this request picks up the B3 header and does not generate a new trace ID, but instead uses the provided trace ID. If this service calls yet another service, it simply passes on the trace ID it received. This is handled by instrumentation libraries and a developer usually does not have to care about this, except configuring the tracer library. With OpenTracing this API has been abstracted, so different instrumentations can be swapped without changing the code. As OpenTelemetry not only specifies APIs but also provides implementations of these, we can use OpenTelemetry solely as instrumentation library which provides compatibility to OpenTelemetry Collector, Prometheus and Jaeger.&lt;/p&gt;
+&lt;p&gt;So, each service now knows to which trace its span belong to, but how do we collect this information? This is where the OpenCensus project comes in. We could tell our services to send the spans to an OpenTelemetry Collector or to a Jaeger collector. Given the common trace ID, the tracing backend can then correlate the spans together and display them in a single timeline. Sending spans in batches to a collector can impact your service’s performance, so there are options to also do this using a sidecar / agent approach, which involves running another process on the same host next to the service container or even a process running in the same container using process daemons TODO.&lt;/p&gt;
+&lt;p&gt;TODO trace timeline image&lt;/p&gt;
+&lt;p&gt;Tracing data is complementary to logs and metrics and does not replace them.&lt;/p&gt;
+&lt;p&gt;Using tracing data, we can also visualize system architectures based on data. Especially with microservices and with chaos engineering, your system architecture diagrams will quickly be outdated. We can analyze the local and remote endpoints of each span and determine the direction of communication between two services. Aggregated over all spans we get a dependency map. If we index this data we can even query for the map during a time frame and even visualize troughputs and error rates on edges between services.&lt;/p&gt;
+&lt;p&gt;TODO dependency map&lt;/p&gt;
+&lt;h2 id=&quot;instrumentation&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#instrumentation&quot; aria-label=&quot;instrumentation permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Instrumentation&lt;/h2&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+&lt;h2 id=&quot;collector&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#collector&quot; aria-label=&quot;collector permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Collector&lt;/h2&gt;
+&lt;p&gt;TODO
+exporters, …&lt;/p&gt;
+&lt;h2 id=&quot;tools&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tools&quot; aria-label=&quot;tools permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Tools&lt;/h2&gt;
+&lt;p&gt;Jaeger, Zipkin, …&lt;/p&gt;
+&lt;h2 id=&quot;system-architecture&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#system-architecture&quot; aria-label=&quot;system architecture permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;System Architecture&lt;/h2&gt;
+&lt;p&gt;diagram&lt;/p&gt;
+&lt;h2 id=&quot;upcoming&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#upcoming&quot; aria-label=&quot;upcoming permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Upcoming&lt;/h2&gt;
+&lt;p&gt;TODO, post about Java Springboot, post about angular, post about react&lt;/p&gt;</content:encoded></item><item><title><![CDATA[OpenTelemetry Introduction]]></title><description><![CDATA[What is OpenTelemetry OpenTelemetry has been formed as a merge by the teams of OpenTracing and OpenCensus while providing full compatibility…]]></description><link>https://sebastianhaeni.github.com/0011-opentelemetry-intro/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0011-opentelemetry-intro/</guid><pubDate>Sun, 10 Jul 2022 09:30:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;what-is-opentelemetry&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#what-is-opentelemetry&quot; aria-label=&quot;what is opentelemetry permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;What is OpenTelemetry&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://opentelemetry.io/&quot;&gt;OpenTelemetry&lt;/a&gt; has been formed as a merge by the teams of &lt;a href=&quot;https://opentracing.io/&quot;&gt;OpenTracing&lt;/a&gt; and &lt;a href=&quot;https://opencensus.io/&quot;&gt;OpenCensus&lt;/a&gt; while providing full compatibility to existing technologies in the field.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/f6223368c23b452d95af0ef477cfd31b/opentelemetry.svg&quot; alt=&quot;OpenTelemetry&quot;&gt;&lt;/p&gt;
+&lt;p&gt;OpenTracing has created a set of vendor-agnostic APIs to collect tracing data in applications running primarily as Cloud Native. This means that a developer who wants to collect tracing data in their application does not have to implement a vendor’s API in their code, but instead uses an open API that is then implemented by the respective vendors. Similar to Slf4J as a logging API that allows Log4J, Logback etc. to be used as a logging backend. OpenCensus is a project by Google to collect observability data through standard formats that are also vendor agnostic. Thus, OpenTelemetry is a project that creates vendor agnostic APIs for instrumenting applications and at the same time collecting that data from multiple sources and only then passing it to a vendor’s tool.&lt;/p&gt;
+&lt;p&gt;So, if you are using Prometheus and Jaeger today, you might want to switch over to using OpenTelemetry APIs and the OpenTelemetry collector as an intermediary, and only then send the tracing and metrics data to your observability tools. With this abstraction, you can use multiple observability tools in place at the same time, route data to different places, sample data, etc. All of this is independent of the specifics of vendors. However, you are then dependent on OpenTelemetry.&lt;/p&gt;
+&lt;p&gt;The observability signals for OpenTelemetry are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Logs&lt;/strong&gt;: Traditional logs printed to console, file, or in case of a cloud native application, to a log-collector which indexes them and provides a search interface. If logs are written in the context of a trace, the trace and logs can be linked and made discoverable together.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Traces&lt;/strong&gt;: A trace consisting of spans, which are basic function calls, follows the path of invocations no matter in which service they are invoked.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Metrics&lt;/strong&gt;: Timeseries based data. For example traffic count, error count, response times, etc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Additionally, OpenTelemetry specifies &lt;strong&gt;Baggage&lt;/strong&gt; which are basically tags for events.&lt;/p&gt;
+&lt;p&gt;As of July, 2022, only Traces and Metrics have been fully specified. They both have well tested instrumentation libraries in the most common languages and frameworks. The OpenTelemetry collector is also able to export these to common observability tools such as Prometheus, OpenCensus, Zipkin and Jaeger as well as Kafka. Logs are not fully specified nor implemented, but it’s being worked on right now. Check out the &lt;a href=&quot;https://opentelemetry.io/status/&quot;&gt;OpenTelemetry Status Page&lt;/a&gt; to see an up-to-date status.&lt;/p&gt;
+&lt;h2 id=&quot;the-need-for-standards&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#the-need-for-standards&quot; aria-label=&quot;the need for standards permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;The need for standards&lt;/h2&gt;
+&lt;p&gt;In 2010 Google has published a paper about &lt;a href=&quot;https://research.google/pubs/pub36356/&quot;&gt;Dapper, a Large-Scale Distributed Systems Tracing Infrastructure&lt;/a&gt;.
+Some called it the secret weapon Google has to understand their architectures and debug complex request traces.&lt;/p&gt;
+&lt;p&gt;Dapper later evolved into the open sourced project &lt;a href=&quot;https://zipkin.io/&quot;&gt;Zipkin&lt;/a&gt;.
+AWS jumped onto the distributed tracing bandwagon and introduced &lt;a href=&quot;https://aws.amazon.com/xray/&quot;&gt;AWS X-Ray&lt;/a&gt;. Uber liked distributed tracing as well, but didn’t like some decisions taken in Zipkin, so they created &lt;a href=&quot;https://www.jaegertracing.io/&quot;&gt;Jaeger&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.75675675675676%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAxOAAAMTgF/d4wjAAAB/0lEQVQoz12Rsc6iUBSEeW3f4a80rBqbfQMrC40oKlzRi4CAEEC8EoHCeDWoiIpw/kSKTfarTmbmNDMMpTRNU0VRVFXVNG0wGKiqKggCx3E8zyOEJEnCGEuSNBqNBEFYrVbH4/F+v0dRxIRhmGVZ+uX5fLquq+u6aZpVbj6fG4bxeDySJOn3+91uFyF0Pp/LspxOp8zlcgGA8gsA7Pd7jPFisaieF4sFz/O+71NKfd8viuLz+RRFAQCqqjKEENu2DcPAGBNCgiAQBEFRlPl8LoqiruvL5bLX62GM4zh2Xde2bYyx4zgIISaKIlmWLcuq7DAMFUXBGM9mM1EUgyAwv0RRFMex4zir1co0zepgdrudLMvD4XA2m63Xa9/3j8fjfr93XTcMQwCwbZsQcr1ePc+zLIvjuMlkIssyx3FMHMeapomiyHHc4XDY7XZZlt3vd9d18zy3bVvTNAA4n89BEPi+jxAaj8ebzUaSJIZSWpZlnuev1wsAtttt9gUhBACGYei6DgCU0iAIAOD9fj+fTwBQFIU5nU4AUBRF1bbneWmavl6vzWYDAISQKIoA4HQ6EUKq5OfzAQBZlpkkSf6bKsuyPM8ppUVR3G636/UKAEmSVBWUZflvqp+fn1ar9ecLy7LtdrvVarEs22w2WZatxEaj8fdLvV6v9E6nU6vVfgEipS+oeiBr3QAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;How Standards Proliferate&quot;
+        title=&quot;How Standards Proliferate&quot;
+        src=&quot;/blog/static/f6730132df8eba09ebb81aff33e5ae11/0b533/standards.png&quot;
+        srcset=&quot;/blog/static/f6730132df8eba09ebb81aff33e5ae11/12f09/standards.png 148w,
+/blog/static/f6730132df8eba09ebb81aff33e5ae11/e4a3f/standards.png 295w,
+/blog/static/f6730132df8eba09ebb81aff33e5ae11/0b533/standards.png 500w&quot;
+        sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://xkcd.com/927&quot;&gt;https://xkcd.com/927&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Each of these tools introduced span propagation methods to be able to follow a trace as it makes it’s way through an architecture consisting of many services:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/openzipkin/b3-propagation&quot;&gt;Zipkin B3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;x-b3-sampled: 1
+x-b3-spanid:  9090044efa29991f
+x-b3-traceid: de5a14e8f69781b31299211599430ed2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html&quot;&gt;AWS X-Ray&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;x-amzn-trace-id: Root=1-de5a14e8-f69781b31299211599430ed2;Parent=9090044efa29991f;Sampled=1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.jaegertracing.io/docs/1.35/client-libraries/&quot;&gt;Jaeger&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;uber-trace-id: de5a14e8f69781b31299211599430ed2:9090044efa29991f:0:01&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;br/&gt;
+Zipkin later introduced a single header standard as well:
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/openzipkin/b3-propagation#single-header&quot;&gt;Zipkin B3 single-header&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;b3: …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Finally, some people were annoyed by the variety of propagation formats, so they created a W3C recommendation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.w3.org/TR/trace-context/&quot;&gt;Trace Context W3C Recommendation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;traceparent: 00-de5a14e8f69781b31299211599430ed2-9090044efa29991f-01&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;However, the software APIs to instrument your code and to collect those signals was still wild west. So, OpenTelemetry was formed to come to the rescue.&lt;/p&gt;
+&lt;h2 id=&quot;instrumentation&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#instrumentation&quot; aria-label=&quot;instrumentation permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Instrumentation&lt;/h2&gt;
+&lt;p&gt;Before OpenTelemetry, you could choose to use a library to instrument your code to gather tracing and metrics data and collect it with your vendor’s tool.
+For example, for tracing you could use the &lt;a href=&quot;https://zipkin.io/pages/tracers_instrumentation.html&quot;&gt;Zipkin libraries&lt;/a&gt;, &lt;a href=&quot;https://www.jaegertracing.io/docs/1.36/client-libraries/&quot;&gt;Jaeger libraries&lt;/a&gt;,
+&lt;a href=&quot;https://docs.aws.amazon.com/xray/latest/devguide/xray-api.html&quot;&gt;AWS X-Ray libraries&lt;/a&gt; or possibly others.&lt;/p&gt;
+&lt;p&gt;Now, these often provided compatibility to other tools, however you still needed to depend on a single vendor. And to be fair, libraries such as &lt;a href=&quot;https://spring.io/projects/spring-cloud-sleuth&quot;&gt;Spring Cloud Sleuth&lt;/a&gt;
+abstracted the vendor library for you, but you still needed to include it in your application.&lt;/p&gt;
+&lt;p&gt;Nowadays, Zipkin and Jaeger have deprecated their instrumentation libraries and recommend the usage of OpenTelemetry instrumentation.&lt;/p&gt;
+&lt;h2 id=&quot;collection&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#collection&quot; aria-label=&quot;collection permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Collection&lt;/h2&gt;
+&lt;p&gt;Before OpenTelemetry, you had to send your metrics, traces and logs to separate vendor specific tools.&lt;/p&gt;
+&lt;p&gt;For tracing data collection vendors introduced these formats:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Zipkin Format&lt;/li&gt;
+&lt;li&gt;Protobuf&lt;/li&gt;
+&lt;li&gt;Thrift&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And transport it over these:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTTP(S)&lt;/li&gt;
+&lt;li&gt;gRPC&lt;/li&gt;
+&lt;li&gt;UDP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;While the transports probably all have a justified use case, the formats should be unified. So, OpenTelemetry introduced the OpenTelemetry Protocol &lt;a href=&quot;https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/otlp.md&quot;&gt;OTLP&lt;/a&gt;. It not only allows to send tracing data, but logs, metrics and tracing.&lt;/p&gt;
+&lt;p&gt;Once they were collected by a vendor’s tool, it was hard to get them out of there to use it for other interesting purposes. In a large organization, it might be useful to send traces to a team specific tool, but also collect all traces produced by all teams to generate so called RED metrics.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;R&lt;/strong&gt; - Requests: Traffic, Throughput, Rate&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;E&lt;/strong&gt; – Errors: Error Counts, Error Rate, Failed Calls&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;D&lt;/strong&gt; – Durations: Latency, Elapsed Time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With the OpenTelemetry Collector in-between, this becomes a breeze, as you can define pipelines in the collector which sends your data to different channels downstream. If you ever want to evaluate a new monitoring tool, you simply forward your data there, but continue using your existing monitoring tools until you switch over. Or maybe the tools are complementary and you decide to use multiple tools generating insights based on the same source data.&lt;/p&gt;
+&lt;h2 id=&quot;upcoming&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#upcoming&quot; aria-label=&quot;upcoming permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Upcoming&lt;/h2&gt;
+&lt;p&gt;This post was a first introduction into OpenTelemetry. I am planning to release a series of posts around this topic.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Introduction to Distributed Tracing&lt;/li&gt;
+&lt;li&gt;OpenTelemetry Collector Components&lt;/li&gt;
+&lt;li&gt;OpenTelemetry Instrumentation&lt;/li&gt;
+&lt;li&gt;Instrumenting React.js applications&lt;/li&gt;
+&lt;li&gt;Instrumenting Angular applications&lt;/li&gt;
+&lt;li&gt;Full Stack OpenTelemetry Example&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Setting up Apache Spark and Zeppelin]]></title><description><![CDATA[This article describes how to setup Spark and Zeppelin either on your own machine or on a server or cloud. Spark and Zeppelin are big…]]></description><link>https://sebastianhaeni.github.com/0010-spark-zeppelin-setup/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0010-spark-zeppelin-setup/</guid><pubDate>Sun, 16 May 2021 18:00:00 GMT</pubDate><content:encoded>&lt;p&gt;This article describes how to setup Spark and Zeppelin either on your own machine or on a server or cloud. Spark and Zeppelin are big software products with a wide variety of plugins, interpreters, etc. Finding the compatible versions, Dockerfiles, configs, etc. for a simple setup can be daunting. This here might help you to deploy and play around with Spark on your local machine or create a server setup as a ground to do some demos or proof of concepts. In this setup we will use the local file system and not a distributed one. When you use Spark in a production grade setup, you want to scale your filesystem and workers. But, our goal here is to create a playground environment.&lt;/p&gt;
 &lt;p&gt;This blog post refers to this accompanying GitHub repository:&lt;/p&gt;
 &lt;p style=&quot;text-align: center&quot;&gt;
 &lt;a href=&quot;https://github.com/sebastianhaeni/spark-zeppelin-docker&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;sebastianhaeni/spark-zeppelin-docker&lt;/a&gt;
@@ -28,6 +152,7 @@
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;text-align: center&quot;&gt;Image Source: &lt;a href=&quot;https://zeppelin.apache.org/&quot;&gt;zeppelin.apache.org&lt;/a&gt;&lt;/p&gt;
@@ -53,6 +178,7 @@
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&quot;instructions&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#instructions&quot; aria-label=&quot;instructions permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Instructions&lt;/h2&gt;
@@ -75,7 +201,7 @@
 So, we don’t have to map ports from the internal Docker network and we don’t have
 to remember names.&lt;/p&gt;
 &lt;p&gt;To make this possible, we also need a custom Python web server that transforms the responses from Spark-Master and Spark-Worker.
-They do not support reverse proxies out of the box (no support for X-Forwarded-For etc.), thus we rewrite the &lt;code class=&quot;language-text&quot;&gt;&amp;lt;a&amp;gt;&lt;/code&gt; links to
+They do not support reverse proxies out of the box (no support for X-Forwarded-For etc.), thus we rewrite the &lt;code class=&quot;language-text&quot;&gt;&amp;lt;a&gt;&lt;/code&gt; links to
 the correct URLs.&lt;/p&gt;
 &lt;h2 id=&quot;spark-and-zeppelin&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spark-and-zeppelin&quot; aria-label=&quot;spark and zeppelin permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spark and Zeppelin&lt;/h2&gt;
 &lt;h3 id=&quot;base-image&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#base-image&quot; aria-label=&quot;base image permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Base Image&lt;/h3&gt;
@@ -224,11 +350,11 @@ happen before any code review occurs.&lt;/p&gt;
 &lt;h1 id=&quot;contribution-guidelines&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#contribution-guidelines&quot; aria-label=&quot;contribution guidelines permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Contribution guidelines&lt;/h1&gt;
 &lt;h2 id=&quot;commit-message-template&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#commit-message-template&quot; aria-label=&quot;commit message template permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Commit message template&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;Template for commits related to a JIRA issue:&lt;/em&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;AAA-&amp;lt;number&amp;gt; (&amp;lt;type&amp;gt;) &amp;lt;subject&amp;gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;AAA-&amp;lt;number&gt; (&amp;lt;type&gt;) &amp;lt;subject&gt;
 
 Explain why this change is being made&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;If there is no issue, use the following template:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;(&amp;lt;type&amp;gt;) &amp;lt;subject&amp;gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;(&amp;lt;type&gt;) &amp;lt;subject&gt;
 
 Explain why this change is being made&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;em&gt;Types:&lt;/em&gt;&lt;/p&gt;
@@ -448,6 +574,7 @@ summary for a possible decoding to be successful.&lt;/p&gt;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;
 Image Source: &lt;a href=&quot;https://mc.ai/variational-autoencoders-an-intuitive-explanation-some-keras-code-2/&quot;&gt;mc.ai&lt;/a&gt;&lt;/p&gt;
@@ -731,6 +858,7 @@ into trend and seasonality components using Loess regression.&lt;/p&gt;
         sizes=&quot;(max-width: 231px) 100vw, 231px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -765,6 +893,7 @@ manually specified change points with the respective growth rate of that time in
         sizes=&quot;(max-width: 394px) 100vw, 394px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -804,6 +933,7 @@ yearly, holiday or weekday components, we can create an additive model based on 
         sizes=&quot;(max-width: 547px) 100vw, 547px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -836,6 +966,7 @@ yearly, holiday or weekday components, we can create an additive model based on 
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -873,6 +1004,7 @@ holiday in terms of trend or seasonality change.&lt;/p&gt;
         sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -922,6 +1054,7 @@ solutions and then talk about how to do it with NPM, Gradle and Jenkins yourself
         sizes=&quot;(max-width: 487px) 100vw, 487px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&quot;why-it-is-important-to-keep-your-dependencies-up-to-date&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#why-it-is-important-to-keep-your-dependencies-up-to-date&quot; aria-label=&quot;why it is important to keep your dependencies up to date permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Why it is important to keep your dependencies up to date&lt;/h2&gt;
@@ -972,6 +1105,7 @@ has LTS for the two most recent major versions to allow you to upgrade within ha
         sizes=&quot;(max-width: 574px) 100vw, 574px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;text-align: center&quot;&gt;
@@ -1081,9 +1215,9 @@ plugins. You can run &lt;code class=&quot;language-text&quot;&gt;npm update&lt;/
 you have defined.&lt;/p&gt;
 &lt;p&gt;If you don’t know about NPM’s version selectors syntax like &lt;code class=&quot;language-text&quot;&gt;^&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;~&lt;/code&gt; and others, I encourage you to try out the
 &lt;a href=&quot;https://semver.npmjs.com&quot;&gt;playground&lt;/a&gt; to learn about it. If you want a default save prefix for new packages installed,
-you can create a &lt;code class=&quot;language-text&quot;&gt;.npmrc&lt;/code&gt; file in your project directory with the line &lt;code class=&quot;language-text&quot;&gt;save-prefix=&amp;quot;~&amp;quot;&lt;/code&gt; added to it. This changes
+you can create a &lt;code class=&quot;language-text&quot;&gt;.npmrc&lt;/code&gt; file in your project directory with the line &lt;code class=&quot;language-text&quot;&gt;save-prefix=&quot;~&quot;&lt;/code&gt; added to it. This changes
 the default &lt;code class=&quot;language-text&quot;&gt;^&lt;/code&gt;, that allows updates to new minor versions to &lt;code class=&quot;language-text&quot;&gt;~&lt;/code&gt;, which only allows updates to new patch versions.
-That’s not something I would recommend doing, as that would restrict your updates more. If you use &lt;code class=&quot;language-text&quot;&gt;save-prefix=&amp;quot;&amp;gt;=&amp;quot;&lt;/code&gt;,
+That’s not something I would recommend doing, as that would restrict your updates more. If you use &lt;code class=&quot;language-text&quot;&gt;save-prefix=&quot;&gt;=&quot;&lt;/code&gt;,
 every time &lt;code class=&quot;language-text&quot;&gt;npm update&lt;/code&gt; is run, you get the newest production ready version (don’t worry, you won’t get betas,
 release-candidates and so on).&lt;/p&gt;
 &lt;p&gt;Another thing to note is that NPM only updates direct dependencies that you specified in your
@@ -1123,8 +1257,8 @@ there.&lt;/p&gt;
         checkConstraints &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
 
         &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; isNonStable &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; String version &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;
-            &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; stableKeyword &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string gstring&quot;&gt;&quot;RELEASE&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string gstring&quot;&gt;&quot;FINAL&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string gstring&quot;&gt;&quot;GA&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;any &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; word &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; version&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toUpperCase&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;word&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; regex &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string regex&quot;&gt;/^[0-9,.v-]+(-r)?$/&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; stableKeyword &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token interpolation-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;&quot;RELEASE&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token interpolation-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;&quot;FINAL&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token interpolation-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;&quot;GA&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;any &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; word &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt; version&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toUpperCase&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;word&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; regex &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token interpolation-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;/^[0-9,.v-]+(-r)?$/&lt;/span&gt;&lt;/span&gt;
             &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;stableKeyword &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;version &lt;span class=&quot;token operator&quot;&gt;==~&lt;/span&gt; regex&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
         &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
@@ -1137,7 +1271,7 @@ there.&lt;/p&gt;
         &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
         rejectVersionIf &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; component &lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;
-            &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;project&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;properties&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string gstring&quot;&gt;&quot;onlyMinorPatchUpdates&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string gstring&quot;&gt;&quot;true&quot;&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;project&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;properties&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token interpolation-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;&quot;onlyMinorPatchUpdates&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token interpolation-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;/span&gt;
                 &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;isMajorUpdate&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;component&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;candidate&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;version&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; component&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;currentVersion&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
                 &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
             &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
@@ -1267,6 +1401,7 @@ the data to ink ratio.&lt;/p&gt;
         sizes=&quot;(max-width: 548px) 100vw, 548px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1299,6 +1434,7 @@ and should not be compared. Also, isn’t weekly also a trend (referring to the 
         sizes=&quot;(max-width: 531px) 100vw, 531px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1357,6 +1493,7 @@ colleague stumbled upon the &lt;a href=&quot;https://cran.r-project.org/web/pack
         sizes=&quot;(max-width: 450px) 100vw, 450px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
