@@ -2,6 +2,7 @@
 title: Seminar Assessment on Oneself
 date: "2020-07-07T17:00:00.000Z"
 tags: ["MSc", "AI Seminar"]
+image: "autoencoder.png"
 ---
 
 In [my first blog post related to the AI seminar](../0002-ai-seminar-intro) that I took, I laid out my

@@ -2,6 +2,7 @@
 title: How to Forecast at Scale
 date: "2020-05-12T23:30:00.000Z"
 tags: ["MSc", "AI Seminar"]
+image: "fit-viz.png"
 ---
 
 This is my third blog post about the paper

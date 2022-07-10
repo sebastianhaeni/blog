@@ -20,10 +20,11 @@ const BlogIndex = ({ data, location }) => {
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
-          <article key={node.fields.slug}>
+          <article key={node.fields.slug} style={{borderBottom: '1px solid #ddd', marginBottom: 32}}>
             <header>
               <h3
                 style={{
+                  marginTop: 16,
                   marginBottom: rhythm(1 / 4),
                 }}
               >
@@ -42,14 +43,17 @@ const BlogIndex = ({ data, location }) => {
                   title: node.frontmatter.title,
                 }}
                 placeholder={"..."}
-              />
+                />
+                {node.frontmatter.image?.publicURL && <div style={{display: 'flex', justifyContent: 'center', marginTop: 16}}>
+                  <img src={node.frontmatter.image?.publicURL} alt={node.frontmatter.title}/>
+                </div>}
             </header>
             <section>
               <p
                 dangerouslySetInnerHTML={{
                   __html: node.frontmatter.description || node.excerpt,
                 }}
-              />
+                />
             </section>
           </article>
         )
@@ -80,6 +84,9 @@ export const pageQuery = graphql`
             title
             description
             tags
+            image {
+              publicURL
+            }
           }
         }
       }

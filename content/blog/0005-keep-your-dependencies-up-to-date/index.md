@@ -5,6 +5,7 @@ description:
   We tackle the question of why it's important to keep your dependencies up to date, compare a few proprietary
   solutions and then talk about how to do it with NPM, Gradle and Jenkins yourself.
 tags: ["DevOps", "Jenkins", "NPM", "Gradle"]
+image: "meme.png"
 ---
 
 We tackle the question of why it's important to keep your dependencies up to date, compare a few proprietary

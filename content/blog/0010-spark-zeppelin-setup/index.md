@@ -2,6 +2,7 @@
 title: Setting up Apache Spark and Zeppelin
 date: "2021-05-16T18:00:00.000Z"
 tags: ["DevOps", "ML"]
+image: "system-components.drawio.png"
 ---
 
 This article describes how to setup Spark and Zeppelin either on your own machine or on a server or cloud. Spark and Zeppelin are big software products with a wide variety of plugins, interpreters, etc. Finding the compatible versions, Dockerfiles, configs, etc. for a simple setup can be daunting. This here might help you to deploy and play around with Spark on your local machine or create a server setup as a ground to do some demos or proof of concepts. In this setup we will use the local file system and not a distributed one. When you use Spark in a production grade setup, you want to scale your filesystem and workers. But, our goal here is to create a playground environment.

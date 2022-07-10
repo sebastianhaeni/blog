@@ -2,6 +2,7 @@
 title: Facebook's Prophet and the paper
 date: "2020-03-20T22:00:00.000Z"
 tags: ["MSc", "AI Seminar", "ML", "Prophet"]
+image: "anomalize.png"
 ---
 
 For the AI seminar, I am attending, I selected the following paper:
