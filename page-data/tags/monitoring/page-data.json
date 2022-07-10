@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-tags-js",
     "path": "/tags/monitoring/",
-    "result": {"data":{"site":{"siteMetadata":{"title":"Blog of Sebastian Häni"}},"allMarkdownRemark":{"totalCount":2,"edges":[{"node":{"fields":{"slug":"/0012-distributed-tracing/"},"frontmatter":{"title":"Distributed Tracing","date":"July 30, 2022"}}},{"node":{"fields":{"slug":"/0011-opentelemetry-intro/"},"frontmatter":{"title":"OpenTelemetry Introduction","date":"July 10, 2022"}}}]}},"pageContext":{"tag":"Monitoring"}},
+    "result": {"data":{"site":{"siteMetadata":{"title":"Blog of Sebastian Häni"}},"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/0011-opentelemetry-intro/"},"frontmatter":{"title":"OpenTelemetry Introduction","date":"July 10, 2022"}}}]}},"pageContext":{"tag":"Monitoring"}},
     "staticQueryHashes": ["3333504701"]}
