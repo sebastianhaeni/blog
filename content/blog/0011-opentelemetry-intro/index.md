@@ -121,7 +121,7 @@ With the OpenTelemetry Collector in-between, this becomes a breeze, as you can d
 
 This post was a first introduction into OpenTelemetry. I am planning to release a series of posts around this topic.
 
-- Introduction to Distributed Tracing
+- [Introduction to Distributed Tracing](../0012-distributed-tracing/)
 - OpenTelemetry Collector Components
 - OpenTelemetry Instrumentation
 - Instrumenting React.js applications
