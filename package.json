@@ -21,7 +21,7 @@
     "prettier": "^2.1.2"
   },
   "dependencies": {
-    "gatsby": "^4.13.1",
+    "gatsby": "^4.24.8",
     "gatsby-plugin-disqus": "^1.2.2",
     "gatsby-plugin-feed": "^4.13.0",
     "gatsby-plugin-google-gtag": "^4.13.0",
