@@ -1,5 +1,5 @@
 ---
-title: Distributed Tracing
+title: Introduction to Distributed Tracing
 date: "2022-07-10T18:00:00.000Z"
 tags: ["DevOps", "Tracing", "Monitoring"]
 image: "jaeger-dag-graph.png"
@@ -85,8 +85,9 @@ The service, of which there can be many, is deployed using an agent (if availabl
 This post is part of a series around OpenTelemetry. See the other posts in this series:
 
 - [Introduction to OpenTelemetry](../0011-opentelemetry-intro/)
-- OpenTelemetry Collector Components
-- OpenTelemetry Instrumentation
-- Instrumenting React.js applications
-- Instrumenting Angular applications
-- Full Stack OpenTelemetry Example
+- Introduction to Distributed Tracing (**this article**)
+- OpenTelemetry Collector Components (upcoming)
+- OpenTelemetry Instrumentation (upcoming)
+- Instrumenting React.js applications (upcoming)
+- Instrumenting Angular applications (upcoming)
+- Full Stack OpenTelemetry Example (upcoming)
