@@ -1,4 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 10 Jul 2022 16:55:44 GMT</lastBuildDate><item><title><![CDATA[Distributed Tracing]]></title><description><![CDATA[Distributed Tracing Distributed Tracing enables us to follow invocations across services and monitor them. We can observe a single service…]]></description><link>https://sebastianhaeni.github.com/0012-distributed-tracing/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0012-distributed-tracing/</guid><pubDate>Sun, 10 Jul 2022 18:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;distributed-tracing&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#distributed-tracing&quot; aria-label=&quot;distributed tracing permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Distributed Tracing&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 27 Nov 2022 15:03:12 GMT</lastBuildDate><item><title><![CDATA[OpenTelemetry Collector Components]]></title><description><![CDATA[OpenTelemetry Collector Components TODO ### Receivers TODO Examples:
+otlp
+kafka
+nginx
+Contrib Receivers ### Processors TODO Examples:
+filter…]]></description><link>https://sebastianhaeni.github.com/0013-opentelemetry-components/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0013-opentelemetry-components/</guid><pubDate>Sun, 10 Jul 2022 18:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;opentelemetry-collector-components&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#opentelemetry-collector-components&quot; aria-label=&quot;opentelemetry collector components permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;OpenTelemetry Collector Components&lt;/h2&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+&lt;p&gt;### Receivers&lt;/p&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+&lt;p&gt;Examples:
+otlp
+kafka
+nginx
+Contrib Receivers&lt;/p&gt;
+&lt;p&gt;### Processors&lt;/p&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+&lt;p&gt;Examples:
+filter
+groupby
+transform&lt;/p&gt;
+&lt;h3 id=&quot;exporters&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#exporters&quot; aria-label=&quot;exporters permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Exporters&lt;/h3&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+&lt;p&gt;Examples:
+prometheus
+jaeger
+splunk&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Introduction to Distributed Tracing]]></title><description><![CDATA[Distributed Tracing Distributed Tracing enables us to follow invocations across services and monitor them. We can observe a single service…]]></description><link>https://sebastianhaeni.github.com/0012-distributed-tracing/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0012-distributed-tracing/</guid><pubDate>Sun, 10 Jul 2022 18:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;distributed-tracing&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#distributed-tracing&quot; aria-label=&quot;distributed tracing permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Distributed Tracing&lt;/h2&gt;
 &lt;p&gt;Distributed Tracing enables us to follow invocations across services and monitor them. We can observe a single service using logs and metrics. But what if we have a chain of services that fulfill a single purpose for an end user? For example if we have a user that clicks on an order button in a web frontend, we call the frontend’s backend BFF (I personally favour the &lt;strong&gt;B&lt;/strong&gt;ackend-&lt;strong&gt;f&lt;/strong&gt;or-&lt;strong&gt;F&lt;/strong&gt;rontend pattern) which internally calls an inventory microservice to see if the product is available, and also calls a billing microservice to get the user’s bill they will need to approve. If the billing service returns an error, the BFF returns an error to the user. However the inventory microservice returned a successful response. If we only have logs and metrics, we do not know what we just described, we simply know there were some errors, but their correlation is not given. With tracing we know that an error in a service very likely lead to another error in the consumer service if they are in the same recorded trace.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -174,11 +199,12 @@ Source: &lt;a href=&quot;https://medium.com/nikeengineering/hit-the-ground-runni
 &lt;p&gt;This post is part of a series around OpenTelemetry. See the other posts in this series:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;../0011-opentelemetry-intro/&quot;&gt;Introduction to OpenTelemetry&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;OpenTelemetry Collector Components&lt;/li&gt;
-&lt;li&gt;OpenTelemetry Instrumentation&lt;/li&gt;
-&lt;li&gt;Instrumenting React.js applications&lt;/li&gt;
-&lt;li&gt;Instrumenting Angular applications&lt;/li&gt;
-&lt;li&gt;Full Stack OpenTelemetry Example&lt;/li&gt;
+&lt;li&gt;Introduction to Distributed Tracing (&lt;strong&gt;this article&lt;/strong&gt;)&lt;/li&gt;
+&lt;li&gt;OpenTelemetry Collector Components (upcoming)&lt;/li&gt;
+&lt;li&gt;OpenTelemetry Instrumentation (upcoming)&lt;/li&gt;
+&lt;li&gt;Instrumenting React.js applications (upcoming)&lt;/li&gt;
+&lt;li&gt;Instrumenting Angular applications (upcoming)&lt;/li&gt;
+&lt;li&gt;Full Stack OpenTelemetry Example (upcoming)&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[OpenTelemetry Introduction]]></title><description><![CDATA[What is OpenTelemetry OpenTelemetry has been formed as a merge by the teams of OpenTracing and OpenCensus while providing full compatibility…]]></description><link>https://sebastianhaeni.github.com/0011-opentelemetry-intro/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0011-opentelemetry-intro/</guid><pubDate>Sun, 10 Jul 2022 09:30:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;what-is-opentelemetry&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#what-is-opentelemetry&quot; aria-label=&quot;what is opentelemetry permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;What is OpenTelemetry&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://opentelemetry.io/&quot;&gt;OpenTelemetry&lt;/a&gt; has been formed as a merge by the teams of &lt;a href=&quot;https://opentracing.io/&quot;&gt;OpenTracing&lt;/a&gt; and &lt;a href=&quot;https://opencensus.io/&quot;&gt;OpenCensus&lt;/a&gt; while providing full compatibility to existing technologies in the field.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/blog/f6223368c23b452d95af0ef477cfd31b/opentelemetry.svg&quot; alt=&quot;OpenTelemetry&quot;&gt;&lt;/p&gt;
@@ -279,12 +305,13 @@ abstracted the vendor library for you, but you still needed to include it in you
 &lt;h2 id=&quot;upcoming&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#upcoming&quot; aria-label=&quot;upcoming permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Upcoming&lt;/h2&gt;
 &lt;p&gt;This post was a first introduction into OpenTelemetry. I am planning to release a series of posts around this topic.&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;Introduction to OpenTelemetry (&lt;strong&gt;this article&lt;/strong&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;../0012-distributed-tracing/&quot;&gt;Introduction to Distributed Tracing&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;OpenTelemetry Collector Components&lt;/li&gt;
-&lt;li&gt;OpenTelemetry Instrumentation&lt;/li&gt;
-&lt;li&gt;Instrumenting React.js applications&lt;/li&gt;
-&lt;li&gt;Instrumenting Angular applications&lt;/li&gt;
-&lt;li&gt;Full Stack OpenTelemetry Example&lt;/li&gt;
+&lt;li&gt;OpenTelemetry Collector Components (upcoming)&lt;/li&gt;
+&lt;li&gt;OpenTelemetry Instrumentation (upcoming)&lt;/li&gt;
+&lt;li&gt;Instrumenting React.js applications (upcoming)&lt;/li&gt;
+&lt;li&gt;Instrumenting Angular applications (upcoming)&lt;/li&gt;
+&lt;li&gt;Full Stack OpenTelemetry Example (upcoming)&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Setting up Apache Spark and Zeppelin]]></title><description><![CDATA[This article describes how to setup Spark and Zeppelin either on your own machine or on a server or cloud. Spark and Zeppelin are big…]]></description><link>https://sebastianhaeni.github.com/0010-spark-zeppelin-setup/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0010-spark-zeppelin-setup/</guid><pubDate>Sun, 16 May 2021 18:00:00 GMT</pubDate><content:encoded>&lt;p&gt;This article describes how to setup Spark and Zeppelin either on your own machine or on a server or cloud. Spark and Zeppelin are big software products with a wide variety of plugins, interpreters, etc. Finding the compatible versions, Dockerfiles, configs, etc. for a simple setup can be daunting. This here might help you to deploy and play around with Spark on your local machine or create a server setup as a ground to do some demos or proof of concepts. In this setup we will use the local file system and not a distributed one. When you use Spark in a production grade setup, you want to scale your filesystem and workers. But, our goal here is to create a playground environment.&lt;/p&gt;
 &lt;p&gt;This blog post refers to this accompanying GitHub repository:&lt;/p&gt;
 &lt;p style=&quot;text-align: center&quot;&gt;
