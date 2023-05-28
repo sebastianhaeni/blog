@@ -1,4 +1,62 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 27 Nov 2022 15:17:44 GMT</lastBuildDate><item><title><![CDATA[Introduction to Distributed Tracing]]></title><description><![CDATA[Distributed Tracing Distributed Tracing enables us to follow invocations across services and monitor them. We can observe a single service…]]></description><link>https://sebastianhaeni.github.com/0012-distributed-tracing/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0012-distributed-tracing/</guid><pubDate>Sun, 10 Jul 2022 18:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;distributed-tracing&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#distributed-tracing&quot; aria-label=&quot;distributed tracing permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Distributed Tracing&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog of Sebastian Häni]]></title><description><![CDATA[A personal blog about things I am interested in.]]></description><link>https://sebastianhaeni.github.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 28 May 2023 18:29:43 GMT</lastBuildDate><item><title><![CDATA[OpenTelemetry Collector Components]]></title><description><![CDATA[OpenTelemetry Collector Components TODO  Additionally: Extensions Receivers TODO Examples:
+otlp
+kafka
+nginx
+Contrib Receivers Processors…]]></description><link>https://sebastianhaeni.github.com/0013-opentelemetry-components/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0013-opentelemetry-components/</guid><pubDate>Sun, 27 Nov 2022 18:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;opentelemetry-collector-components&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#opentelemetry-collector-components&quot; aria-label=&quot;opentelemetry collector components permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;OpenTelemetry Collector Components&lt;/h2&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/10deda3ccaba7d588aa273a2eea310a5/7470b/components-overview.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 33.78378378378378%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABeklEQVR42nWQYWvTcBDG85UVHCq+EOmCw5ayCi1+CEGWuXbaRJMXVUuxKtnC3JKRLrVZS9qE2NDUf/4/aQo6RX8v7rh7uOe4Uw7OJS9dOHLhxVfJp7BgQxQLNH3Fob7m0FijlTlnkYhSPzk5pdvtYpomlmVhGAa2baM8PPDZezVFbQc86szonAtOI/js5Tx+esHu/gVqw6Wy71J7NuKjveLMKzDNt9TrdVqtFs1mk0ajga7rKLePYu4ex9w7jrnVTnnuCCYZ2N6a+3vf2FF9dtQRdyo+D56M+eKsuI6g02lTqexSrVap1WqoqoqmaSivLwVv/AIrAH0kOYu2JydpgfEuw+hlmO9zzA85Vj8n/b492fM8er0eg8GA4XBIv9/HdV2U67HPfDphi7wRIV5MCSeXFMUP/kZKyXw+JwgClsvlr75yFYwZXQVlIQqJlL+HFoukfP5sFm118acehiGO45SGQohyiZKmKVmW8S/yPCdJkv/qG6PN/E1+Ahl39ZCjsOAdAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;OpenTelemetry Components&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/10deda3ccaba7d588aa273a2eea310a5/fcda8/components-overview.png&quot;
+        srcset=&quot;/blog/static/10deda3ccaba7d588aa273a2eea310a5/12f09/components-overview.png 148w,
+/blog/static/10deda3ccaba7d588aa273a2eea310a5/e4a3f/components-overview.png 295w,
+/blog/static/10deda3ccaba7d588aa273a2eea310a5/fcda8/components-overview.png 590w,
+/blog/static/10deda3ccaba7d588aa273a2eea310a5/efc66/components-overview.png 885w,
+/blog/static/10deda3ccaba7d588aa273a2eea310a5/c83ae/components-overview.png 1180w,
+/blog/static/10deda3ccaba7d588aa273a2eea310a5/7470b/components-overview.png 3156w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Additionally: Extensions&lt;/p&gt;
+&lt;h3 id=&quot;receivers&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#receivers&quot; aria-label=&quot;receivers permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Receivers&lt;/h3&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+&lt;p&gt;Examples:
+otlp
+kafka
+nginx
+Contrib Receivers&lt;/p&gt;
+&lt;h3 id=&quot;processors&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#processors&quot; aria-label=&quot;processors permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Processors&lt;/h3&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+&lt;p&gt;Examples:
+filter
+groupby
+transform&lt;/p&gt;
+&lt;h3 id=&quot;exporters&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#exporters&quot; aria-label=&quot;exporters permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Exporters&lt;/h3&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+&lt;p&gt;Examples:
+prometheus
+jaeger
+splunk&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Introduction to Distributed Tracing]]></title><description><![CDATA[Distributed Tracing Distributed Tracing enables us to follow invocations across services and monitor them. We can observe a single service…]]></description><link>https://sebastianhaeni.github.com/0012-distributed-tracing/</link><guid isPermaLink="false">https://sebastianhaeni.github.com/0012-distributed-tracing/</guid><pubDate>Sun, 10 Jul 2022 18:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;distributed-tracing&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#distributed-tracing&quot; aria-label=&quot;distributed tracing permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Distributed Tracing&lt;/h2&gt;
 &lt;p&gt;Distributed Tracing enables us to follow invocations across services and monitor them. We can observe a single service using logs and metrics. But what if we have a chain of services that fulfill a single purpose for an end user? For example if we have a user that clicks on an order button in a web frontend, we call the frontend’s backend BFF (I personally favour the &lt;strong&gt;B&lt;/strong&gt;ackend-&lt;strong&gt;f&lt;/strong&gt;or-&lt;strong&gt;F&lt;/strong&gt;rontend pattern) which internally calls an inventory microservice to see if the product is available, and also calls a billing microservice to get the user’s bill they will need to approve. If the billing service returns an error, the BFF returns an error to the user. However the inventory microservice returned a successful response. If we only have logs and metrics, we do not know what we just described, we simply know there were some errors, but their correlation is not given. With tracing we know that an error in a service very likely lead to another error in the consumer service if they are in the same recorded trace.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -6,12 +64,12 @@
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 64.1891891891892%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACdUlEQVQoz1WSy27TQBSG/XaseQIkViyR2LBBPAESKwSL0EpVL6ygjUTaNFUpLU3dxK3j+pa0TmI7Y8/YydjjJL7EHg9KAqJ8q3Ok8+n8OjocW1GuYIypmqqoiiiKgiAoiqLrumEYvV5PEARZlpMkWQ+vLe5xs6wLyuIsieZ6t6tpmrxC1/XBYEAIYf+zlCmlGONgCfa8ieNg18XQde0VAADLsiCEURQRQmYr1vu4siyTJIEQAuDaI8ceAeQhjMeU/olDKc3zHAAwGo1s23ZdF0K4WCyWckSI53lFUfxL/vcAJWP5IhtaaILDx2nX5lIOEMJ6L3xQO3r+9CV9/pZ1JDzHqIyTktJFPLe7lnMj5lFYZmmZZSxNkW0XcVxmGVciNOZbbGxt7s63t70Xr8LX7yhjs9z1luuTGPKir/UzhDOA0n6/nM9pkpSTCZvNOAphZllAEJlv1HcunzybDtouMx9C4SYZj1mcUMt07rRQfxj+6ujVOhsOcsuaSdJU1zlq21NFQVqXDdXPH8HGhwFz1KBxitrtqe+zNE0lKTSMQJUTWSVtGUvdgufRxYWnaVxiGKjVIgOTKe1vu+j9mx+kUcXfa06tlkHI4thvXmKjH2taensTHNfFL1VSOwTVKmm3ucg0YbM5qtWG1erd1qa1t61WKqReVyqV1DRZloHra9BowKMjZWdH3twQPm35B9X+3i6s1zk2meS+P+X5UNfh6am1v+/y/Pj2Fp6cEMdhs1kRBLEkRZo2ueaNrwfq4XmgyOjnuXN1xamiaN/fp6vXo3E893wIAH921jo+Jhi7pqmIYgQhK0tWLCI/dIEvd26btcN7UfwN37i0VdVwEbEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 64.1891891891892%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACdElEQVR42l2Sy27TQBhG/XA8BmLDgjdAqrphxY5FV4hFC6gViEYqhUYKCU1UqWkTNyRxfJnc3CSO7fE9dhJPfZ0ZlNBWwFmf79fRaBj6ACGEUgoA4Hpcl+uyLMvzvCiKo9FoMBi0Wi2O4xBCjyallKH/QnJMUByv0XC7AQBIkjQcDieTied5/8nMn0urLev1ylssLWtpWksI4XQ6nd2jmKaJEArD8G4LxngzJoQkSQIhnKuaMldnimoYpm1beZ7ft2Cc55mm6aqqKooCdR1CGMfxZozC0LKsNMseY/DGzsm2COeZqjm2s/i7NnuQmcC2F2N5MZIm8/TZLnn+ivZ4f+2aOIoJxml0p8q62uGSYEHTlCQpTVNLVTOESJoy1HXd6yZ1lKMC2nvrvdzxXuxiSlFm2ARjmsQmy9minFheYrrJdEoQwlFEfJ+u1wy27XQ+17s9akxaxasnT4P2hUW122W7E5kmTRKszAxp5IGxxgLptERv5VxVkSCsAGAIhEiSTNCnU1D4MNt7o1AIVheXBssuIaRpmghCMB4vgBjyon8j+L1B3m479brF80yiKPbNjT+bU/CrfGK93mn458Wg9AOWSpGm0STxmk1vLIfDYcx1g4ta77gYlMqwWPRZlgk1DV5f65XKrFjkjw6nnz/19/eDchkcHISjEc1z2Gqp1apRqQy+HAsf37ffHZpfvymFgnZ2xmDXTT1v3WgsBMGo1ZSTE+3qyu12jWrVVxSKUOb7kSCseN5pNm5PToXvNY/nrXpdu7xkZFFUZTnafj0SxaHtuKbZaTQ61erCcTwI+4Kw1PXNy+M89FZQd0d90Pp5Pux0fgPZZbP2geqTsQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Tracing&quot;
-        title=&quot;Tracing&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/823be77aa194870b0ca3596b17d0b293/fcda8/tracing.png&quot;
         srcset=&quot;/blog/static/823be77aa194870b0ca3596b17d0b293/12f09/tracing.png 148w,
 /blog/static/823be77aa194870b0ca3596b17d0b293/e4a3f/tracing.png 295w,
@@ -26,7 +84,7 @@
     &lt;/span&gt;
 Source: &lt;a href=&quot;https://medium.com/nikeengineering/hit-the-ground-running-with-distributed-tracing-core-concepts-ff5ad47c7058&quot;&gt;https://medium.com/nikeengineering/hit-the-ground-running-with-distributed-tracing-core-concepts-ff5ad47c7058&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;A trace has an ID and consists of one or more spans. A span has an ID, timestamp, duration, a local and a remote endpoint as well as a name. For REST calls we traditionally use the HTTP method and path as the span name, e.g. &lt;code class=&quot;language-text&quot;&gt;GET /info&lt;/code&gt;. So, how can we collect spans that form a trace from different services running in different containers? The service that starts a trace is generating a trace ID and with every request it creates in the trace context, it not only creates a span, but it also sends the generated trace ID as an HTTP header. Zipkin specified the span propagation headers first and termed them &lt;code class=&quot;language-text&quot;&gt;B3&lt;/code&gt;.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;   Client Tracer                                                  Server Tracer     
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;   Client Tracer                                                  Server Tracer
 ┌───────────────────────┐                                       ┌───────────────────────┐
 │                       │                                       │                       │
 │   TraceContext        │          Http Request Headers         │   TraceContext        │
@@ -57,12 +115,12 @@ Source: &lt;a href=&quot;https://medium.com/nikeengineering/hit-the-ground-runni
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 55.4054054054054%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAABZklEQVQoz52Ry27CMBBF8/8SC1Ykhf4KKzZ9LLrrpm1IC+Rtmzxtx5lbJUAgtJUqLJ3FzFhnxmNrOp2a5XJpVquVmUwmZrFYmNls1mPb9kAXO7ZtHMfpuTvi9PmZuZ/PzWI+N5bWGnmRoygLtG2L/x4NoAagjnSxAWB9uC5tt1sqioLyLCMuBD17Hj16Hj15Hj24bk8Xv4cR+Skjn3HacUGblNM6iukrSWmTMtokKVlCCIRhgKqqIKVCXdcQPITgPgQPBjjbge0ZcqWQy7pHmebH5NaesV4opRwA0a/PlBlDKWIoXUPKAo1WIKIRVsYZojCEVIfpOmHbFYHx5dPuyhytrIcmdGx+FgqOOIpGwutLJw45QFcFjKwuZj/XrT3nSOK4F10LL6WjBgCaMoeuS6i2HdWtMI4RBOMd/iW8jj9TgbckGz85iCL4vn+TcJ0IvOzYWBgnCcLuU24Qat3gdceGKbsdfgOTc0O81EGYkQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 55.4054054054054%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAABT0lEQVR42p2Qy2rDMBBF/f/7LJpV/Uj+I5tAS6H7QEhCiW1ZtiVZtiLZlm+x8iBtaJt04DBiBg535E2nT3axWNjlcmknk4mNosj6/rMNAv9E4PB934ZBcCQMbBSGdhaGNnRz385nMzuPIuu1XQvVNFBKYRgGjDXg2H+rFoA+dQOgA9APA7zNdot4v0dd16ilBBcCb7sdXk+8bDaO8b3OKFLGkXKBVFRIuMBHXmDPOGLOEZcM3igghLiExhgYrVHxDBUnF6TIIFgKJkpIoyH1AVIr6L69Se4JViIjBNoYaK0d59NvzpQMilN0nUZrGvSdcZ9zjVexEjQjLt1fQidVNaxWP+49yRlymt0tdNJDg/4HqUtY5PlDwnHbq9qJ9WC/CgmlICm5yO4VjrXLBVa0+ibMKJIk+bfwPS6uJoBH8wI0ow8Jz9V3FquUY13Ki/AT4ftHHSUd3awAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Jaeger Trace&quot;
-        title=&quot;Jaeger Trace&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/fdf486d007afca44e1ebe7c8504a8860/fcda8/trace.png&quot;
         srcset=&quot;/blog/static/fdf486d007afca44e1ebe7c8504a8860/12f09/trace.png 148w,
 /blog/static/fdf486d007afca44e1ebe7c8504a8860/e4a3f/trace.png 295w,
@@ -92,12 +150,12 @@ Source: &lt;a href=&quot;https://medium.com/nikeengineering/hit-the-ground-runni
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 48.64864864864865%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABRklEQVQoz5VQQW7CMBDMR5ESolbAjQv/4BV9BXyhPIFbAzQQZ+O1HTueyiaJIKWHjrSyvdbOzkyS5zm22y0+Dwfs9nus12u85zkWmw0Wux3ePj6QzmbI5nNkWRYr7Wt8pymWyyVWqxUS5xyUUmCtodsW8B4B3nt4awHn8B8k04bvCae9ruvGv6tkECs4a++LHyqZNgLIGJyqCooZSutIFhDcaK3BxqC1dlzyi3CqjpWKA7ZtIaUEM+N4OkMIgTbE8gLD7Eg4kmkTCay1UU2wVQuBqxDxHRSHRUIyKub47/qcnxQO55kI32UJIoIkwkUIfJUlrDGRMCCoLGsCKY3OuTGSPy0/5tUwQxBBVBWKywXHooCsa1SNRNM7eBT1pHC4F3WN2+0WCYP1oUKuJCUape6qXoh5SWisiwoHK1OUUkJqHa1P538ApJ30Ph6giLkAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 48.64864864864865%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABNklEQVR42pWSTW6DMBCFuWtsiapl0SxzkVwg58giN0gu0O5SEkHA2IONjV81VoJYhCodyQv88817b8jyPMd2u8XxdMJ+v8fneo33PMfHZoPicMDbbgexWkFKOS0hJKQQkFLcvwWKokgrG8cR1lr0zsF5D8SIqUIAxhH/qeyVSzFGjLNGNRG6vsfIDV8BaudQNg0sUVIf77AQApxzsMMAH8K0/zcwRlDfpwd+GEBE0ET4vlyglIL3/iloEWisTRCGsZrgPVTbolEKztqkmM9aQ2iJ0nmYWc/mOXGVqkNV1+i6DkZrXNsW56qCH1yCcQ3OoVIK2rqU41zx4lDYGgPYrtI6qSyvV3z9lKBOoTEG5u5gEfjYPrcK9e02WX7Y4ly5AccS+Hd6aShsKYT0YCn8yhA0Z/lkQL9BzvXXU2LM7QAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Jaeger Directed Acyclic Graph&quot;
-        title=&quot;Jaeger Directed Acyclic Graph&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/4836c3812a19deefa75c7129c113d2a9/fcda8/jaeger-dag-graph.png&quot;
         srcset=&quot;/blog/static/4836c3812a19deefa75c7129c113d2a9/12f09/jaeger-dag-graph.png 148w,
 /blog/static/4836c3812a19deefa75c7129c113d2a9/e4a3f/jaeger-dag-graph.png 295w,
@@ -115,21 +173,21 @@ Source: &lt;a href=&quot;https://medium.com/nikeengineering/hit-the-ground-runni
 &lt;h2 id=&quot;tools&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tools&quot; aria-label=&quot;tools permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Tools&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Instrumentation:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://opentelemetry.io/registry/?component=instrumentation&quot;&gt;OpenTelemetry Instrumentation&lt;/a&gt; *&lt;strong&gt;recommended&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://opentelemetry.io/registry/?component=instrumentation&quot;&gt;OpenTelemetry Instrumentation&lt;/a&gt; &lt;strong&gt;*recommended&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.jaegertracing.io/docs/1.36/client-libraries/&quot;&gt;Jaeger&lt;/a&gt; - deprecated&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://zipkin.io/pages/tracers_instrumentation.html&quot;&gt;Zipkin&lt;/a&gt; - deprecated&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/xray/latest/devguide/xray-api.html&quot;&gt;AWS X-Ray&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Collecting:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://opentelemetry.io/docs/collector/&quot;&gt;OpenTelemetry Collector&lt;/a&gt; *&lt;strong&gt;recommended&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://opentelemetry.io/docs/collector/&quot;&gt;OpenTelemetry Collector&lt;/a&gt; &lt;strong&gt;*recommended&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.jaegertracing.io/&quot;&gt;Jaeger&lt;/a&gt; - preferred over Zipkin&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://zipkin.io/&quot;&gt;Zipkin&lt;/a&gt; - first one to be widely adopted&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/xray/&quot;&gt;AWS X-Ray&lt;/a&gt; - if you’re running services on AWS&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Analysis / Post-Processing:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.jaegertracing.io/&quot;&gt;Jaeger&lt;/a&gt; - supports wide range of storage backends, decent UI *&lt;strong&gt;recommended&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.jaegertracing.io/&quot;&gt;Jaeger&lt;/a&gt; - supports wide range of storage backends, decent UI &lt;strong&gt;*recommended&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://zipkin.io/&quot;&gt;Zipkin&lt;/a&gt; - first one to be widely adopted, scaling issues, UI bugs&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/xray/&quot;&gt;AWS X-Ray&lt;/a&gt; - if you’re running services on AWS, automatic integration into lots of AWS services&lt;/li&gt;
 &lt;/ul&gt;
@@ -149,12 +207,12 @@ Source: &lt;a href=&quot;https://medium.com/nikeengineering/hit-the-ground-runni
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 29.72972972972973%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABYlAAAWJQFJUiTwAAABKElEQVQY022RUUrDQBCGex0P4gF88CK+CVUPoiL44BHEF6GCUGwRwfQlgkFbkDRpa7JJNtlNdj/ZlYYK/vAxMDsz/+zuwHYtHtNhLVhre5y6riPLMqqqQmuN0trHLUqpHmMMA3a0HbIrVxiGIXme/9YY43HN1pq+rm1bbzAQjzdk9+eo17v+QAhBWZYYa2maBiklSZqiVc1yXXFyEXB2GbBYFpRFTpIkVFL63kF0tMd0uM/H9TFNXVMUBUEQMJvNyDZr6loSRRGj0QOrNObtc8PBcMzh6ZiXMCX+mvM0maKkxLiBXRaT5YJ4tfEO7ipuu0IIVFPTda3fUIiCpqkppebqNvJ8i4ZWK8qyYvIesK7Kv2/4n9ynOKM+thowHmfmco7n+YJMaX4AYc/GMUVnbCsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 29.72972972972973%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABYlAAAWJQFJUiTwAAABJklEQVR42oWRzU4CMRSF56F8Ctc+hVtj3LtwyUYXJjwECSbyAJoQiUAcCYmOhEQQBnSA+WHambbzmVYx7jjJSe9tek9PTz0qA0b/sKrYofpXCyFYr9dIKSnLEqVKjFYopVxfFIWj7T32wApHUcR4PHYDuz2tjVt3tLCinny5J2pdEt/W0NMBBpBSOJG/22VBHMeEiyVgaLWnHNd6XDcCtCqYh6E7b1/iJY1zhqcH9C+O+Hy4wXoI5zO63R4fk3eSzYokTfF9n07nEaNy6s2Aw7M2J1d9pMjx/WfegoBCSryqFKg85SsVbNLMWbfOhJDk28zl9dMLsu0WKs3rJKHeHHH3tMT+gSoVsyikPRruz9DCZqe1drS1MeY3S0Npc60qVlnKYLHkGz0QxjtGyWclAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Tracing Architecture&quot;
-        title=&quot;Tracing Architecture&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/571735106220a0a56f3c49713cc1083f/fcda8/architecture.png&quot;
         srcset=&quot;/blog/static/571735106220a0a56f3c49713cc1083f/12f09/architecture.png 148w,
 /blog/static/571735106220a0a56f3c49713cc1083f/e4a3f/architecture.png 295w,
@@ -204,12 +262,12 @@ AWS jumped onto the distributed tracing bandwagon and introduced &lt;a href=&quo
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 56.75675675675676%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAxOAAAMTgF/d4wjAAAB/0lEQVQoz12Rsc6iUBSEeW3f4a80rBqbfQMrC40oKlzRi4CAEEC8EoHCeDWoiIpw/kSKTfarTmbmNDMMpTRNU0VRVFXVNG0wGKiqKggCx3E8zyOEJEnCGEuSNBqNBEFYrVbH4/F+v0dRxIRhmGVZ+uX5fLquq+u6aZpVbj6fG4bxeDySJOn3+91uFyF0Pp/LspxOp8zlcgGA8gsA7Pd7jPFisaieF4sFz/O+71NKfd8viuLz+RRFAQCqqjKEENu2DcPAGBNCgiAQBEFRlPl8LoqiruvL5bLX62GM4zh2Xde2bYyx4zgIISaKIlmWLcuq7DAMFUXBGM9mM1EUgyAwv0RRFMex4zir1co0zepgdrudLMvD4XA2m63Xa9/3j8fjfr93XTcMQwCwbZsQcr1ePc+zLIvjuMlkIssyx3FMHMeapomiyHHc4XDY7XZZlt3vd9d18zy3bVvTNAA4n89BEPi+jxAaj8ebzUaSJIZSWpZlnuev1wsAtttt9gUhBACGYei6DgCU0iAIAOD9fj+fTwBQFIU5nU4AUBRF1bbneWmavl6vzWYDAISQKIoA4HQ6EUKq5OfzAQBZlpkkSf6bKsuyPM8ppUVR3G636/UKAEmSVBWUZflvqp+fn1ar9ecLy7LtdrvVarEs22w2WZatxEaj8fdLvV6v9E6nU6vVfgEipS+oeiBr3QAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 56.75675675675676%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAxOAAAMTgF/d4wjAAAB3ElEQVR42m2R266iQBRE+f+/8fFovGECQoNCtx3bBmyuBkQIIF4T2JMDL5PJrLedVGWnqqS+7wEgG+Ccr9drSqksyz8/P8vlEiG0WCxUVZ1OpwihcuD7/cKAJISoqopzzhgTQui6bg9omoYQMgyDUup5nuu6i8ViMpmsVqsoipqmoZRKeZ4DQD8AAGEYEkIopYqiYIy32y1CqKqq9/ut6zqlNAiCz+cDAMfjUUrT9PF41HVdFMXr9YrjWNM0wzDGt4fDQdM0RVE8zwuC4P1+P5/Psiw/n8+v2fd9jPEocl03SRLDMCzLQgipqooxtm1blmWM8eVyYYwRQkzTJITs93spSRJCCB6IoihJEs45IcSyLMMwXq+X53mc86qqwjD0fV/X9ePxeDqdDoeDdD6fMcaz2Wy1Wtm27bpu0zRFUcRxXNf14/HgnI/RHMcZ55jP5wihzWYjZVkWBIHjOLZt13UdBEHbtt/vd7fbdV3HGNM0DQCapgnDsCiK0+lEKY2i6Dfz9Xr9u23f99u27brONM3xdBxnNAshRmXXdQDAGPt3qtEMAOfzue/7PM/TNAWA+/3+HzNjrCzL60BRFGNtaZoKIdI0DcNQCHG73aIoIoTcbrc8z7Msa5pGVdU/R9hDXkgSKYEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;How Standards Proliferate&quot;
-        title=&quot;How Standards Proliferate&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/f6730132df8eba09ebb81aff33e5ae11/0b533/standards.png&quot;
         srcset=&quot;/blog/static/f6730132df8eba09ebb81aff33e5ae11/12f09/standards.png 148w,
 /blog/static/f6730132df8eba09ebb81aff33e5ae11/e4a3f/standards.png 295w,
@@ -301,12 +359,12 @@ abstracted the vendor library for you, but you still needed to include it in you
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 56.75675675675676%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABcSAAAXEgFnn9JSAAACI0lEQVQozz2Sy05UQRCGzyP6Bj6GqCQa1rqRKLjQRBGIJLOReGGhYkIgAxgUScgYIZjBGYQZOXNufe/PVB+xk0r33/XX39VVlc2ufmHu3TcerH7lznKXmZVdbr7ocntph+nl3WS3FreZXtphaqHL288n7P04Y7s3YO/4Itnc2j43nm0wvdglG41GGNXgrcYZRXAGggUCXrDVtCtA9ATv0VrjnCME35qzNOUEbxVZWZYopfCxDTPOY32kaRS/BkOqukZc3ge0sWkvioKqqrBWsMcYiwsRpQ1ZWSvOhkPy0TllVZFf5hRlk4gSKA/WdZ0eNS6kRyU7uROflnvrmDQGYy1ZrQxN3aCKS4bnfco/ZxitCCGkr4loUZYQHIeDnN4gByKTSYGyAecDMcaUfRIUoJqGvcMe26/mOV35gFQwxoAxJmXTliIw1TngycZJwkVRMswbjPWJmzgiKIdPH9d5/GiOnaUOnbsdfvcvWoJuvyHr+KLi+tNdXu70E56UFYWySZAYU5ZJULTzkwHnC5v0ZlZ5fX+G8eA0BV11s1COe2vfufZwi4Wtn8k3zov03ca4tJMEHZkUX5Y/HDN6fkDRHyYcpYbWMbisebM/ZPb9D+bXj9g8Gv/LsCaEiHWexngq6YXSZErr1H4nc0fEx5iycs7/r2H0rp3DZNIAgzFt9lcc0RCtrG5Uukym290mQZcChSi1kS6KiU+wzJ74BGttErdRir/klDrMurQQLAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 56.75675675675676%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABcSAAAXEgFnn9JSAAACKUlEQVR42kWS605TQRSF+4g+hK+hBMVo/GGMGkUTTPCPguAlKvGSGDREMbbcokAAW4gJpbWlPdc5c/3MnlY8ycqZmb1m7T17r9q9pU1mPmxz/90Pri40uP58g0vzDS4/XWNqcZ0rixuj9cIaE3MNluqHbDW71PdP2Gz12Drs82h5h4nHX5mab1Dr9/qossCZCqMV3mqCs4Tg45kAAgQPweG9Q2uNtZbgPV7gLGWeYrWilmYZZVFgnY8ErQ2V9aiq4vi4TZ7nyOd9oNIG6z1ZlkUYo3HOUWmNti7Ga1lR0TnpkvQ6kZQMBqRpEYlpmjIcDuN5WZYo7XDex1hRFDGZUgpjLEmhMcZQK5WhLBVlMuBPr03WO8FoHSsSgojleQHesttO2Dg6jRUnSUKhHcZJK0IUFdQkozx5fXuPL6+mac2+prLEvkmvRFQ+4V148ZPbH3/FvVTcSRTK2CgYRNRaahL8vvqNOzdvUZ97ybPJBX7vHcdLRvo5FjzqF5yfbTCzchj3wyQlVeZMML5IBD2Qd/oM5+u0Jt/y5tpFOocH8VJVVXGaqbLceL/PuburTH9qxtjpMMVYT6ktxrrRs0XQygawzQGnT3bIjtpiEkLM6OimiuXdLg8+N3m40mLloB/5WV7iQ8DKlK2nUJpSVTIUFcduvMMEh5X/2GcSE5LYIwRH8CN/Cl9VKvb3X5+j3cQ24jdnHc7a/3AuwozXdrwewcVkZxj7UHSkgL8d+TwAAPJNLwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Apache Zeppelin Notebook&quot;
-        title=&quot;Apache Zeppelin Notebook&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/6c98a066d067a1daace2fc3c41b7b310/fcda8/zeppelin.png&quot;
         srcset=&quot;/blog/static/6c98a066d067a1daace2fc3c41b7b310/12f09/zeppelin.png 148w,
 /blog/static/6c98a066d067a1daace2fc3c41b7b310/e4a3f/zeppelin.png 295w,
@@ -329,12 +387,12 @@ abstracted the vendor library for you, but you still needed to include it in you
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 46.621621621621614%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAABt0lEQVQoz11S24rbMBCdJoUGSsln5L2fsNDv2bd+TGme+iUl231LXlMH50IcothyfJdkK9JomelmKTtwOINsnzmjY4B3td1uYTqdQggBhBBPwzAERLz510JEZmutN8YwhmHgM+ecf68H3nt4fHxkQUR8QsQwDINzzoXb7RastYF6GpRlWZBShqZp+BkVHI9HyLKMQbVarWA2m3GvlHq+Xq/BGOP2+z2eTie01qJSCp1z2Pc9DsPAPZ03TYOQpul4uVyO1+v1uKqqUZ7nd7Ofuq571lqzYJ7noaqq0Pd96LqO+Q6qu2M4n8+wWCzYWdd1d7EPJOi9X4R/5bz3bwIkSGvWdR0Oh0MoioKH0TaQJMnPzWbzY7fb/RJCfL+LAcBH5xyHUlWVo+kEEivLkgWoj+OYhZVS7BJoUpIkIU3T0LbtXwD4MhqNPpNoXdd8h1prJ4TAy+XCd1WWJWqt0RiDUkps2/btXiGO44eiKB6klN+iKPpKQU0mE07Ze/+HVqXf4v+UyR25pGFRFIXX4Dh96PuePyYopZjn8zlz0zS/6UWtda+1tgRjDLOU0pZlaYUQzHmeW6WUfQETajIiP7WhugAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 46.621621621621614%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAABdUlEQVR42n2RW07DMBBFXYpAldgQawCJlbAZ+GMz5YfnEpKPtGqbPtLUdRw/Y2fQdYtUgdSRrmaU2GeuZxj7E0Q0OJaDsiw/iIjCIfpTOed6rXWStbbHuaZpHDsHdM594qBzLsYYCeq6LmXnHG02G9putwDhGLVt688Bh1rrL2MMGWNiURS0WCzIe09aa7gma20SmvR9T+v12gNwOR6Pk4hoeMIeAYjOWusIJ/v9Pjlr2zaBUKMhAq6n0+l/h8e4ADCE8E6HiHD2C5FSJgkhACHOOSmlaD6fezabzZ6zLHsqiuJluVw+YnaMsWvG2FUIIS2Fcx6rqiIIFwEADNA8z1ONZpxzz2AZQ8dFKeUrY+zmqBHn/Bv/lVIR81utVmmGeDrAcItRAIy6aRrPJpPJvRDibrfbPeR5fnvy7EHXdWnL1tq0ZSwCCwAQruq6pizLUsZ3IcTZLQ+klG8AGmOcUipAxpigtQ5VVQXOeSjLErnDWOq6Nj9X7QAoY+Fq1AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;System Components&quot;
-        title=&quot;System Components&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/c9bf1aca3bdedff69cea15257a9b2655/fcda8/system-components.drawio.png&quot;
         srcset=&quot;/blog/static/c9bf1aca3bdedff69cea15257a9b2655/12f09/system-components.drawio.png 148w,
 /blog/static/c9bf1aca3bdedff69cea15257a9b2655/e4a3f/system-components.drawio.png 295w,
@@ -724,12 +782,12 @@ summary for a possible decoding to be successful.&lt;/p&gt;
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 74.32432432432432%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB0UlEQVQoz6WTTW/TQBCG+4f5Gb1w5dYjXLgiDpX4SE2RGtukKTb1ZwI4Mv5IbG+aGK/tbHZe5DgktOoFdbTa1Y7mmdnZffcET7CTfzdCiO12C6CfeyMiKSWAqqo2m80jMBEBuL4em6bZezjnd3fL9Wr1NxEpihKGYR8shLgHE5Hrep7nMFaMRiPf9/2J73nedDJRVZXz9Wikp2kKoGmaOI73cJ9JSmnbjm0Z2TyyHRfA2at3n4YWID3PW+axpg2TNCWisiz7LB0cRVFd10TkOK5jGVHgDYdXAG5fPkvV1+uGLgbv2Tz4omvz+RxAlmVHOAgCzjkR2Y5jffuax7M8ywD8fHGaf3wLYFlkRRzoupruKhdFcTx2GIZlWQJwHMe2zF+Br6pd5TenZ+b5Zy5aRRmweahrwyRJiIgxFkXRHhZCtG0rpezgW5Nl0Wz2fUvIfjz/nZ/XDYJgsmKprqtJkgJUVdWxMgApJRFZtuV7VpHHl5eKEFugBSjPi4vBh7YpNe0qjhMAdV0nSXK87f6dDcOYTu1eDzs/dm6Sslt0fQ8f4u+JxHVdwzD6/ntsN7q+FovFeHzDGDsEP5QnUdcP5/yBhvu3bZrmgD0CP+lj/C/8B4suUZn3bYQeAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 74.32432432432432%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsTAAALEwEAmpwYAAABx0lEQVR42qVTTW/aQBDlf/c35FCp50qNFKmHSj1UrVSlBaWhjUKwTbCbmDWY2l5wE3CMv9CGtedVeFOglFue9jJv9u3szrxt4Blo7AZVDQBEtCGpBgAhhJTygFilLcsyDEOFQoikxkbw4+JiPB6rrCIbu2c7jmOZ/TxPNU0bDodDh7GB7bru5WWnKBJd7wZBAEBKyTnfVpZSEhFjjtnvRbPQNC0Ax+/OP5zqAN3adjyfat2O7wdVVS2XS3XKWhyGYVEURFRX7t1PRu3zbwDMty9Gn18JQrN5Op+6ht7lkwkRxXG8rex5Xp7nAAaM9XvaPPTufocAgtdHd+/fAIgf5tH0l9btBJxXVbVYLLZiznmapgCY41h9456739ttAB+PTtrHnyrg7Kw1m3r6+to+EaVp6nnek3i1WgkhiGjAmGUa8Xzquk4FzEYvY36yKuH7oyQKDf0qCLgaxPbNm4bbtv3T6uXZrNX6+vgoAQHIJMmazS9Fnuhax/P8/W5vRnVzczsY9AFkWaa4ej1N9fr6SomJqCzLfZMwxnRdz7Js4656rZ0XRZFhGGEY7vrvH3uWZZllmer8HhSvCh729rM+Bv3F//sO8n8AlxdRSKHUDNcAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;autoencoder&quot;
-        title=&quot;autoencoder&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/3f3761c6fd7d8a8683b8d75b8c0610b8/fcda8/autoencoder.png&quot;
         srcset=&quot;/blog/static/3f3761c6fd7d8a8683b8d75b8c0610b8/12f09/autoencoder.png 148w,
 /blog/static/3f3761c6fd7d8a8683b8d75b8c0610b8/e4a3f/autoencoder.png 295w,
@@ -1011,12 +1069,12 @@ into trend and seasonality components using Loess regression.&lt;/p&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 27.027027027027025%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAApklEQVQY052P2wqEMAxE/f+vqyBqwZdWVLAXQWy9IM4yeVyWhd3A0NAkk5MCP8Q4jliW5WtPcd832raF1hohBAzDgPM8kVJCzlny67rk9d5jXVccxyF1irV936X+PA8KDtEwxoht26R5nmf0fS9EXdehqirUdQ3nHMqyRNM0Yk7xnyKMEH7C5maacxlNlVIwxoDX8AKKOamstZimSSjFkJjv+jd48gsel4H5no3cgQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 27.027027027027025%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAr0lEQVR42pVQywqEMBDz/z/Lmx48SA/eRbHWJ61vayQD7sld2ELamRKSzAT448zzjGVZfnICXuu6YpomHMeBbdu+kvM8xzAMUl/X9S5I1yiKkGUZ6rpGWZaw1qJtW4zjiK7rBE3TSE8OQWGCPGMMnHNiEuz7LkQ23ntxqaoKRVFAa400TRGGobx93yOOYyilxJRGSZJIT43PyG8jUJwrOM9TknAS/jEA8QRgzZU9YW6pYYKDaKKn8wAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;standard trend formula&quot;
-        title=&quot;standard trend formula&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/d029996fabeb08c81a77b61057e13934/6e622/standard-trend.png&quot;
         srcset=&quot;/blog/static/d029996fabeb08c81a77b61057e13934/12f09/standard-trend.png 148w,
 /blog/static/d029996fabeb08c81a77b61057e13934/6e622/standard-trend.png 231w&quot;
@@ -1045,12 +1103,12 @@ manually specified change points with the respective growth rate of that time in
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 14.864864864864865%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAfUlEQVQI14WOwQrEIAxE/f8PFC+VIoqgtlZFUIrOksBed3N5QxheIgBg741/M8ZAzhlrrZ89EWOEtRa1VrTWUErBdV14nod53zeLjDFQSnGmLu2pk1LiTOy9Q8w58b4vX/7KpJQIIcB7zzzPk4VEkpDUOQd6RmvN+TgOPvQBgtLlhHzLAyoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 14.864864864864865%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAfklEQVR42oWOSw7EIAxDuf8BWSIkWqCl5a9uoHiUHKATyYvIfk7EWgtzTvyb53lw3zfGGJ85cV0XjDForaGUghgjjuNg+DxPhBBYWmtIKUH5nDN7lPHes++c4w5BF9/35fbeO2qtUEpxmOCUEqy1DO77zhCJdireto3L6Snif0855dIijEOxAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;prophet trend formula&quot;
-        title=&quot;prophet trend formula&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/641cd764309092ad650cba14986ab45d/cc097/prophet-trend.png&quot;
         srcset=&quot;/blog/static/641cd764309092ad650cba14986ab45d/12f09/prophet-trend.png 148w,
 /blog/static/641cd764309092ad650cba14986ab45d/e4a3f/prophet-trend.png 295w,
@@ -1085,12 +1143,12 @@ yearly, holiday or weekday components, we can create an additive model based on 
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 20.27027027027027%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAlUlEQVQY021P2wqFMAzb/3+gLwORObxNx0B92LzkkIDnQSxkbdMsWw1ese/7m8J5njiOA19BnrjvW73hEWNEzlm5aRqM4yjjbdswDAOstXDOiV/XVUgpoe976QnOp2mCoXPXdRJRUFUV6rrWZZq1bauaYvbzPKv23stoWRaEEKSjqXl/n8NSyp/jg+Sv6xK+Vib/rP0DIMczxsAcJUEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 20.27027027027027%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAo0lEQVR42l1Pyw6EIAz0/z/Qixc1PBRBkQNBRWczbDTuNmkoM+10WuEV53liXVfknB+MdUoJ27b94Hc/cfL7vuO6LlQkjDEFtNai6zporRFCgPceUko0TYO+7wvOhcTZK4RA27ZPDsOAiqrTNCHGiHEcUdd1EXXOlSGKkGfNd1kWzPNchinImr1crJT6OrzjOI7igPbfZ/FUvsz/k8nRFGf5/wCytzOuWNu5hQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;fourier series&quot;
-        title=&quot;fourier series&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/ac5c908c168ba5ef997f01b18523d9c3/977f7/fourier-series.png&quot;
         srcset=&quot;/blog/static/ac5c908c168ba5ef997f01b18523d9c3/12f09/fourier-series.png 148w,
 /blog/static/ac5c908c168ba5ef997f01b18523d9c3/e4a3f/fourier-series.png 295w,
@@ -1117,12 +1175,12 @@ yearly, holiday or weekday components, we can create an additive model based on 
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 75.67567567567568%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB00lEQVQ4y42UiY7bMAxE8///mMunrPjS6dtTDFO3aRabrgGGBiM9cSjSp67rkKQJ6r5BGCPmbcG2b3h99n3/x396TvzxU0Qz9HiEFpVvMC6TbCb4FXbYJ7gArbWYxglN3SBJEhR5jr7vMQwDqOB98yv8/RABcrP3HpXWyPMcj8dDQMYY8eu6yuJlWb6VekAFqJTC9XoVH2OUA9I0RZZlKIpC4nVdQ2uNtm1lzTzPT2XT9DXDsixxT+6SZQgBt9sN9/sdVVUJjP9dLhcBMusDxIMJ/wIkxDmHfdsxjSOssQJnXddlRQwRXdthHMefSR62CWb2KEONeuxhFo+wDlChEWO8n/23oFcToPMecYyoGo1cFVC6Qmd7xGlA74xYGIKUgJlTDSXz/T3rk5C3TSSpooQqS6kRF3vnsa0ruraFs1aAhPGijktkuXhBjNM/gdjhgoeqFLI8g48BaZ4hLwtUD422a7Ftf6eHG2lsJ8ZlCH7756TMEd1okTuNzFZoB4PUKBROIzGl+E8T8hr7c8usBaVRjq40TG/kdp11CD5Iy1Ay+5ATRIn0R98eTX86psBYK2DW5Xw+y7RQ1jFFnCBCCeE7+5Tr3z8eJ2b2k6/I//rv6MNfUW2MwuOqE2kAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 75.67567567567568%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAABxklEQVR42p1TCY7bMBDz/98YIIkd34cOS7J8suC4LoKmRXebQBEijTkkh060UnimKTrVI8QJ+7FjPw787yc59gNu9uiCQusVGt8jrFEuD36/CZ7wxzmHaZqglEKev1CWJbTWiDHKvu/79wCNMfDeo2tbvLIMVVUJ+DiO6Pse67oK023b/slYALuuw+PxECCCcOV5LotnTdNIA9ZdzAkeQsCyLJ+AbdsKoLFGirMsOxvUtQA+0yfu9zvquhbAC5RNaNc7awEM3sNoLdJm+qY0rLGYwoQ4RXjn0He92PIlyfO+wiwOTRjQRwO9jAhbRDtpOeMaovl4+E/g55SDg48Bte6QNyXKtsJgFNwcoJzGMCq46GVAlEim9I4eMh0fgPu2y6TrskJZlCKZMt3oxAb+H639FSf6So+LopAGrGGTeZ6R4Cdt572YzoHwsqormTInS2bLukgeKZMPkhlZXlHizvtzKGuEihaFa5CaCn0wSHWJl63x0AUyW3053CdgCIhzhDanHMbIWityRjfKPgyDnDMqjAxVcL/eJsoWwEsGARhoyr7dbuIXpbGYgPSLi80vD1kvM3hjn7DD+8HV4IrE7/tV87fX8AcUx40WOksOegAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;model-stan&quot;
-        title=&quot;model-stan&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/9d3e6c354770300c8a2f03d1616d29d2/fcda8/model-stan.png&quot;
         srcset=&quot;/blog/static/9d3e6c354770300c8a2f03d1616d29d2/12f09/model-stan.png 148w,
 /blog/static/9d3e6c354770300c8a2f03d1616d29d2/e4a3f/model-stan.png 295w,
@@ -1154,12 +1212,12 @@ holiday in terms of trend or seasonality change.&lt;/p&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 36.486486486486484%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABVElEQVQozz2RSW/bMBSE9f9/Tm8FeuqpQQ89xGhso0jjxk6shdRCSlylr3h0YgIDbo9vhjMVQAjhjhhjwZYyOaWylvOc0/3uduZZlqWsZR7HgW3bqIwxCIZhQCmFMRNtp/n6sOP5XBO8x3uP0hPL7O/EddPR64GcV+Z54f3tSkqJqm1b+r4vDTslRZpzW/Pl13d2L0eapkF1HT/3e348HamblkFrjqd/PBye6Y0lxlREiNpKVI3jiLW2NB7HiffrK7933zifDiitEdK/pz2Pfx6p2watNG/XE4fXJ8w8EXKiVi1ucVRaa6ZpEisLg/MB5wwxNHg34ZzD2pngB/ruBWtN+WKMM85eSHEhpMAw6aK0EiPFVPFFPBCIZyFkkgST80dYiZwjKd1CkLrPoHLyuMWwrhuVKJMGomRd1wJ54L3jk+xyuXw0WAuB2HPb3wilToak/B+yVBmwb85YRgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 36.486486486486484%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABUklEQVR42k2RS2/bMBCE9f9/T4Feeuuh6S2HvJogjh1UkgWREi1KfEtfsUpidIABuEtiZjlbbdtGjPHKlNLOkjIl52u9roWUIumzF0PAeUcpGWstWmsElTGGeZ73htBOF+pzz7dft7y3PcF7vPd0/cDiPCEIA3XbYYzdDfziGfTAtq1Ufd/vDuM4MgwDk7lwOP/l++1Pnt8PqF7RK8XN4wO//7wg7y+j4eH4xs3zK9Z5fIjUTUvOmarrOuxk9yll2mmaqZsDT3c/aOsD42h2kdPpkae3e5TWKKVpz0eO51ecn4m5YKbpQ1AphXMOyTLFSAiR4CfWMhK8xfvAPC8EP2L0CbcsOOdJacbbmpIjMTuU7ii5UInQsix7LuIgFIMYMzkVSil7hil/nGUh8j5/1jEmSgmEsLBtUMlmvrYrEAMJXoQFkm/TNNe7dV2vP/ri//gH02AaN0sriJgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;fit visualization&quot;
-        title=&quot;fit visualization&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/0f9620ade15b6088a67b4c8c8b251c6f/fcda8/fit-viz.png&quot;
         srcset=&quot;/blog/static/0f9620ade15b6088a67b4c8c8b251c6f/12f09/fit-viz.png 148w,
 /blog/static/0f9620ade15b6088a67b4c8c8b251c6f/e4a3f/fit-viz.png 295w,
@@ -1206,12 +1264,12 @@ solutions and then talk about how to do it with NPM, Gradle and Jenkins yourself
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 66.21621621621621%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAADoUlEQVQ4ywXBW0xTBwCA4fO6l2V72rLH7VFnYkzcmMkmgrqxgVuyYBDU1RrKigqBAtIid7n2IgVaDpXW0lJ6UYEWSrmIOio1DhG2MAQMtUgiQxAYU0Cm/75PqCk9y1CPicXIKH+O9jHU28qLpQXevNlga2uV7c0VNl895+3OCi8e38XRko+yQMqgVcf2gxs87RYx1lVRqFKwd9dnCKJWzkiwg421p4yFunkQ7GY+MsU7XrO5ucz21jIbq2GCPdfwO+qwNJdRfDEVsSoHmzoHuyYHk66Ysvx0zkvjEarKUunpauHpTIjx3we40+fidqeJpYVxFubH+XctQp+zATE9AUPWKTrt9ZyT/IimWI7XWo5Jm0NjVSaXL0o4c+I7hLLS8xSo5FiNZfwxfo+OK7lMu67QUniGxch9Xi7+hcdUTXfBWYYr5LQ311Cencgt71VmQx5EtYp6fTFqdT5fR+1BUCqlyNKO0+Vq4v5dH9aMRGau1aA7fYS7XjOvXoYJdDjxibUYK8qxd49y1VjDw+FOwv0WVMdjSTq8m8EeM99/exChWCUjJSUBh0WPRV9K3ckjTBsuoUk+hFiUgd8sctNsxGaop6reRZGuk4qGDsYnHuAulWFXJCI7ugtDajQ/xcUgdInFlCgkPOo0ki09RvzujwkVJZPw+SckRe/hScDN5EiQmgotbe038fqHkCoa8PcGSI3fj02ZzOSgFU2lDL/PiBAKePjNbSA8epumUz9THr+XEW0arosnqY75kn+ePGZlaR6nx0vy2TyaWvtRVdoRG43cEAuxaVQEPBYaRtqYnHAg+LQ5mE1aZpu0vN0XzVJsEnPS86xJ5bzbf4gNix7Ywe7u48CRZGrTU7BXlpOXW06/143HasJmb8PX50ORrUQYu+VGVOcykJ3C4lcx3CuqwmtzEtQ1MBcdx5RYwM7rVXSGdg7GncajOk1lfiG5mUquW5sJVMiobmxidGyS+kYLwur6EvoSGc1lSgbUBnz5JQxWahlsNhNqaWXoupWF8CyZ+bVIZAVYcyVI0y7RILqY7bfjqs2j1h1gYT7Mw0cTCOHIDL0BDzcykxj+8ABz78Uw/34skQ+OMvHpYSabFARvDfBLhprLpXquZP2KRGHAZnbi12Shc3QRmHrGysoi66t/I7xlhxfPprlTLWds3zEWhCieC98wJ0QR+ugL5pwlNJsc/JAo59yJZAyKDCTZejQVWrIuKEi8oMfQGWR5bR34j/8B8NbYp9WrdxoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 66.21621621621621%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAADqElEQVR42gXBe1DTBQDA8d9df3ZXd11/9E9/9bjrj67rrMuKCkHzNOSyMhTxwg2GRAQBu8lzDOQxtrExGGzQbzwGjPEQ2IYQYwqYCAh6Nj1BIAREUCECCiePvn0+QlGOlN86ylmcHWbSN4DHZWXp0SzbO5v4/Wts+//i2dYSu7trrM+O0m7LJj1TgrNKw/MbF1nqEakqVZOrSuej999BqNDKGLjSxMbfD/CN9zIy2MnM9G1297bw+1d57l9la2Oe4d4GXDYdjbVqlOejqSiQU6tNwaZNQdQrKchIIFH2NUJetoTOVjMzE0P4xr1c9V7E02pmeW6cxYXb/LP2gMGuOsxxoZQlhNNhM5Ice5ILCgkuWz6iXo5JnYg6PQrZmRCE3Jw4MjPjMevOc9c3TJsxjalmA9UZkcze87K5ep9Om5GOjCiG8s7RbFFTqDiNu6mUuZudWPVZGA1KSo1Kgj/fh6DKjiH6XBiOmmJujvRhTTzJpLUQS0wobpsO/8Y8fc4W3KKBytwsbK4biJYShvoczPfbKZKG8k3A2/S5LISdOIagzv2ZiIhQrBVFOEQ9mvBgJkyZmKOOYlTI6KsXaRPLsVtMFBkbUBmdqAwtjN8ao12TRLMiDNmR96iMDeK7r4IRukQVOXIpI80lFMojCXrrFYayThO5/02OffgGEy4bkyPXKdWZqLLa6fUOIpObaHf2kHzmEMa4UKau2CjRxtPSpEUY6m5ioNnM9KiHxvgolF++y1WNDKcqmvwv9vHk1ihrK4t0dXsIl8gpE93k6Bzo9eW4rblUa1Lx2Ksou9bE2FgtQk9pKmJFIb4aEzsBh3l64AQzknhWYuLZ2X+QDX0e4MfZ/TuBIVIypado0+SSlJJHb0cjbfVWbHW1uD2XUGaqEHwDbfyqT6MrNZLHAUGMKrJx1jsYtIjMHAhhQp/C9sYS1Q2X+OzoWWrkP1CWlUHCT2k4qs141HEU6XVcG7tDTbUd4d9nG1iKEinLluPRm3Ep8+i9oMFrreW6aONySx0L0/fIyi/nlDSdGkUUcT+mUlBcy5S3mQ5tMmq7m/vTk0xMTCIsPPyT3r5OWtMl9L/2KdMvHmLupYPMvXqEO68f5g9NHOMDHqKT9ShzKjClxCJJMlBZ1cploxxDTSPuuw9ZfvyIzfUnCHv/bbO+ssCgIZHxwG9ZED5m+YVAZoVPGH75A2ZEBY11Do5HJCL9PpwqeTxnfymmMN9IWlIKx2N1GFr6WXy6CuzxPyMX2p/WTw1GAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Meme&quot;
-        title=&quot;Meme&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/e9ec0e7fdf0ca1bbf14ceb7abb387803/7b439/meme.png&quot;
         srcset=&quot;/blog/static/e9ec0e7fdf0ca1bbf14ceb7abb387803/12f09/meme.png 148w,
 /blog/static/e9ec0e7fdf0ca1bbf14ceb7abb387803/e4a3f/meme.png 295w,
@@ -1257,12 +1315,12 @@ has LTS for the two most recent major versions to allow you to upgrade within ha
     &gt;
       &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 39.189189189189186%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA9klEQVQoz02RCY6FMAxDe/9jIpDY96Vl8+jlK2iQIhLHtV0I+75rmibFGJVS0rIs2rZN53lqXVfN8yw4zMdx2B7sP5+iv+9bYRxHZVlmohyo61pt2xqhaRrleW47Zt5lWaooChOBX1WVYRhgGkgDmee6LiO+76vneb60JMIdAVKDcxiMHgwe5wLKEBkQ5DBkZoheGLi4C8InNTM6cALfh8ETeo87O0RcEGMwBNjDZ0+BW0IaygW9RwB3T8Ts1wVHkJT0ntIEcSWVJ40pybGUTpt5G2b9r5idRxAM7cr8SRz426ShPBk1DMOXyqvve+Oz67ru+0w8f2FrbGFmX5taAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 39.189189189189186%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA5klEQVR42l2SiQrDMAxD8/+/2VJa6H3fHk+gMRYwthpNUpKldV1jHMfY9z3O84xpmoJv13XFsiza27ZNmM7+P3+eZ83P80Tq+z6yLAs6pKqqommaOI5DPc9zCYCHYdB+URQSMr8sS82YJlLgzOIDRJze95UzhSAYHhgOieAbcypWQvlXkB/TEYDkI4ExB/8Kktpp4STEABb0TEoEEEUQDNf4vm/xweZJkMFxcXVaBOzua3BCnwI+M+VTKCEXjijpfAV+RTr75lHmmIc4hnrluq7lwCv7gpmdrOu6bwpX27biUP5HeH0AG6xs5ojhgdUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Angular&amp;#39;s support policy and schedule&quot;
-        title=&quot;Angular&amp;#39;s support policy and schedule&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/0c9f6d294937ee1f1cbb7340410c25ae/86389/angular-versions.png&quot;
         srcset=&quot;/blog/static/0c9f6d294937ee1f1cbb7340410c25ae/12f09/angular-versions.png 148w,
 /blog/static/0c9f6d294937ee1f1cbb7340410c25ae/e4a3f/angular-versions.png 295w,
@@ -1336,11 +1394,11 @@ merge the pull request for the one dependency that works.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token shebang important&quot;&gt;#!/bin/bash&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot;&gt;# create new branch and checkout&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b feature/npm-update
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout &lt;span class=&quot;token parameter variable&quot;&gt;-b&lt;/span&gt; feature/npm-update
 
 &lt;span class=&quot;token comment&quot;&gt;# do an install so we know what versions we have present&lt;/span&gt;
 &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;EXITCODE&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$?&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$EXITCODE&lt;/span&gt; -eq &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$EXITCODE&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-eq&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
     &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;npm install failed!&quot;&lt;/span&gt;
     &lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;
@@ -1350,24 +1408,24 @@ merge the pull request for the one dependency that works.&lt;/p&gt;
 
 &lt;span class=&quot;token comment&quot;&gt;# do the update&lt;/span&gt;
 &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;EXITCODE&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$?&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$EXITCODE&lt;/span&gt; -eq &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$EXITCODE&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-eq&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
     &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;npm install failed!&quot;&lt;/span&gt;
     &lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot;&gt;# run npm install again to ensure package-lock.json is stable&lt;/span&gt;
 &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;EXITCODE&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$?&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$EXITCODE&lt;/span&gt; -eq &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$EXITCODE&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-eq&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
     &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;npm install failed!&quot;&lt;/span&gt;
     &lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot;&gt;# stop if there are no changes&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; status &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; -q &lt;span class=&quot;token string&quot;&gt;&quot;working tree clean&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; status &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-q&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;working tree clean&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
     &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;No updates available! That&apos;s good :)&quot;&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt;
-    &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; -A
-    &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; commit -m &lt;span class=&quot;token string&quot;&gt;&quot;(deps) update npm dependencies&quot;&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-A&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; commit &lt;span class=&quot;token parameter variable&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;(deps) update npm dependencies&quot;&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Then add these two steps as post actions:&lt;/p&gt;
 &lt;ul&gt;
@@ -1553,12 +1611,12 @@ the data to ink ratio.&lt;/p&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 37.16216216216216%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABcklEQVQoz2WRCW/TQBCF/f9/C0hIqEAljlRU6oFD7PRInBZIG2QSH+v42nh3vf6qNSBV8KQZzcy+mXma9bTWyFbyc7MljlPSRFCXNU3dog4d3aHDGoPRml7rsba4e2C13rDeJTRSUoiCJElx8LI0JRGCtzOfkzBkEs458md8mAZ8Dm84u444nS8Jlt8Joh8c+yEfwymbNOZXsaWUDYe2Q4gCGPBELsiLjKvVBcv7gNv7GS/OXnMVTfGvLzn68olXl++5uPnKZH7Oy/M3RCufpkpomx1SlrRKkWYZg7V4TmpdCWS9ocgeyHbfiBbvSLYrkjjiNppwF50QPy55XAcsFsfU1W5UMww9xiik7ijKPcMw4Cml6LoOO0DfW3pr0WqPtX/iLmewNcYcMMbdNccYN8jQ9z1KaZSuaGX9+4bOtW07miO4T6rqBrfIDS32e/JcjAu1NpRVPXIcV0o59jk47qjQOWfP8Tx3TU3T/H35j/svngDZwBEqtNW/XAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 37.16216216216216%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABe0lEQVR42k2RW2/TQBBG8///COIBIR6QEEGUqqDKTnOrSFICaZWENnGyvq/34rV9kDcC8UlnZ1/mzGpn0HUdWmuMUlijqY321dWW2hqsR2PMBecsZV6QJhkiztBKI6Wkqir6DMqyJC9KgvsHpg8bFj+3PO6OPO4ORKeUs8hI4oIsl+S5ZP8i+DZf8mP/m604USpFVUjSNLsIYyGIEsHV9xHh6p6vixmvbq+5mo/5NB7xfhTwLgj5Mp3zcTzh9e0NwfIOkR6I8yOVriikJjqdLsLzWZBmZ3bbkN3TnKfNHcPwDZtfc9brCZ8nQ64nH1itp8xWIcPgLS/7Bc5KrMkwWqKdoygL6DoGcZKglaTrLFoXGJ0TRzNUJZBFxOF5TBovydNnUrHhfJz6f+y6vr/FOYeyJVmWXl74bynG4pqG2jm0UTjX0DQddV3hXE3TNJ5+eF3XHmMMSmnaxviFeWF/WGs9fdq2QSnla584ThBC+Hsv9IK25W9fL/4/fwCK/BCeNK7K8gAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Good figure showing time series&quot;
-        title=&quot;Good figure showing time series&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/9367b79a1c98861d1c41451c843df5c1/a58fe/good-fig.png&quot;
         srcset=&quot;/blog/static/9367b79a1c98861d1c41451c843df5c1/12f09/good-fig.png 148w,
 /blog/static/9367b79a1c98861d1c41451c843df5c1/e4a3f/good-fig.png 295w,
@@ -1586,12 +1644,12 @@ and should not be compared. Also, isn’t weekly also a trend (referring to the 
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 77.70270270270271%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAACMElEQVQ4y3VT2W7jMAz0/39fX4o+dItN9kgT25IsidThWQzlJsUWFTDWQZkiZ8hJVeG9g3MO67r+h+Wb86/Ytg29d0y3280OVAU552+RUnqs81iLCOSYaa+1Ynp7ezNj7zv2/StwYN87gH3gsGltSFoRpEC0DIfLsliELmbMIWL2ETe/YQ0Ry4EtC2JWhJgRUobbEm4+Yt2SnYnqI8JSCug0hIDWGmprCN4bxr7j9PsPfvw8I2nBJop5HbzuvaP3Zvx578Ex8UMyS6nmoLdm0WQtdkYbH7xc/lq6e29orVo0Bj56rEnDFGO06GotqIx2S5aKTxlLSJbyGjN8knuKquNu+QQKYymfTifLn5G4JJYWBeBrTIdpEbxMEaIoPPnMCq3VBBoZHqKwbMgXuWKa/Jmpf6AbTwMfzrmWUuCTWuT8txQ1p5MZRWCOQzC8v79bKV2vVyOftsvlYjbOQwQH7xxc2HD+9QcpxsEhjpFTsuImN/kogSyCeZ7x+vqKl5cXnM9niJBDNTCQViuoA6MzlasdbEiiCEngY7aapDjLNuY5JGRRtFqMFu6JdRu1y2q4i8K0+CqJXqIgaoGUIcB+dEhpDS4pogzeWhtctt6tU6JWi5SOTZSYMlJpR509WqzvQyA6HULUu/2jLWkP8qjLiVyQJx+CCcE9SacAXH+uMxY9Z9rYGVxT3cvscJ0Xi9JE4YV1We7Efm4lEv78/IynpydTnYPKs3usrPbdFOcZ9/8AFMrb5RUKA7cAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 77.70270270270271%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAACLklEQVR42m1UiW7bMBTL//9iu6Lr0jRFEsu27sscSFsb2s0AI9t6fgdJ5RRjxLquWJYF8zx/gTFG77kSf/fMP7Hee2zbhtP9foe1FrVW5Jz/g4KUM1JOf96lY62loJSMUgrYWGsNp/P5jJQSWt9U4TuAHdvWMa6xl0qDzxUuVRVWQo2yLFh9hLEBkw24Lw6z85hdgLEeNkTYmLD6IPDdtDosPsCHqG69D3tCjkoOQgjovQvOWoSDk75t+PX+gbfzRR2FXDGvq2LATnuHdRbOOXV/4g8zM3EjWoONGSGXY4wOY2Y8Ho8jQUM/4r9DolAQYiQ1LsCGBBcTZheFlePGjNlHjZ8LE7DYnoiiSAeOfLlcpBBHW0JGrk2d7OT3XZRt2wu2rs5tLLAjFrtApezTnabJiA8Gp1LFCTcGBq8D27HmUkTNGjJqa7uNasVJmzmDfmRimvx2u2mE++0mwfh8vV619/n5CR+CDO/sitU6vF8+JCoHkyhKmpKMKoMffLDQY5rw8/UVP56flXQ38m74XbQqyvidVGbrIXj4lCUG/bjQky5IBML4KDp6bwgpy6vcZxzvS92Li0PagQ82FSyxINamgNbHydjEL1V2qQg6QcdpCbkJXYo3nGZj4GNELO3LsRqQEMeaD6+NuFHMpcPH7JB8TdMkwimEuj28yfsiSoL+TWh8xlCQEU8+rw+D+zTJ8BKFx4YBrMCLHxO8mOzl5QVPT0+K4cWVGN2PBvj8G2NF3hfsa09dAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Bad figure showing component of forecast&quot;
-        title=&quot;Bad figure showing component of forecast&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/4985d3207d952e455d5da594f59ce9d3/d4713/bad-fig.png&quot;
         srcset=&quot;/blog/static/4985d3207d952e455d5da594f59ce9d3/12f09/bad-fig.png 148w,
 /blog/static/4985d3207d952e455d5da594f59ce9d3/e4a3f/bad-fig.png 295w,
@@ -1645,12 +1703,12 @@ colleague stumbled upon the &lt;a href=&quot;https://cran.r-project.org/web/pack
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 53.37837837837838%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACFElEQVQoz22S608aURDF+f+/t9FGEJQaH+CiAipgUx9EY9qK22jxS1FAIMLKiizcfdz9NffiWm16kvkyM+fMZObEwjDEDwKCQL6J4D8xq+lez0OqAKSUEAQ4oxETIYhNhUCJvgv+4t+azvk+4uEBz7YJpMTqdTG/fWcqXGJjZ/LaGEFtMH0e43me3i6CFIKn4SP1mxsq5QMuzs+5vrqiVDlgq7CLUIKqURGHwyHdbpdGo4FpmpydnlGrXVKv12k1m/R6Pa6ur8kX91nLbLKe2SS1sk4uazA/H2e/VNI6Mc/zGQwGVKtVSuUKxlaerLHFylqGVHqV9OoG2/kiXw8P2ckXSKTSxJNLrG9ssJxeIbX8GSOX4+Kihu/7sw2brTZzC0k+zMf5+CnO3MKiblTE5FL6JZ8gkVwmu2nowSfVU46OjikXdvlRM+kPLLxI8HfjlsTiElkjR2F3j/LBF45Pqhwdn7BfrrC9kyeTNSgW97g0f9K+v+fJtrEsi87tHVPHIXQFrusRk2HI0Hrkl2nSbLXodDq6Ud3Utm36/b7Oq9t2220cx9FWCeXs69J1CZWFLAvXdYmppPrkeDxGCKHvEHlPEaUM9LGn0+nrx99ZSIm+WE2oDZXA6Hk8E5ESZzLBmczIvh/omut5mixcl6fRs76Vqqu+iKt01IP1l1VEUEbX7n+ZPqt7WkgRI3EFdTP/jU8V/gBqtyjOyy0h+wAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 53.37837837837838%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACHElEQVR42mWSeVMaQRDF9/t/AK8ouAJWJHLEA+VKygtTZRkpCGryhxgQsTgWgcU9Znd/qRmBaDJVM9PT3fNmut/TfN/H8zzkPpvy7HnvzzNbyJgr8B0HPwDPDwiEYDIcYdk2mm07BEEwn/8P6fencf/VIwR2p4Pz/Izn+/TabaqXl1iOgzZ5sd4BSVu4Li9jE9d11e9mcd+yGBoGt79+Uix84erigutajXyhyE7mEEcCylwhBIPBgHb7kbv6HdVKhfPSN8rlMrc3NzQaDZ6e2tRq1+xmssS3k2xtJ9E346QTKZaXVsnmcrhCoMml1+9TKpXI5Yukd/ZIpnfYjCfQY1vEPm6zu5/h6OiYvf0MYT3G2voG8fgnNqKb6JEoyVSKq6uy6q8mS2k0H1haW2dhOcTihxArq2E2ojHCegQ9EmNhZY3FlRAhPUoilSKXL3BaOuf4+IT8/iHfyxU63Z6qVAHe1e8Jr0dIpj+TOchSKH7l9KzEyekZuUKR3b0MiWSag4MsleoPHlot1aJer8/j/W9eJiaB4+A4LpofBAwMg5tqlUazSavVotvt0u/3MQyDTqej/PV6nXbzAdM0lXxmqpDykWC+YSgSNcWqEIzHY2zbnjP7V5ee8lmWNWd8LrF/5KZYlo0cjc05iJTRZHpZxUwTx3WnF1yGY/NV3NPckTlRtvyUYlkZrpjrUApdAs806U7js0ff5jrTat6OP/v9KSM5NPzqAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;anomalize graph&quot;
-        title=&quot;anomalize graph&quot;
+        title=&quot;&quot;
         src=&quot;/blog/static/7bad9e4efed277e9b67a873875c8eef7/fc2a6/anomalize.png&quot;
         srcset=&quot;/blog/static/7bad9e4efed277e9b67a873875c8eef7/12f09/anomalize.png 148w,
 /blog/static/7bad9e4efed277e9b67a873875c8eef7/e4a3f/anomalize.png 295w,
