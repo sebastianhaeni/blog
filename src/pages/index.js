@@ -20,7 +20,10 @@ const BlogIndex = ({ data, location }) => {
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
-          <article key={node.fields.slug} style={{borderBottom: '1px solid #ddd', marginBottom: 32}}>
+          <article
+            key={node.fields.slug}
+            style={{ borderBottom: "1px solid #ddd", marginBottom: 32 }}
+          >
             <header>
               <h3
                 style={{
@@ -43,17 +46,28 @@ const BlogIndex = ({ data, location }) => {
                   title: node.frontmatter.title,
                 }}
                 placeholder={"..."}
-                />
-                {node.frontmatter.image?.publicURL && <div style={{display: 'flex', justifyContent: 'center', marginTop: 16}}>
-                  <img src={node.frontmatter.image?.publicURL} alt={node.frontmatter.title}/>
-                </div>}
+              />
+              {node.frontmatter.image?.publicURL && (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: 16,
+                  }}
+                >
+                  <img
+                    src={node.frontmatter.image?.publicURL}
+                    alt={node.frontmatter.title}
+                  />
+                </div>
+              )}
             </header>
             <section>
               <p
                 dangerouslySetInnerHTML={{
                   __html: node.frontmatter.description || node.excerpt,
                 }}
-                />
+              />
             </section>
           </article>
         )
@@ -65,13 +79,13 @@ const BlogIndex = ({ data, location }) => {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query {
+  {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
       edges {
         node {
           excerpt

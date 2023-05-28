@@ -15,7 +15,7 @@ Source: https://medium.com/nikeengineering/hit-the-ground-running-with-distribut
 A trace has an ID and consists of one or more spans. A span has an ID, timestamp, duration, a local and a remote endpoint as well as a name. For REST calls we traditionally use the HTTP method and path as the span name, e.g. `GET /info`. So, how can we collect spans that form a trace from different services running in different containers? The service that starts a trace is generating a trace ID and with every request it creates in the trace context, it not only creates a span, but it also sends the generated trace ID as an HTTP header. Zipkin specified the span propagation headers first and termed them `B3`.
 
 ```
-   Client Tracer                                                  Server Tracer     
+   Client Tracer                                                  Server Tracer
 ┌───────────────────────┐                                       ┌───────────────────────┐
 │                       │                                       │                       │
 │   TraceContext        │          Http Request Headers         │   TraceContext        │
@@ -46,27 +46,25 @@ Using tracing data, we can also visualize system architectures based on actual d
 
 ![Jaeger Directed Acyclic Graph](jaeger-dag-graph.png)
 
-
 ## Tools
-
 
 **Instrumentation:**
 
-- [OpenTelemetry Instrumentation](https://opentelemetry.io/registry/?component=instrumentation) ***recommended**
+- [OpenTelemetry Instrumentation](https://opentelemetry.io/registry/?component=instrumentation) **\*recommended**
 - [Jaeger](https://www.jaegertracing.io/docs/1.36/client-libraries/) - deprecated
 - [Zipkin](https://zipkin.io/pages/tracers_instrumentation.html) - deprecated
 - [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-api.html)
 
 **Collecting:**
 
-- [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) ***recommended**
+- [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) **\*recommended**
 - [Jaeger](https://www.jaegertracing.io/) - preferred over Zipkin
 - [Zipkin](https://zipkin.io/) - first one to be widely adopted
 - [AWS X-Ray](https://docs.aws.amazon.com/xray/) - if you're running services on AWS
 
 **Analysis / Post-Processing:**
 
-- [Jaeger](https://www.jaegertracing.io/) - supports wide range of storage backends, decent UI ***recommended**
+- [Jaeger](https://www.jaegertracing.io/) - supports wide range of storage backends, decent UI **\*recommended**
 - [Zipkin](https://zipkin.io/) - first one to be widely adopted, scaling issues, UI bugs
 - [AWS X-Ray](https://docs.aws.amazon.com/xray/) - if you're running services on AWS, automatic integration into lots of AWS services
 

@@ -17,26 +17,25 @@ So, if you are using Prometheus and Jaeger today, you might want to switch over 
 
 The observability signals for OpenTelemetry are:
 
-- __Logs__: Traditional logs printed to console, file, or in case of a cloud native application, to a log-collector which indexes them and provides a search interface. If logs are written in the context of a trace, the trace and logs can be linked and made discoverable together.
-- __Traces__: A trace consisting of spans, which are basic function calls, follows the path of invocations no matter in which service they are invoked.
-- __Metrics__: Timeseries based data. For example traffic count, error count, response times, etc
+- **Logs**: Traditional logs printed to console, file, or in case of a cloud native application, to a log-collector which indexes them and provides a search interface. If logs are written in the context of a trace, the trace and logs can be linked and made discoverable together.
+- **Traces**: A trace consisting of spans, which are basic function calls, follows the path of invocations no matter in which service they are invoked.
+- **Metrics**: Timeseries based data. For example traffic count, error count, response times, etc
 
-Additionally, OpenTelemetry specifies __Baggage__ which are basically tags for events.
+Additionally, OpenTelemetry specifies **Baggage** which are basically tags for events.
 
 As of July, 2022, only Traces and Metrics have been fully specified. They both have well tested instrumentation libraries in the most common languages and frameworks. The OpenTelemetry collector is also able to export these to common observability tools such as Prometheus, OpenCensus, Zipkin and Jaeger as well as Kafka. Logs are not fully specified nor implemented, but it's being worked on right now. Check out the [OpenTelemetry Status Page](https://opentelemetry.io/status/) to see an up-to-date status.
 
 ## The need for standards
 
-In 2010 Google has published a paper about [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure](https://research.google/pubs/pub36356/). 
+In 2010 Google has published a paper about [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure](https://research.google/pubs/pub36356/).
 Some called it the secret weapon Google has to understand their architectures and debug complex request traces.
 
 Dapper later evolved into the open sourced project [Zipkin](https://zipkin.io/).
 AWS jumped onto the distributed tracing bandwagon and introduced [AWS X-Ray](https://aws.amazon.com/xray/). Uber liked distributed tracing as well, but didn't like some decisions taken in Zipkin, so they created [Jaeger](https://www.jaegertracing.io/).
 
-
 ![How Standards Proliferate](standards.png)
-<p style="text-align: center"><a href="https://xkcd.com/927">https://xkcd.com/927</a></p>
 
+<p style="text-align: center"><a href="https://xkcd.com/927">https://xkcd.com/927</a></p>
 
 Each of these tools introduced span propagation methods to be able to follow a trace as it makes it's way through an architecture consisting of many services:
 
@@ -81,7 +80,7 @@ However, the software APIs to instrument your code and to collect those signals 
 
 ## Instrumentation
 
-Before OpenTelemetry, you could choose to use a library to instrument your code to gather tracing and metrics data and collect it with your vendor's tool. 
+Before OpenTelemetry, you could choose to use a library to instrument your code to gather tracing and metrics data and collect it with your vendor's tool.
 For example, for tracing you could use the [Zipkin libraries](https://zipkin.io/pages/tracers_instrumentation.html), [Jaeger libraries](https://www.jaegertracing.io/docs/1.36/client-libraries/),
 [AWS X-Ray libraries](https://docs.aws.amazon.com/xray/latest/devguide/xray-api.html) or possibly others.
 
@@ -108,14 +107,13 @@ And transport it over these:
 
 While the transports probably all have a justified use case, the formats should be unified. So, OpenTelemetry introduced the OpenTelemetry Protocol [OTLP](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/otlp.md). It not only allows to send tracing data, but logs, metrics and tracing.
 
-Once they were collected by a vendor's tool, it was hard to get them out of there to use it for other interesting purposes. In a large organization, it might be useful to send traces to a team specific tool, but also collect all traces produced by all teams to generate so called RED metrics. 
+Once they were collected by a vendor's tool, it was hard to get them out of there to use it for other interesting purposes. In a large organization, it might be useful to send traces to a team specific tool, but also collect all traces produced by all teams to generate so called RED metrics.
 
 - **R** - Requests: Traffic, Throughput, Rate
 - **E** – Errors: Error Counts, Error Rate, Failed Calls
 - **D** – Durations: Latency, Elapsed Time
 
 With the OpenTelemetry Collector in-between, this becomes a breeze, as you can define pipelines in the collector which sends your data to different channels downstream. If you ever want to evaluate a new monitoring tool, you simply forward your data there, but continue using your existing monitoring tools until you switch over. Or maybe the tools are complementary and you decide to use multiple tools generating insights based on the same source data.
-
 
 ## Upcoming
 
