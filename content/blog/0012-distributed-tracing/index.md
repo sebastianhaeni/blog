@@ -77,15 +77,3 @@ My personally recommended architecture looks like this:
 ![Tracing Architecture](architecture.png)
 
 The service, of which there can be many, is deployed using an agent (if available for the language and framework). This is then sending the tracing data (and metrics) to the OpenTelemetry collector, which has a configured pipeline to receive spans and forward them to the Jaeger collector, which stores it in a storage backend such as an Elasticsearch database. The Jaeger Query service allows an engineer to query the traces and visualize them.
-
-## Upcoming
-
-This post is part of a series around OpenTelemetry. See the other posts in this series:
-
-- [Introduction to OpenTelemetry](../0011-opentelemetry-intro/)
-- Introduction to Distributed Tracing (**this article**)
-- OpenTelemetry Collector Components (upcoming)
-- OpenTelemetry Instrumentation (upcoming)
-- Instrumenting React.js applications (upcoming)
-- Instrumenting Angular applications (upcoming)
-- Full Stack OpenTelemetry Example (upcoming)
