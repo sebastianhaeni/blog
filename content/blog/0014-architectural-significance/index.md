@@ -6,7 +6,6 @@ tags: ["Architecture", "Decision-Making"]
 
 The following describes what can be an architecturally significant decision interpreted from [Architectural Significance Test](https://ozimmer.ch/practices/2020/09/24/ASRTestECSADecisions.html) written by Olaf Zimmermann.
 
-
 ## Short Form:
 
 One of:
@@ -38,7 +37,7 @@ One of these criteria apply:
 
 4. The requirement causes new or deals with one or more existing external dependencies that might have unpredictable, unreliable and/or uncontrollable behavior.
 
-5. The requirement has a cross-cutting nature and therefore affects multiple parts of the system and their interactions; it may even have *system-wide impact* short term and/or long term (examples: security, monitoring).
+5. The requirement has a cross-cutting nature and therefore affects multiple parts of the system and their interactions; it may even have _system-wide impact_ short term and/or long term (examples: security, monitoring).
 
 6. The requirement has a First-of-a-Kind (FOAK) character: for instance, this team has never built a component or subsystem that satisfies this particular requirement.
 

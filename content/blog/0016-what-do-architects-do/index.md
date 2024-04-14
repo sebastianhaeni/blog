@@ -60,10 +60,10 @@ These principles directly relate to the discussed topic:
 ### How can an architect do that?
 
 - Conversations happen & decisions are of high quality (see [Decentralized Architecture](/0013-decentralized-architecture)):
-  - A thinking and recording tool: Architectural Decision Records (ADRs) 
-  - A time and place for conversations: Architecture Advice Forum 
-  - A light to illuminate a unified goal: Engineering Principles 
-  - A tech landscape and current climate sensing tool: Tech Radar 
+  - A thinking and recording tool: Architectural Decision Records (ADRs)
+  - A time and place for conversations: Architecture Advice Forum
+  - A light to illuminate a unified goal: Engineering Principles
+  - A tech landscape and current climate sensing tool: Tech Radar
 - Guiding when needed:
   - Show presence
   - Connect people
@@ -84,11 +84,11 @@ Let’s use a city analogy:
 - We can design the blueprint for a single building in a city.
 - Or we can plan the layout of the entire city, including roads, buildings, and utilities.
 
-If buildings are small and simple and can be extended easily, i.e. are built with evolution in mind, we maximize reversible decisions whenever we want to change the building or even demolish it. 
+If buildings are small and simple and can be extended easily, i.e. are built with evolution in mind, we maximize reversible decisions whenever we want to change the building or even demolish it.
 
-So, how can we foster buildings being built this way that satisfies these properties? We can guide each building builder to design their building to satisfy these properties, but that takes time and leads to bottlenecks. 
+So, how can we foster buildings being built this way that satisfies these properties? We can guide each building builder to design their building to satisfy these properties, but that takes time and leads to bottlenecks.
 
-What if we instead build the best infrastructure for buildings? The provided infrastructure acts as a virtual restraint for the buildings. If there is a water pipe provided, the building builder is unlikely to pump water out of the ground and build their own water treatment plant, they’ll just use what’s already provided. This requires that the infrastructure is flexible, extensible and reliable. 
+What if we instead build the best infrastructure for buildings? The provided infrastructure acts as a virtual restraint for the buildings. If there is a water pipe provided, the building builder is unlikely to pump water out of the ground and build their own water treatment plant, they’ll just use what’s already provided. This requires that the infrastructure is flexible, extensible and reliable.
 
 Fostering an environment where systems are built with evolution in mind and where reversible decisions are maximized is crucial for adaptability and scalability.
 
@@ -105,15 +105,15 @@ In his talk [Minimal Viable Architecture](https://www.youtube.com/watch?v=9Q7GAN
 
 ![Minimal Viable Architecture](minimal-viable-architecture.png)
 
-The city analogy is generic, and one has to understand in which phase the system is in. 
+The city analogy is generic, and one has to understand in which phase the system is in.
 
-The city analogy is more fitting for the scaling phase, where the focus is on building the best infrastructure for buildings. 
+The city analogy is more fitting for the scaling phase, where the focus is on building the best infrastructure for buildings.
 In the starting phase, the focus is on building the best building. In the optimizing phase, the focus is on consolidating the buildings.
 
 In other words:
 
 - in the starting phase, focus on software architecture is more important.
-- In the scaling phase, focus on system architecture is more important. 
+- In the scaling phase, focus on system architecture is more important.
 - In the optimizing phase, focus on software architecture is more important again.
 
 During the scaling phase, a greater focus on system architecture as in platforms, infrastructure, automation, tooling, conventions, nudging, processes, and facilitation all with the goal to make decisions more reversible is likely to provide greater positive impact in a world where time is limited.

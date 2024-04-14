@@ -8,7 +8,7 @@ image: decentralized-architecture-elements.drawio.png
 Central Architecture as executed by a single architect or a group of architects has three main problems:
 
 - **Bottlenecks** — Having a central authority which designs architectures or even if it only has to approve it, slows down delivery.
-- **Ivory Tower** — The central authority does not have to live with the consequences. Neither does a birds eye view suffice to solve problems adequately, because the devil is usually in the details. 
+- **Ivory Tower** — The central authority does not have to live with the consequences. Neither does a birds eye view suffice to solve problems adequately, because the devil is usually in the details.
 - **Conway’s Law** — The organization structure defines the architecture. Designing without being inside the organization is not possible. The result will be different.
 
 This post discusses how to decentralize architecture to address these problems.
@@ -58,9 +58,8 @@ ADRs are lightweight documents per decision taken that was architecturally signi
 
 Elements of an ADR when used in an advice process context:
 
-
 | Name               | Description                                                                                                                                                                                                                                                                                                                                              |
-|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Title              | Which includes a unique identifier, and the decision itself (e.g. “ADR001 - Use AKS for Kubernetes Pods”)                                                                                                                                                                                                                                                |
 | Status             | Typically “Draft”, “Proposed”, “Adopted”, “Superseded” and “Retired”                                                                                                                                                                                                                                                                                     |
 | Decision           | The decision that has been taken in a few sentences (frequently bold or italicized so it stands out)                                                                                                                                                                                                                                                     |
@@ -91,7 +90,7 @@ What are good principles?
 
 The set of principles should cover the key needs, and should not be too many that the teams cannot remember them all — and crucially the teams need to feel a sense of ownership.
 
-Important: 
+Important:
 
 - Principles are not Practices (such as TDD, Trunk Based, Pair Programming).
 - Principles should not be too general (such as Write Good Code)
