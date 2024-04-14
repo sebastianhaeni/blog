@@ -5,7 +5,7 @@ tags: ["Architecture"]
 image: architects-value.png
 ---
 
-This blog post reflects my thoughts on what is architecture, what does an architect do and what they should focus on. I copied in some quotes which I found enlightening. The sources can be found in the references. It is also extending the thoughts from this older post: [Decentralized Architecture](/0014-decentralized-architecture).
+This blog post reflects my thoughts on what is architecture, what does an architect do and what they should focus on. I copied in some quotes which I found enlightening. The sources can be found in the references. It is also extending the thoughts from this older post: [Decentralized Architecture](../0014-decentralized-architecture).
 
 ## What is Architecture?
 
@@ -59,7 +59,7 @@ These principles directly relate to the discussed topic:
 
 ### How can an architect do that?
 
-- Conversations happen & decisions are of high quality (see [Decentralized Architecture](/0013-decentralized-architecture)):
+- Conversations happen & decisions are of high quality (see [Decentralized Architecture](../0013-decentralized-architecture)):
   - A thinking and recording tool: Architectural Decision Records (ADRs)
   - A time and place for conversations: Architecture Advice Forum
   - A light to illuminate a unified goal: Engineering Principles

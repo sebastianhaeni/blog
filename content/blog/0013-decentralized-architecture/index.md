@@ -23,7 +23,7 @@ This is the most fundamental change.
 
 **The Qualifier:** before making the decision, the decision-taker must consult two groups: The first is everyone who will be meaningfully affected by the decision. The second is people with expertise in the area the decision is being taken.
 
-[1] An architecturally significant decision is one that is hard to change later, has a significant impact on the system, and is not obvious. See [Architectural Significance](/0014-architectural-significance) for more.
+[1] An architecturally significant decision is one that is hard to change later, has a significant impact on the system, and is not obvious. See [Architectural Significance](../0014-architectural-significance) for more.
 
 We are not looking for consensus here, but we are looking for a broad range of inputs and voices. Decision-takers are encouraged to specifically seek out those who will disagree with them.
 
